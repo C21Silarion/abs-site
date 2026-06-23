@@ -1,73 +1,81 @@
 @import "tailwindcss";
 @import "tw-animate-css";
 @import "@fontsource-variable/nunito";
+@import "@fontsource-variable/fraunces";
 
 @custom-variant dark (&:is(.dark *));
 
-:root {
-  --radius: 0.625rem;
-  --background: oklch(1 0 0);
-  --foreground: oklch(0.145 0 0);
-  --card: oklch(1 0 0);
-  --card-foreground: oklch(0.145 0 0);
-  --popover: oklch(1 0 0);
-  --popover-foreground: oklch(0.145 0 0);
-  --primary: oklch(0.205 0 0);
-  --primary-foreground: oklch(0.985 0 0);
-  --secondary: oklch(0.97 0 0);
-  --secondary-foreground: oklch(0.205 0 0);
-  --muted: oklch(0.97 0 0);
-  --muted-foreground: oklch(0.556 0 0);
-  --accent: oklch(0.97 0 0);
-  --accent-foreground: oklch(0.205 0 0);
-  --destructive: oklch(0.577 0.245 27.325);
-  --border: oklch(0.922 0 0);
-  --input: oklch(0.922 0 0);
-  --ring: oklch(0.708 0 0);
-}
+/*
+  Identité visuelle ABS (cf. designRequirements/CDC-v0.1.md §3)
+  Palette : Crème / Orange / Lavande / Aubergine.
+  Règle a11y : jamais de texte orange sur violet (ni l'inverse).
+  Le texte courant sur fond clair est en aubergine/quasi-noir.
+  Typo : titres = Fraunces (substitut libre d'Euripides),
+         corps  = Nunito  (substitut libre d'Arial Rounded MT).
+*/
 
-.dark {
-  --background: oklch(0.145 0 0);
-  --foreground: oklch(0.985 0 0);
-  --card: oklch(0.205 0 0);
-  --card-foreground: oklch(0.985 0 0);
-  --popover: oklch(0.205 0 0);
-  --popover-foreground: oklch(0.985 0 0);
-  --primary: oklch(0.922 0 0);
-  --primary-foreground: oklch(0.205 0 0);
-  --secondary: oklch(0.269 0 0);
-  --secondary-foreground: oklch(0.985 0 0);
-  --muted: oklch(0.269 0 0);
-  --muted-foreground: oklch(0.708 0 0);
-  --accent: oklch(0.269 0 0);
-  --accent-foreground: oklch(0.985 0 0);
-  --destructive: oklch(0.704 0.191 22.216);
-  --border: oklch(1 0 0 / 10%);
-  --input: oklch(1 0 0 / 15%);
-  --ring: oklch(0.556 0 0);
+:root {
+  --radius: 1rem;
+
+  /* Couleurs de marque ABS */
+  --creme: #fffff1;
+  --peach: #fde7df;
+  --orange: #ef7749;
+  --orange-foreground: #fffff1;
+  --lavande: #9172b0;
+  --lavande-soft: #d6cfdd;
+  --aubergine: #432663;
+  --aubergine-deep: #301a45;
+
+  /* Tokens sémantiques */
+  --background: var(--creme);
+  --foreground: #2a1840; /* aubergine très sombre pour le corps de texte */
+  --card: #fffffa;
+  --card-foreground: var(--foreground);
+  --primary: var(--aubergine);
+  --primary-foreground: var(--creme);
+  --secondary: var(--lavande);
+  --secondary-foreground: var(--creme);
+  --accent: var(--orange);
+  --accent-foreground: var(--creme);
+  --muted: var(--peach);
+  --muted-foreground: #6b5878;
+  --border: #e7dfd2;
+  --input: #e7dfd2;
+  --ring: var(--lavande);
 }
 
 @theme inline {
-  --radius-sm: calc(var(--radius) - 4px);
-  --radius-md: calc(var(--radius) - 2px);
+  --radius-sm: calc(var(--radius) - 6px);
+  --radius-md: calc(var(--radius) - 3px);
   --radius-lg: var(--radius);
-  --radius-xl: calc(var(--radius) + 4px);
+  --radius-xl: calc(var(--radius) + 6px);
+
   --font-sans: "Nunito Variable", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Fraunces Variable", ui-serif, Georgia, serif;
+
+  /* Couleurs de marque exposées comme utilitaires Tailwind */
+  --color-creme: var(--creme);
+  --color-peach: var(--peach);
+  --color-orange: var(--orange);
+  --color-orange-foreground: var(--orange-foreground);
+  --color-lavande: var(--lavande);
+  --color-lavande-soft: var(--lavande-soft);
+  --color-aubergine: var(--aubergine);
+  --color-aubergine-deep: var(--aubergine-deep);
+
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --color-card: var(--card);
   --color-card-foreground: var(--card-foreground);
-  --color-popover: var(--popover);
-  --color-popover-foreground: var(--popover-foreground);
   --color-primary: var(--primary);
   --color-primary-foreground: var(--primary-foreground);
   --color-secondary: var(--secondary);
   --color-secondary-foreground: var(--secondary-foreground);
-  --color-muted: var(--muted);
-  --color-muted-foreground: var(--muted-foreground);
   --color-accent: var(--accent);
   --color-accent-foreground: var(--accent-foreground);
-  --color-destructive: var(--destructive);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
   --color-border: var(--border);
   --color-input: var(--input);
   --color-ring: var(--ring);
@@ -75,10 +83,25 @@
 
 @layer base {
   * {
-    @apply border-border outline-ring/50;
+    @apply border-border;
   }
   body {
     @apply bg-background text-foreground;
     font-family: var(--font-sans);
+    font-optical-sizing: auto;
+    -webkit-font-smoothing: antialiased;
+  }
+  h1,
+  h2,
+  h3,
+  h4 {
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-optical-sizing: auto;
+    letter-spacing: -0.01em;
+  }
+  ::selection {
+    background: var(--orange);
+    color: var(--creme);
   }
 }
