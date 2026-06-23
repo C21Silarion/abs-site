@@ -8,7 +8,7 @@ Dépôt distinct de l'outil interne `abs-app` (dossier voisin `../abs-app`).
 ABS met en relation des personnes sans hébergement stable avec des citoyens
 hébergeurs bénévoles. Ce dépôt est le **site vitrine public** : présentation de
 l'association, information du public, appel aux bénévoles/hébergeurs/dons. Pas de
-données sensibles ni de logique métier interne ici (celle-ci est dans `abs-app`).
+données sensibles ni de logique métier interne ici (celle-ci est dans `abs-app`). L'app est connu sous le surnom Le116 celui ci ne doit PAS être visible sur le site. 
 
 ## Stack
 
@@ -64,7 +64,7 @@ refaire si le fichier est ré-exporté depuis l'outil de design.
 - **Commits : Conventional Commits en français** (ex. `feat: ajoute la page contact`),
   comme dans `abs-app`.
 - Composants de site dans `src/components/site/` : `brand/` (logo, maison, fil,
-  photo bichromie), `ui/` (Button cva, Section, Faq, PageHeader, formulaire LE116),
+  photo bichromie), `ui/` (Button cva, Section, Faq, PageHeader, InscriptionForm),
   `sections/` (Hero, Plaidoyer, ChiffresCles, Parcours*, GalerieMedias, Ressources,
   SiteFooter). Le contenu éditorial est centralisé dans `src/components/site/content.ts`.
 - Helper `cn()` depuis `@/lib/utils` pour composer les classes Tailwind.
@@ -93,11 +93,13 @@ depuis la page d'accueil :
   CTA jumeaux qui redirigent vers les pages dédiées.
 
 Les deux consomment les mêmes composants `src/components/site/`. Conversion
-(HelloAsso, formulaire LE116, réseaux) figurée par des **placeholders** : aucune
-intégration tierce réelle pour l'instant.
+(HelloAsso, formulaire d'inscription, réseaux) figurée par des **placeholders** :
+aucune intégration tierce réelle pour l'instant. Le nom de l'outil interne
+(Le116) ne doit jamais apparaître côté site public — ni en texte ni en nom de
+composant (visible via React DevTools).
 
 ## À faire / en attente
 
-- Intégrations réelles : HelloAsso (dons/adhésions), formulaire LE116, embeds vidéo.
+- Intégrations réelles : HelloAsso (dons/adhésions), formulaire d'inscription, embeds vidéo.
 - Vraies photos traitées en bichromie/tramées, vrais PDF de ressources.
 - Acquérir/licencier les polices d'origine (Euripides, Arial Rounded MT) si besoin.

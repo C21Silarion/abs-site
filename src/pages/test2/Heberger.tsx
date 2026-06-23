@@ -2,7 +2,7 @@ import { PageHeader } from "@/components/site/ui/PageHeader";
 import { Section } from "@/components/site/ui/Section";
 import { ParcoursHebergeur } from "@/components/site/sections/ParcoursHebergeur";
 import { Faq } from "@/components/site/ui/Faq";
-import { Le116FormPlaceholder } from "@/components/site/ui/Le116FormPlaceholder";
+import { InscriptionForm } from "@/components/site/ui/InscriptionForm";
 import { faqHebergeur } from "@/components/site/content";
 
 /* Page 2 — Devenir hébergeur·euse (CDC §5) : rassurance + processus + action. */
@@ -29,7 +29,7 @@ export default function Heberger() {
       </Section>
 
       <Section>
-        <Le116FormPlaceholder
+        <InscriptionForm
           titre="Je propose un hébergement"
           intitule="Laissez-nous vos coordonnées : un·e bénévole vous recontacte pour faire connaissance, sans engagement."
         />

@@ -2,7 +2,7 @@ import { PageHeader } from "@/components/site/ui/PageHeader";
 import { Section } from "@/components/site/ui/Section";
 import { ParcoursReferent } from "@/components/site/sections/ParcoursReferent";
 import { Faq } from "@/components/site/ui/Faq";
-import { Le116FormPlaceholder } from "@/components/site/ui/Le116FormPlaceholder";
+import { InscriptionForm } from "@/components/site/ui/InscriptionForm";
 import { faqReferent } from "@/components/site/content";
 
 /* Page 3 — Devenir référent·e (CDC §5) : valoriser le rôle pivot des bénévoles. */
@@ -25,7 +25,7 @@ export default function Referent() {
       </Section>
 
       <Section>
-        <Le116FormPlaceholder
+        <InscriptionForm
           titre="Je deviens bénévole / référent·e"
           intitule="Rejoignez l'équipe : indiquez vos disponibilités et votre secteur, on vous explique tout lors d'un premier échange."
         />

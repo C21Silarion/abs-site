@@ -2,11 +2,12 @@ import { ShieldCheck } from "lucide-react";
 import { Button } from "./Button";
 
 /*
- * Placeholder du formulaire d'inscription LE116 (intégré inline dans les pages
+ * Placeholder du formulaire d'inscription (intégré inline dans les pages
  * Héberger / Référent du site définitif). Non fonctionnel : sert à figurer
- * l'emplacement et le rendu. La logique réelle vit dans l'outil interne ABS.
+ * l'emplacement et le rendu. La logique réelle vit dans l'outil interne ABS
+ * (cf. CLAUDE.md : ne jamais exposer le nom de l'app côté site public).
  */
-export function Le116FormPlaceholder({
+export function InscriptionForm({
   titre = "Passer à l'action",
   intitule,
 }: {
@@ -17,7 +18,7 @@ export function Le116FormPlaceholder({
     <section className="rounded-2xl border-2 border-dashed border-lavande/60 bg-card p-6 sm:p-8">
       <div className="mb-5 flex items-center gap-2 text-sm font-medium text-lavande">
         <ShieldCheck className="h-4 w-4" />
-        Formulaire sécurisé LE116 — aperçu de maquette
+        Formulaire d'inscription sécurisé — aperçu de maquette
       </div>
       <h3 className="mb-1 font-display text-2xl text-aubergine">{titre}</h3>
       <p className="mb-6 text-foreground/80">{intitule}</p>

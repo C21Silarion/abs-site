@@ -2,7 +2,8 @@
  * Contenu éditorial des maquettes ABS (texte de remplissage réaliste).
  * Ton inspiré des sites de référence : Singa, J'accueille, Avec-Toits, Utopia 56.
  * Les chiffres, liens et formulaires sont des PLACEHOLDERS (cf. CDC : maintenance zéro,
- * conversion externalisée vers HelloAsso / LE116 / réseaux sociaux).
+ * conversion externalisée vers HelloAsso, l'outil interne et les réseaux sociaux).
+ * NB : ne jamais exposer le nom de l'outil interne côté site public (cf. CLAUDE.md).
  */
 
 export const association = {
