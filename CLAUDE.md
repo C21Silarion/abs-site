@@ -36,8 +36,27 @@ Le thème de marque ABS est défini dans `src/index.css` (variables + `@theme in
   *Arial Rounded MT* (corps), non libres pour le web. Substituts retenus :
   **Fraunces** (serif doux, effet « découpé main ») et **Nunito** (terminaisons
   arrondies). À remplacer si les licences des polices d'origine sont acquises.
-- **Éléments graphiques « fait main »** dans `src/components/site/brand/`
-  (silhouette de maison, fil conducteur orange, photos bichromie/tramées).
+- **Éléments graphiques « fait main »** dans `src/components/site/brand/` :
+  `HouseMark` (silhouette de maison, tracé de `maison.svg` inliné et recolorable
+  via `fill`, utilisée en filigrane), `DuotonePhoto` (placeholder photo
+  bichromie/tramée), `FilConducteur` (séparateur — actuellement non utilisé).
+
+### Logos & assets de marque
+
+Les fichiers de charte sont dans `src/assets/brand/` (importés comme URL par Vite).
+Le composant `Logo` (`brand/Logo.tsx`) expose trois variantes via la prop `variant` :
+
+| `variant`         | Fichier                              | Usage |
+| ----------------- | ------------------------------------ | ----- |
+| `full` (défaut)   | `logo-abs-orange-baseline-wide.svg`  | héros, page d'accueil (sigle + baseline, format large) |
+| `wordmark`        | `logo-abs-no-baseline.svg`           | header de nav (sigle ABS orange, compact) |
+| `creme`           | `logo-abs-mono-creme.svg`            | footer aubergine (sigle ABS crème) |
+
+La hauteur se règle via `className` (ex. `h-44`). Le `viewBox` de
+`logo-abs-orange-baseline-wide.svg` a été **rogné** (`38.7 0 1422.8 400`) pour
+supprimer le padding interne et aligner le logo à gauche avec le texte ; à
+refaire si le fichier est ré-exporté depuis l'outil de design.
+`logo-abs.svg` (ancien logo carré) n'est plus utilisé.
 
 ## Conventions
 
