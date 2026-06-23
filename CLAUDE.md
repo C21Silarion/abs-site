@@ -38,8 +38,8 @@ Le thème de marque ABS est défini dans `src/index.css` (variables + `@theme in
   arrondies). À remplacer si les licences des polices d'origine sont acquises.
 - **Éléments graphiques « fait main »** dans `src/components/site/brand/` :
   `HouseMark` (silhouette de maison, tracé de `maison.svg` inliné et recolorable
-  via `fill`, utilisée en filigrane), `DuotonePhoto` (placeholder photo
-  bichromie/tramée), `FilConducteur` (séparateur — actuellement non utilisé).
+  via `fill`, utilisée en filigrane) et `DuotonePhoto` (placeholder photo
+  bichromie/tramée).
 
 ### Logos & assets de marque
 

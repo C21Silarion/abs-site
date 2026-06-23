@@ -21,14 +21,14 @@ exportés depuis la charte (`styleGuide/document_technique.pdf`).
 
 Nommez les fichiers ainsi — je les brancherai directement dans les composants :
 
-| Fichier                     | Usage                                                      | Remplace |
-| --------------------------- | ---------------------------------------------------------- | -------- |
-| `logo-abs.svg`              | Logotype orange complet (sigle + baseline) → `variant="full"` | héros, accueil |
-| `logo-abs-no-baseline.svg`  | Sigle ABS orange seul (sans baseline) → `variant="wordmark"`  | header de nav |
-| `logo-abs-mono-creme.svg`   | Sigle ABS en crème (fonds sombres) → `variant="creme"`        | footer aubergine |
-| `maison.svg`                | Silhouette de maison « fait main » principale              | `HouseMark.tsx` |
-| `maison-2.svg`, `maison-3.svg` … | Variantes de maisons (filigranes héros/entêtes)       | décor `Hero` / `PageHeader` |
-| `fil-conducteur.svg`        | Ligne courbe orange (si vous en avez une version officielle) | `FilConducteur.tsx` |
+| Fichier                                | Usage                                                          | Composant |
+| -------------------------------------- | -------------------------------------------------------------- | --------- |
+| `logo-abs-orange-baseline-wide.svg`    | Logotype orange large (sigle + baseline) → `variant="full"`    | héros, accueil |
+| `logo-abs-no-baseline.svg`             | Sigle ABS orange seul (sans baseline) → `variant="wordmark"`   | header de nav |
+| `logo-abs-mono-creme.svg`              | Sigle ABS en crème (fonds sombres) → `variant="creme"`         | footer aubergine |
+| `maison.svg`                           | Silhouette de maison « fait main » (tracé inliné dans `HouseMark`) | filigranes héros/entêtes |
+| `logo-abs.svg`                         | Ancien logotype carré — **non utilisé** (conservé au cas où)   | — |
+| `fil-conducteur.svg`                   | Ligne courbe orange — **non utilisée** actuellement            | — |
 
 > Les autres formes (chaînes humaines, motifs…) : déposez-les avec un nom
 > descriptif en kebab-case (ex. `chaine-humaine.svg`) et dites-moi où les utiliser.
