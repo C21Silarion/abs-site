@@ -9,10 +9,10 @@ import { SiteFooter } from "@/components/site/sections/SiteFooter";
  * commun aux 4 pages, contenu injecté via <Outlet/>.
  */
 const nav = [
-  { to: "/test2", label: "Accueil", end: true },
-  { to: "/test2/heberger", label: "Héberger" },
-  { to: "/test2/referent", label: "Référent·e" },
-  { to: "/test2/ressources", label: "Ressources" },
+  { to: "/test/test2", label: "Accueil", end: true },
+  { to: "/test/test2/heberger", label: "Héberger" },
+  { to: "/test/test2/referent", label: "Référent·e" },
+  { to: "/test/test2/ressources", label: "Ressources" },
 ];
 
 export default function Test2Layout() {
@@ -25,7 +25,7 @@ export default function Test2Layout() {
     <div className="flex min-h-svh flex-col bg-background">
       <header className="sticky top-0 z-30 border-b border-border bg-background/90 backdrop-blur">
         <div className="mx-auto flex w-full max-w-5xl items-center justify-between gap-4 px-5 py-3">
-          <NavLink to="/test2" end aria-label="Accueil ABS">
+          <NavLink to="/test/test2" end aria-label="Accueil ABS">
             <Logo variant="wordmark" className="h-11" />
           </NavLink>
           <nav className="flex items-center gap-1 sm:gap-2">

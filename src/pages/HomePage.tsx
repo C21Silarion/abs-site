@@ -17,7 +17,7 @@ export default function HomePage() {
 
       <div className="grid w-full max-w-2xl gap-5 sm:grid-cols-2">
         <Link
-          to="/test1"
+          to="/test/test1"
           className="group rounded-2xl border border-border bg-card p-6 transition-colors hover:border-orange"
         >
           <LayoutList className="h-8 w-8 text-orange" />
@@ -26,12 +26,12 @@ export default function HomePage() {
             Parcours descendant sur une seule page (CDC §4).
           </p>
           <span className="mt-4 inline-flex items-center gap-1 text-sm font-semibold text-orange">
-            Voir /test1 <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
+            Voir /test/test1 <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
           </span>
         </Link>
 
         <Link
-          to="/test2"
+          to="/test/test2"
           className="group rounded-2xl border border-border bg-card p-6 transition-colors hover:border-orange"
         >
           <Files className="h-8 w-8 text-lavande" />
@@ -40,7 +40,7 @@ export default function HomePage() {
             Arborescence de 4 pages dédiées (CDC §5).
           </p>
           <span className="mt-4 inline-flex items-center gap-1 text-sm font-semibold text-orange">
-            Voir /test2 <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
+            Voir /test/test2 <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
           </span>
         </Link>
       </div>

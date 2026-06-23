@@ -1,4 +1,5 @@
 import { Route, Routes } from "react-router-dom";
+import ComingSoon from "@/pages/ComingSoon";
 import HomePage from "@/pages/HomePage";
 import Test1 from "@/pages/Test1";
 import Test2Layout from "@/pages/test2/Test2Layout";
@@ -10,13 +11,12 @@ import Ressources from "@/pages/test2/Ressources";
 export default function App() {
   return (
     <Routes>
-      <Route path="/" element={<HomePage />} />
+      <Route path="/" element={<ComingSoon />} />
 
-      {/* Maquette monopage (CDC §4) */}
-      <Route path="/test1" element={<Test1 />} />
-
-      {/* Maquette multipage (CDC §5) */}
-      <Route path="/test2" element={<Test2Layout />}>
+      {/* Maquettes — accès interne uniquement */}
+      <Route path="/test" element={<HomePage />} />
+      <Route path="/test/test1" element={<Test1 />} />
+      <Route path="/test/test2" element={<Test2Layout />}>
         <Route index element={<Accueil />} />
         <Route path="heberger" element={<Heberger />} />
         <Route path="referent" element={<Referent />} />
