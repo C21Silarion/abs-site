@@ -13,7 +13,7 @@ export const association = {
 };
 
 export const hero = {
-  accroche: "Un toit, une présence, une main tendue.",
+  accroche: "Accueil Bienveillant et Solidaire",
   sousTitre:
     "ABS met en relation des personnes exilées sans solution d'hébergement avec des citoyen·nes prêt·es à les accueillir, accompagné·es à chaque étape par des bénévoles référent·es.",
   ctaHeberger: "Je propose un hébergement",

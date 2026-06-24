@@ -1,7 +1,7 @@
 import { ArrowRight, HeartHandshake } from "lucide-react";
 import { Logo } from "@/components/site/brand/Logo";
 import { HouseMark } from "@/components/site/brand/HouseMark";
-import { Button } from "@/components/site/ui/Button";
+import { PaperButton } from "@/components/site/ui/PaperButton";
 import { hero } from "@/components/site/content";
 
 /*
@@ -43,25 +43,25 @@ export function Hero({
         fill="var(--orange)"
       />
 
-      <div className="relative mx-auto w-full max-w-5xl">
-        <Logo className="mb-10 h-32 sm:h-44" />
+      <div className="relative mx-auto w-full max-w-5xl text-center">
+        <Logo className="mx-auto mb-10 h-32 sm:h-44" />
 
-        <h1 className="max-w-3xl text-balance text-4xl leading-tight text-aubergine sm:text-6xl">
+        <h1 className="mx-auto max-w-3xl text-balance text-4xl leading-tight text-aubergine sm:text-6xl">
           {hero.accroche}
         </h1>
-        <p className="mt-6 max-w-2xl text-lg text-foreground/80 sm:text-xl">
+        <p className="mx-auto mt-6 max-w-2xl text-lg text-foreground/80 sm:text-xl">
           {hero.sousTitre}
         </p>
 
-        <div className="mt-10 flex flex-col gap-4 sm:flex-row">
-          <Button variant="warm" size="lg" {...hebergerCta}>
+        <div className="mt-10 flex flex-col items-center gap-4 sm:flex-row sm:justify-center">
+          <PaperButton variant="warm" {...hebergerCta}>
             <HeartHandshake className="h-5 w-5" />
             {hero.ctaHeberger}
-          </Button>
-          <Button variant="solid" size="lg" {...referentCta}>
+          </PaperButton>
+          <PaperButton variant="solid" {...referentCta}>
             {hero.ctaReferent}
             <ArrowRight className="h-5 w-5" />
-          </Button>
+          </PaperButton>
         </div>
       </div>
     </section>
