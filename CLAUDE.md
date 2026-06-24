@@ -81,6 +81,16 @@ npm run build      # build de production
 npm run lint       # ESLint
 ```
 
+### Déploiement sur le VPS
+
+Après un `git pull` sur le VPS, rebuilder via Docker (pas de Node natif) :
+
+```bash
+docker run --rm -v "$PWD":/app -w /app node:22-alpine sh -c "npm ci && npm run build"
+```
+
+Le dossier `dist/` est ensuite servi par le serveur web.
+
 ## Maquettes comparatives
 
 Deux architectures candidates pour le même contenu (cf. CDC §4 et §5), accessibles
