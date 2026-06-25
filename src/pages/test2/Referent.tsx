@@ -18,7 +18,7 @@ export default function Referent() {
 
       <ParcoursReferent />
 
-      <Section className="bg-peach/40">
+      <Section band>
         <h2 className="text-3xl text-aubergine sm:text-4xl">Questions fréquentes</h2>
         <div className="mt-8">
           <Faq items={faqReferent} />

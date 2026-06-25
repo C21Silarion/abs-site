@@ -24,7 +24,7 @@ export function GalerieMedias({
   const photos = galerie.slice(0, count);
 
   return (
-    <Section id={id} className="bg-peach/40">
+    <Section id={id} band>
       <div className="flex flex-wrap items-end justify-between gap-4">
         <h2 className="text-3xl text-aubergine sm:text-4xl">{title}</h2>
         {more && (

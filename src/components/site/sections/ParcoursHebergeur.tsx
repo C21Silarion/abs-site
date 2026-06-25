@@ -22,7 +22,14 @@ export function ParcoursHebergeur({
   const content = (
     <>
       <h2 className="text-3xl text-aubergine sm:text-4xl">{parcoursHebergeur.titre}</h2>
-      <p className="mt-4 max-w-2xl text-lg text-foreground/80">{parcoursHebergeur.intro}</p>
+      <div className="relative mt-4 max-w-2xl">
+        {/* Halo crème flou : atténue le fil conducteur derrière l'intro. */}
+        <div
+          aria-hidden
+          className="pointer-events-none absolute -inset-x-6 -inset-y-3 rounded-[2.5rem] bg-background/70 blur-2xl"
+        />
+        <p className="relative text-lg text-foreground/80">{parcoursHebergeur.intro}</p>
+      </div>
 
       <ol className="mt-10 grid gap-6 md:grid-cols-3">
         {parcoursHebergeur.etapes.map((e) => (

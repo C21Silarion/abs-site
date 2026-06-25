@@ -19,12 +19,19 @@ export default function Heberger() {
 
       <ParcoursHebergeur showTypes />
 
-      <Section className="bg-peach/40">
+      <Section band>
         <h2 className="text-3xl text-aubergine sm:text-4xl">Le cadre de sécurité</h2>
-        <p className="mt-4 max-w-2xl text-lg text-foreground/80">
-          Vous n'êtes jamais seul·e : un·e référent·e veille sur chaque accueil, et
-          l'assurance est prise en charge par l'association.
-        </p>
+        <div className="relative mt-4 max-w-2xl">
+          {/* Halo crème flou : atténue le fil conducteur derrière le texte. */}
+          <div
+            aria-hidden
+            className="pointer-events-none absolute -inset-x-6 -inset-y-3 rounded-[2.5rem] bg-background/70 blur-2xl"
+          />
+          <p className="relative text-lg text-foreground/80">
+            Vous n'êtes jamais seul·e : un·e référent·e veille sur chaque accueil, et
+            l'assurance est prise en charge par l'association.
+          </p>
+        </div>
         <div className="mt-8">
           <Faq items={faqHebergeur} />
         </div>

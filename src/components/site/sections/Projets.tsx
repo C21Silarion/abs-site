@@ -55,13 +55,7 @@ export function Projets({
   more?: { label: string; to?: string; href?: string };
 }) {
   return (
-    <Section
-      id={id}
-      style={{
-        backgroundImage:
-          "linear-gradient(to bottom, transparent 0, rgb(253 231 223 / 0.4) 30px, rgb(253 231 223 / 0.4) calc(100% - 30px), transparent 100%)",
-      }}
-    >
+    <Section id={id} band>
       <div className="flex flex-wrap items-end justify-between gap-4">
         <h2 className="text-3xl text-aubergine sm:text-4xl">{title}</h2>
         {more && (
