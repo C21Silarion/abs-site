@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { Mail, Phone, MapPin, Heart } from "lucide-react";
 import { Logo } from "@/components/site/brand/Logo";
 import { PaperButton } from "@/components/site/ui/PaperButton";
@@ -34,6 +35,7 @@ function YoutubeIcon({ className }: { className?: string }) {
  * tri-canal, la newsletter et l'aiguillage réseaux sociaux (cf. CDC §4/§5).
  */
 export function SiteFooter() {
+  const [newsletterDone, setNewsletterDone] = useState(false);
   return (
     <footer className="bg-aubergine-deep text-creme">
       {/* Bandeau soutien / HelloAsso */}
@@ -88,23 +90,45 @@ export function SiteFooter() {
             </ul>
           </div>
 
-          {/* Newsletter */}
+          {/* Newsletter — POST direct vers le formulaire Brevo, dans un iframe
+              caché pour rester sur le site. Honeypot Brevo `email_address_check`
+              conservé (doit rester vide). */}
           <div>
             <h3 className="font-display text-xl text-creme">Rester informé·e</h3>
-            <p className="mt-4 text-sm text-creme/70">
-              Recevez nos rares mais précieuses nouvelles par courriel.
-            </p>
-            <form className="mt-4 flex items-center gap-2" onSubmit={(e) => e.preventDefault()}>
-              <input
-                type="email"
-                disabled
-                placeholder="vous@exemple.fr"
-                className="h-11 w-full rounded-lg border border-creme/20 bg-creme/5 px-3 text-creme placeholder:text-creme/40"
-              />
-              <PaperButton variant="warmSmall" type="submit" className="h-11 px-6 text-base">
-                OK
-              </PaperButton>
-            </form>
+            {newsletterDone ? (
+              <p className="mt-4 text-sm text-creme/80">
+                Merci ! Votre inscription est prise en compte. Pensez à valider
+                l'email de confirmation si on vous le demande.
+              </p>
+            ) : (
+              <>
+                <p className="mt-4 text-sm text-creme/70">
+                  Recevez nos rares mais précieuses nouvelles par courriel.
+                </p>
+                <form
+                  action={footer.newsletterAction}
+                  method="POST"
+                  target="brevo-newsletter"
+                  onSubmit={() => setNewsletterDone(true)}
+                  className="mt-4 flex items-center gap-2"
+                >
+                  <input
+                    type="email"
+                    name="EMAIL"
+                    required
+                    autoComplete="email"
+                    placeholder="vous@exemple.fr"
+                    className="h-11 w-full rounded-lg border border-creme/20 bg-creme/5 px-3 text-creme placeholder:text-creme/40"
+                  />
+                  {/* Honeypot Brevo — doit rester vide */}
+                  <input type="text" name="email_address_check" defaultValue="" tabIndex={-1} aria-hidden="true" autoComplete="off" className="hidden" />
+                  <input type="hidden" name="locale" value="fr" />
+                  <PaperButton variant="warmSmall" type="submit" className="h-11 px-6 text-base">
+                    OK
+                  </PaperButton>
+                </form>
+              </>
+            )}
           </div>
 
           {/* Réseaux sociaux */}
@@ -132,6 +156,10 @@ export function SiteFooter() {
           </p>
         </div>
       </div>
+
+      {/* Cible cachée pour la soumission du formulaire newsletter Brevo
+          (évite de quitter le site). */}
+      <iframe name="brevo-newsletter" title="Inscription newsletter" className="hidden" />
     </footer>
   );
 }

@@ -158,6 +158,9 @@ export const footer = {
     adhesion: "https://www.helloasso.com/beta/associations/accueil-bienveillant-et-solidaire-en-haute-vienne/adhesions/adhesion2026",
     don: `${HELLOASSO_ORG}/formulaires/1`,
   },
+  // Formulaire d'inscription newsletter hébergé par Brevo (POST direct, pas de clé).
+  newsletterAction:
+    "https://eeec61fc.sibforms.com/serve/MUIFAHr-pGrUCOA0nhIyhAT1m3I6YqMgc9RP2jDqZrSuWl_6tsKBJ4E6EYId0bJS_5tNclWn6RBQKOYPUqptfPbx7sGC_PznSwrFmpyp0iTi7uVHsj5cmjmFoW4ohlV2oBgaaO50FazFKXjEE8bAD7faVX_Euq25TVU1KRQjqc8aHzT7Nu4AjW7qjqq76md7KvxagI-JuZBVFukM",
   contact: {
     email: "abslimoges@proton.me",
     telephone: "07 43 34 09 98",
