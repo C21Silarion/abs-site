@@ -28,10 +28,16 @@ export const plaidoyer = {
   ],
 };
 
-export const chiffres = [
-  { valeur: "120+", label: "personnes accueillies" },
-  { valeur: "45", label: "familles hébergeuses engagées" },
-  { valeur: "80", label: "bénévoles & adhérent·es" },
+/*
+ * Chiffres clés. `valeur` est le placeholder affiché par défaut (et le repli si
+ * l'API publique est injoignable) ; `key` pointe vers le champ correspondant du
+ * payload `GET /api/public/stats` (chemin pointé), affiché à la place dès qu'il
+ * est disponible. Voir `ChiffresCles.tsx`.
+ */
+export const chiffres: { valeur: string; label: string; key?: string }[] = [
+  { valeur: "120+", label: "personnes accueillies", key: "total.personnesAccueillies.total" },
+  { valeur: "45", label: "familles hébergeuses engagées", key: "total.famillesHebergeuses" },
+  { valeur: "80", label: "bénévoles & adhérent·es", key: "benevoles" },
 ];
 
 export type Etape = { numero: string; titre: string; texte: string };

@@ -17,6 +17,49 @@
 
 const API_BASE = import.meta.env.VITE_API_BASE ?? "/api";
 
+// ── Chiffres publics (section ChiffresCles) ─────────────────────────────────
+// Précalculés côté outil interne (snapshot quotidien) et servis en lecture seule
+// par GET /api/public/stats. Le site ne touche jamais Grist ; il n'a pas de clé.
+
+/** Compteur de personnes ventilé enfants / adultes. */
+export interface PersonSplit {
+  total: number;
+  enfants: number;
+  adultes: number;
+}
+
+/** Chiffres d'un périmètre (depuis le début ou une année). */
+export interface ScopeStats {
+  personnesAccueillies: PersonSplit;
+  nuitees: number;
+  personneNuitees: PersonSplit;
+  famillesHebergeuses: number;
+  heuresBenevolat: number;
+  kmParcourus: number;
+  tauxReussiteSuivis: number;
+}
+
+export interface PublicStats {
+  asOf: string;
+  anneesExistence: number;
+  benevoles: number;
+  hebergeursInscrits: number;
+  years: number[];
+  total: ScopeStats;
+  parAnnee: Record<string, ScopeStats>;
+}
+
+/** Récupère les chiffres publics, ou `null` si indisponible (repli placeholders). */
+export async function getPublicStats(): Promise<PublicStats | null> {
+  try {
+    const res = await fetch(`${API_BASE}/public/stats`);
+    if (!res.ok) return null;
+    return (await res.json()) as PublicStats;
+  } catch {
+    return null;
+  }
+}
+
 /** Jeton anti-abus à récupérer au chargement d'un formulaire public, puis à
  *  renvoyer dans la soumission. "" si indisponible. */
 export async function getPublicFormToken(): Promise<string> {
