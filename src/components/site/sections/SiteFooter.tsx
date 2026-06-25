@@ -1,6 +1,6 @@
 import { Mail, Phone, MessageCircle, Heart } from "lucide-react";
 import { Logo } from "@/components/site/brand/Logo";
-import { Button } from "@/components/site/ui/Button";
+import { PaperButton } from "@/components/site/ui/PaperButton";
 import { footer } from "@/components/site/content";
 
 /* lucide v1 ne fournit plus les icônes de marque : on les dessine en inline. */
@@ -40,13 +40,13 @@ export function SiteFooter() {
             </p>
           </div>
           <div className="flex flex-col gap-3 sm:flex-row md:justify-end">
-            <Button variant="warm" size="lg" href={footer.helloAsso.don} target="_blank" rel="noreferrer">
+            <PaperButton variant="warmShort" href={footer.helloAsso.don} target="_blank" rel="noreferrer">
               <Heart className="h-5 w-5" />
               Faire un don
-            </Button>
-            <Button variant="lavande" size="lg" href={footer.helloAsso.adhesion} target="_blank" rel="noreferrer">
+            </PaperButton>
+            <PaperButton variant="lavandeShort" href={footer.helloAsso.adhesion} target="_blank" rel="noreferrer">
               Adhérer à l'association
-            </Button>
+            </PaperButton>
           </div>
         </div>
       </div>
@@ -80,16 +80,16 @@ export function SiteFooter() {
             <p className="mt-4 text-sm text-creme/70">
               Recevez nos rares mais précieuses nouvelles par courriel.
             </p>
-            <form className="mt-4 flex gap-2" onSubmit={(e) => e.preventDefault()}>
+            <form className="mt-4 flex items-center gap-2" onSubmit={(e) => e.preventDefault()}>
               <input
                 type="email"
                 disabled
                 placeholder="vous@exemple.fr"
                 className="h-11 w-full rounded-lg border border-creme/20 bg-creme/5 px-3 text-creme placeholder:text-creme/40"
               />
-              <Button variant="warm" type="submit">
+              <PaperButton variant="warmSmall" type="submit" className="h-11 px-6 text-base">
                 OK
-              </Button>
+              </PaperButton>
             </form>
           </div>
 

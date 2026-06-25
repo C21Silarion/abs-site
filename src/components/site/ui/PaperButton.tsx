@@ -1,54 +1,84 @@
 import { cn } from "@/lib/utils";
 import { Link } from "react-router-dom";
+import warmSvg from "@/assets/brand/buttonOrange.svg?raw";
+import solidSvg from "@/assets/brand/buttonAubergine.svg?raw";
+import warmShortSvg from "@/assets/brand/buttonOrangerShort.svg?raw";
+import lavandeShortSvg from "@/assets/brand/buttonLavanderShort.svg?raw";
+import warmSmallSvg from "@/assets/brand/buttonOrangerSmall.svg?raw";
 
-const ORANGE_POINTS =
-  "6.03 12.254 17.026 4.607 89.143 5.244 164.816 2.696 234.346 3.651 255.367 2.058 249.546 16.396 254.072 53.038 241.137 55.906 168.373 53.676 79.117 54.313 35.136 53.676 15.733 43.48 5.707 44.754";
+/*
+ * Bouton « papier découpé » : la forme est le fichier SVG lui-même (importé en
+ * ?raw → mis à jour dynamiquement quand tu édites le .svg, HMR en dev), étirée
+ * pour remplir le bouton, texte crème centré par-dessus.
+ *
+ * Pourquoi inline (dangerouslySetInnerHTML) et pas <img src> : un <img> honore
+ * le preserveAspectRatio interne du SVG (≈ object-fit: contain) et ne remplit
+ * pas le bouton. On injecte donc preserveAspectRatio="none" dans le SVG et on
+ * l'embarque inline. Contenu = nos propres assets build-time (pas de risque XSS).
+ */
+const SHAPES = {
+  warm: warmSvg,
+  solid: solidSvg,
+  warmShort: warmShortSvg,
+  lavandeShort: lavandeShortSvg,
+  warmSmall: warmSmallSvg,
+} as const;
 
-const AUBERGINE_PATH =
-  "M 7.988 14.865 L 11.478 2.323 L 57.813 3.612 L 163.837 7.265 L 215.744 2.672 L 247.534 6.627 L 252.157 20.639 C 252.163 20.546 249.985 41.551 249.829 41.289 L 251.907 56.232 L 167.394 56.94 L 84.339 49.418 L 30.567 54.329 L 10.185 53.923 L 5.707 44.754 Z";
+export type PaperVariant = keyof typeof SHAPES;
 
-function Shape({ variant }: { variant: "warm" | "solid" }) {
-  return (
-    <svg
-      viewBox="0 0 260 60"
-      preserveAspectRatio="none"
-      className="absolute inset-0 h-full w-full"
-      aria-hidden
-    >
-      {variant === "warm" ? (
-        <polygon points={ORANGE_POINTS} fill="var(--orange)" />
-      ) : (
-        <path d={AUBERGINE_PATH} fill="var(--aubergine)" />
-      )}
-    </svg>
-  );
+/** Force le SVG à s'étirer à la boîte du bouton (sinon il garde son aspect). */
+function stretch(raw: string): string {
+  return raw.includes("preserveAspectRatio")
+    ? raw
+    : raw.replace("<svg", '<svg preserveAspectRatio="none"');
 }
 
 type Props = {
-  variant?: "warm" | "solid";
+  variant?: PaperVariant;
   className?: string;
   children: React.ReactNode;
   to?: string;
+  href?: string;
+  target?: string;
+  rel?: string;
   onClick?: () => void;
+  type?: "button" | "submit";
+  "aria-label"?: string;
 };
 
-export function PaperButton({ variant = "warm", className, children, to, onClick }: Props) {
+export function PaperButton({
+  variant = "warm",
+  className,
+  children,
+  to,
+  href,
+  target,
+  rel,
+  onClick,
+  type = "button",
+  "aria-label": ariaLabel,
+}: Props) {
   const cls = cn(
-    "relative inline-flex shrink-0 items-center h-14 px-8 text-lg font-semibold text-creme whitespace-nowrap",
+    "relative inline-flex shrink-0 items-center justify-center h-14 px-8 text-lg font-semibold text-creme whitespace-nowrap",
     className,
   );
-
-  if (to)
-    return (
-      <Link to={to} className={cls}>
-        <Shape variant={variant} />
-        <span className="relative z-10 flex items-center gap-2">{children}</span>
-      </Link>
-    );
-  return (
-    <button type="button" onClick={onClick} className={cls}>
-      <Shape variant={variant} />
+  const inner = (
+    <>
+      <span
+        aria-hidden
+        className="absolute inset-0 [&>svg]:block [&>svg]:h-full [&>svg]:w-full"
+        dangerouslySetInnerHTML={{ __html: stretch(SHAPES[variant]) }}
+      />
       <span className="relative z-10 flex items-center gap-2">{children}</span>
-    </button>
+    </>
   );
+
+  if (to) return <Link to={to} className={cls} onClick={onClick} aria-label={ariaLabel}>{inner}</Link>;
+  if (href)
+    return (
+      <a href={href} className={cls} target={target} rel={rel} onClick={onClick} aria-label={ariaLabel}>
+        {inner}
+      </a>
+    );
+  return <button type={type} onClick={onClick} className={cls} aria-label={ariaLabel}>{inner}</button>;
 }
