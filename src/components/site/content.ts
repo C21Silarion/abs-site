@@ -200,11 +200,11 @@ export const projets: Projet[] = [
     cta: "Soutenir",
   },
   {
-    titre: "Projet à soutenir",
-    desc: "Description à compléter.",
+    titre: "Appartement pour Kathuna et Lana",
+    desc: "Cagnotte hébergement solidaire pour leur offrir un logement.",
     href: `${HELLOASSO_ORG}/formulaires/3`,
     image: "/projets/projet3.jpg",
-    cta: "Participer",
+    cta: "Soutenir",
   },
 ];
 
