@@ -88,6 +88,17 @@ export function DispoForm() {
     });
   }
 
+  // Ajoute la période suivante en pré-remplissant son début à J+1 de la FIN de
+  // la période précédente (et non de son début) ; le début enchaîne ensuite la
+  // fin via setDate. Période 2 depuis la fin de la 1, période 3 depuis la 2.
+  function addPeriode() {
+    const n = visiblePeriodes;
+    if (n >= PERIODES.length) return;
+    const prevFin = dates[PERIODES[n - 1].fin];
+    if (prevFin) setDate(PERIODES[n].debut, addOneDay(prevFin));
+    setVisiblePeriodes(n + 1);
+  }
+
   async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
     if (!identifiant.trim()) {
@@ -165,7 +176,7 @@ export function DispoForm() {
           variant="outline"
           size="sm"
           type="button"
-          onClick={() => setVisiblePeriodes((n) => Math.min(n + 1, 3))}
+          onClick={addPeriode}
         >
           + Ajouter une période
         </Button>

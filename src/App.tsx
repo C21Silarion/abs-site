@@ -1,5 +1,6 @@
 import { Route, Routes } from "react-router-dom";
 import ComingSoon from "@/pages/ComingSoon";
+import Orienter from "@/pages/Orienter";
 import HomePage from "@/pages/HomePage";
 import Test1 from "@/pages/Test1";
 import Test2Layout from "@/pages/test2/Test2Layout";
@@ -12,6 +13,9 @@ export default function App() {
   return (
     <Routes>
       <Route path="/" element={<ComingSoon />} />
+
+      {/* Orientation par une structure tierce — URL « need-to-know », non liée. */}
+      <Route path="/orienter" element={<Orienter />} />
 
       {/* Maquettes — accès interne uniquement */}
       <Route path="/test" element={<HomePage />} />

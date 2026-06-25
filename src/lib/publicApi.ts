@@ -65,3 +65,32 @@ export function submitPublicHebergeurDispo(payload: {
 }, formToken: string): Promise<void> {
   return postPublic("hebergeur-dispo", payload, formToken);
 }
+
+/** Rôle d'un membre dans une orientation de demandeur(s) par une structure tierce. */
+export type RoleFamille = "parent" | "conjoint" | "enfant";
+
+/** Un membre saisi dans le formulaire public d'orientation `/orienter`. */
+export interface MembreOrientation {
+  role: RoleFamille;
+  Nom?: string;
+  Prenom?: string;
+  DateNaissance?: string; // yyyy-MM-dd
+  Genre?: string;
+  Nationalite?: string;
+  Langues?: string; // libre, séparé par virgules
+  Tel?: string;
+  Email?: string;
+  Situation?: string;
+  DateBesoin?: string; // yyyy-MM-dd
+}
+
+/** Orientation d'un demandeur (ou famille) par une structure tierce — sans cookie. */
+export function submitPublicDemandeur(payload: {
+  organisation: string;
+  agent?: string;
+  contact?: string;
+  members: MembreOrientation[];
+  hp?: string; // honeypot
+}, formToken: string): Promise<void> {
+  return postPublic("demandeur", payload, formToken);
+}

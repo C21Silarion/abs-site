@@ -3,11 +3,15 @@ import { JOURS, PARTS, creneauToken } from "@/lib/profilOptions";
 import { CHIP_ON, CHIP_OFF } from "./ChipMulti";
 
 /*
- * Grille de disponibilité 7 jours × 3 demi-journées (matin / après-midi / soir).
- * Édite une sélection de jetons créneaux (`["Lundi matin", …]`). Cibles tactiles
- * dimensionnées pour le mobile.
+ * Grille de disponibilité : jours de la semaine en colonnes (en-tête), les trois
+ * demi-journées (matin / après-midi / soir) en lignes. Édite une sélection de
+ * jetons créneaux (`["Lundi matin", …]`). Cibles tactiles pour le mobile.
  */
-const PART_HEAD: Record<string, string> = {
+const JOUR_ABBR: Record<string, string> = {
+  "Lundi": "Lun", "Mardi": "Mar", "Mercredi": "Mer", "Jeudi": "Jeu",
+  "Vendredi": "Ven", "Samedi": "Sam", "Dimanche": "Dim",
+};
+const PART_LABEL: Record<string, string> = {
   "matin": "Matin",
   "après-midi": "Ap-midi",
   "soir": "Soir",
@@ -29,19 +33,21 @@ export function CreneauGrid({
   return (
     <div
       className="inline-grid gap-1 text-sm"
-      style={{ gridTemplateColumns: `minmax(4.5rem,auto) repeat(${PARTS.length}, minmax(3.5rem,1fr))` }}
+      style={{ gridTemplateColumns: `minmax(4rem,auto) repeat(${JOURS.length}, minmax(2.25rem,1fr))` }}
     >
+      {/* En-tête : jours de la semaine */}
       <div />
-      {PARTS.map((p) => (
-        <div key={p} className="px-1 text-center text-xs font-medium text-muted-foreground">
-          {PART_HEAD[p] ?? p}
+      {JOURS.map((jour) => (
+        <div key={jour} className="px-1 text-center text-xs font-medium text-muted-foreground" title={jour}>
+          {JOUR_ABBR[jour] ?? jour}
         </div>
       ))}
 
-      {JOURS.map((jour) => (
-        <div key={jour} className="contents">
-          <div className="flex items-center pr-1 text-xs text-muted-foreground">{jour}</div>
-          {PARTS.map((part) => {
+      {/* Une ligne par demi-journée */}
+      {PARTS.map((part) => (
+        <div key={part} className="contents">
+          <div className="flex items-center pr-1 text-xs text-muted-foreground">{PART_LABEL[part] ?? part}</div>
+          {JOURS.map((jour) => {
             const token = creneauToken(jour, part);
             const on = set.has(token);
             return (
