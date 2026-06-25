@@ -11,7 +11,7 @@ export default function Orienter() {
     <div className="min-h-svh bg-background px-5 py-12">
       <div className="mx-auto w-full max-w-2xl">
         <header className="mb-8 flex flex-col items-center gap-4 text-center">
-          <Logo variant="wordmark" className="h-12" />
+          <Logo variant="full" className="h-auto w-full" />
           <div>
             <h1 className="font-display text-2xl text-aubergine">Orienter une personne ou une famille</h1>
             <p className="mt-2 text-foreground/75">

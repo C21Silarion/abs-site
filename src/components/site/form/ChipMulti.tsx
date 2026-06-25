@@ -1,15 +1,11 @@
 import { cn } from "@/lib/utils";
+import { useFormTone, chipClasses } from "./tone";
 
 /*
  * Pastilles de sélection multiple — alternative tout-visible au menu déroulant
- * pour les petits ensembles d'options. Tokens du site (aubergine actif), jamais
- * d'orange sur violet (cf. règle a11y CDC).
+ * pour les petits ensembles d'options. Couleurs selon la teinte du formulaire
+ * (light / aubergine), jamais d'orange sur violet (cf. règle a11y CDC).
  */
-
-/** Classes de couleur partagées avec CreneauGrid (état actif / inactif). */
-export const CHIP_ON = "border-aubergine bg-aubergine text-creme";
-export const CHIP_OFF = "border-input bg-background hover:bg-peach";
-
 export function ChipMulti({
   values,
   options,
@@ -19,6 +15,8 @@ export function ChipMulti({
   options: readonly string[];
   onChange: (v: string[]) => void;
 }) {
+  const { on: ON, off: OFF } = chipClasses(useFormTone());
+
   function toggle(o: string) {
     onChange(values.includes(o) ? values.filter((v) => v !== o) : [...values, o]);
   }
@@ -34,7 +32,7 @@ export function ChipMulti({
             aria-pressed={on}
             className={cn(
               "min-h-9 select-none rounded-full border px-3 py-1 text-sm transition-colors",
-              on ? CHIP_ON : CHIP_OFF,
+              on ? ON : OFF,
             )}
           >
             {o}

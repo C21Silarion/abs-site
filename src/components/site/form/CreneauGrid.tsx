@@ -1,6 +1,6 @@
 import { cn } from "@/lib/utils";
 import { JOURS, PARTS, creneauToken } from "@/lib/profilOptions";
-import { CHIP_ON, CHIP_OFF } from "./ChipMulti";
+import { useFormTone, chipClasses } from "./tone";
 
 /*
  * Grille de disponibilité : jours de la semaine en colonnes (en-tête), les trois
@@ -24,6 +24,9 @@ export function CreneauGrid({
   values: string[];
   onChange: (v: string[]) => void;
 }) {
+  const tone = useFormTone();
+  const { on: ON, off: OFF } = chipClasses(tone);
+  const labelClass = tone === "aubergine" ? "text-creme/70" : "text-muted-foreground";
   const set = new Set(values);
 
   function toggle(token: string) {
@@ -38,7 +41,7 @@ export function CreneauGrid({
       {/* En-tête : jours de la semaine */}
       <div />
       {JOURS.map((jour) => (
-        <div key={jour} className="px-1 text-center text-xs font-medium text-muted-foreground" title={jour}>
+        <div key={jour} className={cn("px-1 text-center text-xs font-medium", labelClass)} title={jour}>
           {JOUR_ABBR[jour] ?? jour}
         </div>
       ))}
@@ -46,7 +49,7 @@ export function CreneauGrid({
       {/* Une ligne par demi-journée */}
       {PARTS.map((part) => (
         <div key={part} className="contents">
-          <div className="flex items-center pr-1 text-xs text-muted-foreground">{PART_LABEL[part] ?? part}</div>
+          <div className={cn("flex items-center pr-1 text-xs", labelClass)}>{PART_LABEL[part] ?? part}</div>
           {JOURS.map((jour) => {
             const token = creneauToken(jour, part);
             const on = set.has(token);
@@ -59,7 +62,7 @@ export function CreneauGrid({
                 aria-label={token}
                 className={cn(
                   "min-h-9 select-none rounded-md border text-xs transition-colors",
-                  on ? CHIP_ON : CHIP_OFF,
+                  on ? ON : OFF,
                 )}
               >
                 {on ? "✓" : ""}

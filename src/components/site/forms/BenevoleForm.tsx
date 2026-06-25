@@ -108,7 +108,7 @@ export function BenevoleForm() {
         <TextArea id="b-message" name="Message" className="min-h-[4rem]" />
       </Field>
 
-      <Button variant="solid" type="submit" className="w-full" disabled={loading} aria-label="Envoyer ma candidature">
+      <Button variant="warm" type="submit" className="w-full" disabled={loading} aria-label="Envoyer ma candidature">
         {loading ? "Envoi…" : "Envoyer ma candidature"}
       </Button>
     </form>

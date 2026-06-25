@@ -31,7 +31,7 @@ export default function Heberger() {
       </Section>
 
       <Section>
-        <Disclosure titre={formulaires.hebergeur.titre} hint={formulaires.hebergeur.hint}>
+        <Disclosure tone="aubergine" titre={formulaires.hebergeur.titre} hint={formulaires.hebergeur.hint}>
           <HebergeurForm />
         </Disclosure>
 

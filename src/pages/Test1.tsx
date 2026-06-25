@@ -28,7 +28,7 @@ export default function Test1() {
       {/* Tunnels de réassurance : « Comment ça marche ? » + passage à l'action */}
       <ParcoursHebergeur id="heberger" showTypes />
       <Section>
-        <Disclosure titre={formulaires.hebergeur.titre} hint={formulaires.hebergeur.hint}>
+        <Disclosure tone="aubergine" titre={formulaires.hebergeur.titre} hint={formulaires.hebergeur.hint}>
           <HebergeurForm />
         </Disclosure>
         <div className="mt-6">
@@ -40,7 +40,7 @@ export default function Test1() {
 
       <ParcoursReferent id="referent" />
       <Section>
-        <Disclosure titre={formulaires.benevole.titre} hint={formulaires.benevole.hint}>
+        <Disclosure tone="aubergine" titre={formulaires.benevole.titre} hint={formulaires.benevole.hint}>
           <BenevoleForm />
         </Disclosure>
       </Section>

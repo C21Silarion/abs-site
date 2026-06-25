@@ -6,16 +6,23 @@ import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
 import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
 import { Calendar } from "@/components/ui/calendar";
+import { useFormTone, type FormTone } from "./tone";
 
 /*
  * Primitives de formulaire stylées à l'identité du site (crème/aubergine).
  * Toute la présentation des formulaires publics passe par ici : un futur
  * changement de look & feel ne touche que ce fichier + les tokens d'index.css.
+ * La teinte (light / aubergine) est lue dans le contexte FormTone.
  */
 
-/** Classe partagée des champs texte (cf. pattern InscriptionForm). */
-const CONTROL =
-  "rounded-lg border border-input bg-background px-3 text-foreground placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring";
+const CONTROL_BASE =
+  "rounded-lg px-3 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring";
+
+function controlTone(tone: FormTone): string {
+  return tone === "aubergine"
+    ? "border border-creme/30 bg-creme text-aubergine placeholder:text-aubergine/50"
+    : "border border-input bg-background text-foreground placeholder:text-muted-foreground";
+}
 
 /** Libellé + texte d'aide optionnel + contrôle. */
 export function Field({
@@ -29,27 +36,31 @@ export function Field({
   htmlFor?: string;
   children: React.ReactNode;
 }) {
+  const tone = useFormTone();
   return (
     <div className="flex flex-col gap-1.5">
-      <label htmlFor={htmlFor} className="text-sm font-medium text-aubergine">
+      <label htmlFor={htmlFor} className={cn("text-sm font-medium", tone === "aubergine" ? "text-creme" : "text-aubergine")}>
         {label}
       </label>
-      {hint && <p className="text-xs text-muted-foreground">{hint}</p>}
+      {hint && <p className={cn("text-xs", tone === "aubergine" ? "text-creme/70" : "text-muted-foreground")}>{hint}</p>}
       {children}
     </div>
   );
 }
 
 export function TextField({ className, ...props }: React.ComponentProps<"input">) {
-  return <input {...props} className={cn(CONTROL, "h-11", className)} />;
+  const tone = useFormTone();
+  return <input {...props} className={cn(CONTROL_BASE, controlTone(tone), "h-11", className)} />;
 }
 
 export function TextArea({ className, ...props }: React.ComponentProps<"textarea">) {
-  return <textarea {...props} className={cn(CONTROL, "min-h-[5rem] py-2", className)} />;
+  const tone = useFormTone();
+  return <textarea {...props} className={cn(CONTROL_BASE, controlTone(tone), "min-h-[5rem] py-2", className)} />;
 }
 
 export function SelectField({ className, ...props }: React.ComponentProps<"select">) {
-  return <select {...props} className={cn(CONTROL, "h-11", className)} />;
+  const tone = useFormTone();
+  return <select {...props} className={cn(CONTROL_BASE, controlTone(tone), "h-11", className)} />;
 }
 
 /* Helpers de saisie au format français jj/mm/aaaa (valeur interne "yyyy-MM-dd"). */
@@ -89,6 +100,7 @@ export function DateField({
   value: string;
   onChange: (v: string) => void;
 } & Omit<React.ComponentProps<"input">, "value" | "onChange" | "type">) {
+  const tone = useFormTone();
   const [local, setLocal] = useState(() => isoToDisplay(value));
   const [lastValue, setLastValue] = useState(value);
   const [open, setOpen] = useState(false);
@@ -116,7 +128,7 @@ export function DateField({
           onChange(iso);
           setLocal(isoToDisplay(iso));
         }}
-        className={cn(CONTROL, "h-11 min-w-0 flex-1", className)}
+        className={cn(CONTROL_BASE, controlTone(tone), "h-11 min-w-0 flex-1", className)}
       />
       <Popover open={open} onOpenChange={setOpen}>
         <PopoverTrigger asChild>
@@ -124,7 +136,10 @@ export function DateField({
             type="button"
             variant="outline"
             size="icon"
-            className="h-11 w-11 shrink-0"
+            className={cn(
+              "h-11 w-11 shrink-0",
+              tone === "aubergine" && "border-creme/30 bg-creme text-aubergine hover:bg-creme/90",
+            )}
             aria-label="Choisir une date dans le calendrier"
           >
             <CalendarIcon className="h-4 w-4" />
@@ -183,10 +198,11 @@ export function FormErrors({ errors }: { errors: string[] }) {
 
 /** Écran de confirmation après envoi réussi. */
 export function FormDone({ titre, message }: { titre: string; message: string }) {
+  const tone = useFormTone();
   return (
     <div className="space-y-2 py-6 text-center">
-      <p className="font-display text-xl text-aubergine">{titre}</p>
-      <p className="text-foreground/75">{message}</p>
+      <p className={cn("font-display text-xl", tone === "aubergine" ? "text-creme" : "text-aubergine")}>{titre}</p>
+      <p className={tone === "aubergine" ? "text-creme/80" : "text-foreground/75"}>{message}</p>
     </div>
   );
 }
