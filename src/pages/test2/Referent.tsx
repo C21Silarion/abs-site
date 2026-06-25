@@ -2,8 +2,9 @@ import { PageHeader } from "@/components/site/ui/PageHeader";
 import { Section } from "@/components/site/ui/Section";
 import { ParcoursReferent } from "@/components/site/sections/ParcoursReferent";
 import { Faq } from "@/components/site/ui/Faq";
-import { InscriptionForm } from "@/components/site/ui/InscriptionForm";
-import { faqReferent } from "@/components/site/content";
+import { Disclosure } from "@/components/site/ui/Disclosure";
+import { BenevoleForm } from "@/components/site/forms/BenevoleForm";
+import { faqReferent, formulaires } from "@/components/site/content";
 
 /* Page 3 — Devenir référent·e (CDC §5) : valoriser le rôle pivot des bénévoles. */
 export default function Referent() {
@@ -25,10 +26,9 @@ export default function Referent() {
       </Section>
 
       <Section>
-        <InscriptionForm
-          titre="Je deviens bénévole / référent·e"
-          intitule="Rejoignez l'équipe : indiquez vos disponibilités et votre secteur, on vous explique tout lors d'un premier échange."
-        />
+        <Disclosure titre={formulaires.benevole.titre} hint={formulaires.benevole.hint}>
+          <BenevoleForm />
+        </Disclosure>
       </Section>
     </>
   );

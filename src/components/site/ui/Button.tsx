@@ -45,6 +45,7 @@ type ButtonProps = VariantProps<typeof buttonVariants> & {
   download?: boolean;
   onClick?: () => void;
   type?: "button" | "submit";
+  disabled?: boolean;
   "aria-label"?: string;
 };
 
@@ -60,6 +61,7 @@ export function Button({
   download,
   onClick,
   type = "button",
+  disabled,
   "aria-label": ariaLabel,
 }: ButtonProps) {
   const classes = cn(buttonVariants({ variant, size }), className);
@@ -87,7 +89,7 @@ export function Button({
     );
   }
   return (
-    <button className={classes} type={type} onClick={onClick} aria-label={ariaLabel}>
+    <button className={classes} type={type} onClick={onClick} disabled={disabled} aria-label={ariaLabel}>
       {children}
     </button>
   );

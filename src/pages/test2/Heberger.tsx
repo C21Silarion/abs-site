@@ -2,8 +2,10 @@ import { PageHeader } from "@/components/site/ui/PageHeader";
 import { Section } from "@/components/site/ui/Section";
 import { ParcoursHebergeur } from "@/components/site/sections/ParcoursHebergeur";
 import { Faq } from "@/components/site/ui/Faq";
-import { InscriptionForm } from "@/components/site/ui/InscriptionForm";
-import { faqHebergeur } from "@/components/site/content";
+import { Disclosure } from "@/components/site/ui/Disclosure";
+import { HebergeurForm } from "@/components/site/forms/HebergeurForm";
+import { DispoForm } from "@/components/site/forms/DispoForm";
+import { faqHebergeur, formulaires } from "@/components/site/content";
 
 /* Page 2 — Devenir hébergeur·euse (CDC §5) : rassurance + processus + action. */
 export default function Heberger() {
@@ -29,10 +31,15 @@ export default function Heberger() {
       </Section>
 
       <Section>
-        <InscriptionForm
-          titre="Je propose un hébergement"
-          intitule="Laissez-nous vos coordonnées : un·e bénévole vous recontacte pour faire connaissance, sans engagement."
-        />
+        <Disclosure titre={formulaires.hebergeur.titre} hint={formulaires.hebergeur.hint}>
+          <HebergeurForm />
+        </Disclosure>
+
+        <div className="mt-6">
+          <Disclosure quiet titre={formulaires.dispo.titre}>
+            <DispoForm />
+          </Disclosure>
+        </div>
       </Section>
     </>
   );

@@ -9,8 +9,8 @@ export default function Accueil() {
     <>
       <Hero
         ctaMode="link"
-        hebergerTarget="/test2/heberger"
-        referentTarget="/test2/referent"
+        hebergerTarget="/test/test2/heberger"
+        referentTarget="/test/test2/referent"
       />
       <Plaidoyer />
       <ChiffresCles />

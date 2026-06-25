@@ -136,6 +136,21 @@ export const ressources = [
   },
 ];
 
+/* Intitulés des formulaires publics (repliés par défaut sur les pages). */
+export const formulaires = {
+  hebergeur: {
+    titre: "Je propose un hébergement",
+    hint: "Laissez-nous vos coordonnées : un·e bénévole vous recontacte pour faire connaissance, sans engagement.",
+  },
+  benevole: {
+    titre: "Je deviens bénévole / référent·e",
+    hint: "Rejoignez l'équipe : présentez-vous en quelques lignes, on vous explique tout lors d'un premier échange.",
+  },
+  dispo: {
+    titre: "Déjà hébergeur·euse ? Signaler une disponibilité",
+  },
+};
+
 export const footer = {
   helloAsso: {
     adhesion: "https://www.helloasso.com/associations/abs/adhesions",
