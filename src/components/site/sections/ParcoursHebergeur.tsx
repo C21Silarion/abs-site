@@ -39,13 +39,13 @@ export function ParcoursHebergeur({
         ))}
       </ol>
 
-      <div className="mt-8 flex items-start gap-3 rounded-xl bg-lavande/15 p-5">
-        <ShieldCheck className="mt-0.5 h-6 w-6 shrink-0 text-lavande" />
-        <p className="text-foreground/90">{parcoursHebergeur.assurance}</p>
+      <div className="mt-8 flex items-start gap-3 rounded-xl bg-lavande/90 p-5">
+        <ShieldCheck className="mt-0.5 h-6 w-6 shrink-0 text-white" />
+        <p className="text-white/100">{parcoursHebergeur.assurance}</p>
       </div>
 
       {showTypes && (
-        <div className="mt-10">
+        <div className="mt-8">
           <h3 className="text-2xl text-aubergine">Ce que vous pouvez proposer</h3>
           <ul className="mt-5 grid gap-3 sm:grid-cols-2">
             {typesHebergement.map((t) => (

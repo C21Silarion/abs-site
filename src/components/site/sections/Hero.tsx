@@ -32,26 +32,36 @@ export function Hero({
       : { to: referentTarget };
 
   return (
-    <section className="relative overflow-hidden bg-gradient-to-b from-peach/70 to-background px-5 pb-20 pt-10">
+    <section className="relative overflow-hidden bg-gradient-to-b from-peach/70 to-transparent px-5 pb-20 pt-10">
       {/* maisons « fait main » en filigrane */}
       <HouseMark
+        variant={0}
         className="absolute -right-6 top-10 h-44 w-44 rotate-6 opacity-10"
         fill="var(--lavande)"
       />
       <HouseMark
+        variant={3}
         className="absolute -left-8 bottom-0 h-32 w-32 -rotate-12 opacity-10"
         fill="var(--orange)"
       />
 
       <div className="relative mx-auto w-full max-w-5xl text-center">
-        <Logo className="mx-auto mb-10 h-32 sm:h-44" />
+        <Logo variant="wordmark" className="mx-auto mb-0 h-24 sm:h-52" />
 
-        <h1 className="mx-auto max-w-3xl text-balance text-4xl leading-tight text-aubergine sm:text-6xl">
+        <h1 className="mx-auto max-w-3xl text-balance text-4xl leading-tight text-aubergine sm:text-5xl">
           {hero.accroche}
         </h1>
-        <p className="mx-auto mt-6 max-w-2xl text-lg text-foreground/80 sm:text-xl">
-          {hero.sousTitre}
-        </p>
+        <div className="relative mx-auto mt-9 max-w-2xl">
+          {/* Halo crème flou : atténue le fil conducteur derrière le sous-titre
+              (même traitement que le bloc « Pourquoi nous agissons »). */}
+          <div
+            aria-hidden
+            className="pointer-events-none absolute -inset-x-8 -inset-y-4 rounded-[3rem] bg-background/70 blur-2xl"
+          />
+          <p className="relative text-lg text-foreground/90 sm:text-xl">
+            {hero.sousTitre}
+          </p>
+        </div>
 
         <div className="mt-10 flex flex-col items-center gap-4 sm:flex-row sm:justify-center">
           <PaperButton variant="warm" {...hebergerCta}>

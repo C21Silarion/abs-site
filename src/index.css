@@ -19,6 +19,7 @@
 
   /* Couleurs de marque ABS */
   --creme: #fffff1;
+  --creme-deep: #f3edda; /* crème plus dense/saturée — bords du dégradé de fond */
   --peach: #fde7df;
   --orange: #ef7749;
   --orange-foreground: #fffff1;

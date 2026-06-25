@@ -25,7 +25,7 @@ export default function Referent() {
         </div>
       </Section>
 
-      <Section>
+      <Section className="pt-0 sm:pt-0">
         <Disclosure tone="aubergine" titre={formulaires.benevole.titre} hint={formulaires.benevole.hint}>
           <BenevoleForm />
         </Disclosure>

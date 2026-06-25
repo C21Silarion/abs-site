@@ -12,7 +12,14 @@ export function ParcoursReferent({
   const content = (
     <>
       <h2 className="text-3xl text-aubergine sm:text-4xl">{parcoursReferent.titre}</h2>
-      <p className="mt-4 max-w-2xl text-lg text-foreground/80">{parcoursReferent.intro}</p>
+      <div className="relative mt-4 max-w-2xl">
+        {/* Halo crème flou : atténue le fil conducteur derrière l'intro. */}
+        <div
+          aria-hidden
+          className="pointer-events-none absolute -inset-x-6 -inset-y-3 rounded-[2.5rem] bg-background/70 blur-2xl"
+        />
+        <p className="relative text-lg text-foreground/80">{parcoursReferent.intro}</p>
+      </div>
 
       <ul className="mt-8 space-y-4">
         {parcoursReferent.points.map((p) => (

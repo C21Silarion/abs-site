@@ -29,12 +29,12 @@ export function Disclosure({
 }) {
   if (quiet) {
     return (
-      <details className="group" open={defaultOpen}>
-        <summary className="flex w-fit cursor-pointer list-none items-center gap-1.5 text-sm font-medium text-lavande transition-colors hover:text-aubergine marker:content-['']">
+      <details className="group overflow-hidden rounded-xl border border-lavande/40 bg-peach/50" open={defaultOpen}>
+        <summary className="flex cursor-pointer list-none items-center justify-between gap-3 px-5 py-3.5 text-base font-semibold text-aubergine transition-colors marker:content-['']">
           {titre}
-          <ChevronDown className="h-4 w-4 shrink-0 transition-transform group-open:rotate-180" />
+          <ChevronDown className="h-5 w-5 shrink-0 text-lavande transition-transform group-open:rotate-180" />
         </summary>
-        <div className="mt-4 rounded-2xl border border-border bg-card p-6 sm:p-8">{children}</div>
+        <div className="border-t border-lavande/25 px-5 py-6 sm:px-6">{children}</div>
       </details>
     );
   }

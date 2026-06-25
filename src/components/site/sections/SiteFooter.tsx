@@ -128,8 +128,7 @@ export function SiteFooter() {
         <div className="mx-auto mt-12 w-full max-w-5xl border-t border-creme/10 pt-6">
           <Logo variant="creme" className="h-10" />
           <p className="mt-3 text-xs text-creme/50">
-            Maquette — ABS, Accueil Bienveillant et Solidaire · Haute-Vienne ·
-            Données et liens fictifs.
+            ABS, Accueil Bienveillant et Solidaire · Haute-Vienne ·
           </p>
         </div>
       </div>
