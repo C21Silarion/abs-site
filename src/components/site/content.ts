@@ -155,10 +155,8 @@ const HELLOASSO_ORG = "https://www.helloasso.com/associations/accueil-bienveilla
 
 export const footer = {
   helloAsso: {
-    // adhesion = route standard HelloAsso ; don = page de l'asso (à remplacer par
-    // l'URL exacte du formulaire de don une fois confirmée).
-    adhesion: `${HELLOASSO_ORG}/adhesions`,
-    don: HELLOASSO_ORG,
+    adhesion: "https://www.helloasso.com/beta/associations/accueil-bienveillant-et-solidaire-en-haute-vienne/adhesions/adhesion2026",
+    don: `${HELLOASSO_ORG}/formulaires/1`,
   },
   contact: {
     email: "abslimoges@proton.me",
@@ -178,6 +176,37 @@ export const video = {
   id: "npCfaHGONzM",
   titre: "Accueil Bienveillant Solidaire 87 Limoges",
 };
+
+/*
+ * Projets / collectes HelloAsso mis en avant.
+ * Vignettes : déposer les images dans `public/projets/` (cf. `image`) ; à défaut
+ * un placeholder bichromie s'affiche. Titres/descriptions à affiner (TODO).
+ */
+export type Projet = { titre: string; desc: string; href: string; image?: string; cta: string };
+
+export const projets: Projet[] = [
+  {
+    titre: "Entrée au collège pour Enriko",
+    desc: "Aider Enriko à faire sa rentrée au collège dans de bonnes conditions.",
+    href: `${HELLOASSO_ORG}/collectes/entree-au-college-pour-enriko`,
+    image: "/projets/enriko.jpg",
+    cta: "Soutenir",
+  },
+  {
+    titre: "Régularisation d'Aminata",
+    desc: "Soutenir Aminata dans ses démarches de régularisation.",
+    href: `${HELLOASSO_ORG}/collectes/soutenons-aminata-dans-sa-demarche-de-regularisation-1`,
+    image: "/projets/aminata.jpg",
+    cta: "Soutenir",
+  },
+  {
+    titre: "Projet à soutenir",
+    desc: "Description à compléter.",
+    href: `${HELLOASSO_ORG}/formulaires/3`,
+    image: "/projets/projet3.jpg",
+    cta: "Participer",
+  },
+];
 
 export const galerie = [
   "Atelier convivial, été 2025",

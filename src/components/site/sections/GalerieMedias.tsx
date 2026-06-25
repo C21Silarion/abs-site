@@ -10,7 +10,7 @@ import { galerie, video } from "@/components/site/content";
  */
 export function GalerieMedias({
   id,
-  title = "Projets",
+  title = "Médias & souvenirs",
   count = 4,
   withVideo = true,
   more,

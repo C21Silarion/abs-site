@@ -3,7 +3,7 @@ import { Plaidoyer } from "@/components/site/sections/Plaidoyer";
 import { ChiffresCles } from "@/components/site/sections/ChiffresCles";
 import { ParcoursHebergeur } from "@/components/site/sections/ParcoursHebergeur";
 import { ParcoursReferent } from "@/components/site/sections/ParcoursReferent";
-import { GalerieMedias } from "@/components/site/sections/GalerieMedias";
+import { Projets } from "@/components/site/sections/Projets";
 import { Ressources } from "@/components/site/sections/Ressources";
 import { SiteFooter } from "@/components/site/sections/SiteFooter";
 import { Section } from "@/components/site/ui/Section";
@@ -45,7 +45,7 @@ export default function Test1() {
         </Disclosure>
       </Section>
 
-      <GalerieMedias id="galerie" />
+      <Projets id="projets" withVideo />
       <Ressources id="ressources" />
       <SiteFooter />
     </div>
