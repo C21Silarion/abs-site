@@ -1,6 +1,11 @@
 import { useState } from "react";
-import { Calendar } from "lucide-react";
+import { format, isValid } from "date-fns";
+import { fr } from "date-fns/locale";
+import { CalendarIcon } from "lucide-react";
 import { cn } from "@/lib/utils";
+import { Button } from "@/components/ui/button";
+import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
+import { Calendar } from "@/components/ui/calendar";
 
 /*
  * Primitives de formulaire stylées à l'identité du site (crème/aubergine).
@@ -64,11 +69,16 @@ function displayToIso(text: string): string {
   if (!m) return "";
   return `${m[3]}-${m[2].padStart(2, "0")}-${m[1].padStart(2, "0")}`;
 }
+function isoToDate(iso: string): Date | undefined {
+  if (!iso) return undefined;
+  const d = new Date(`${iso}T12:00:00`);
+  return isValid(d) ? d : undefined;
+}
 
 /**
- * Champ date au format français (saisie texte jj/mm/aaaa), comme les anciens
- * formulaires. Valeur interne "yyyy-MM-dd". Léger : pas de calendrier ni de
- * dépendance date externe.
+ * Champ date au format français : saisie texte jj/mm/aaaa + calendrier
+ * (react-day-picker, locale fr) dans un Popover — identique à l'outil interne.
+ * Valeur interne "yyyy-MM-dd".
  */
 export function DateField({
   value,
@@ -81,14 +91,16 @@ export function DateField({
 } & Omit<React.ComponentProps<"input">, "value" | "onChange" | "type">) {
   const [local, setLocal] = useState(() => isoToDisplay(value));
   const [lastValue, setLastValue] = useState(value);
+  const [open, setOpen] = useState(false);
 
-  // Reflète les changements externes de `value` (ex. auto-remplissage de la
-  // date de fin) sans gêner la frappe : ajustement à la volée quand la prop
-  // change (la frappe ne modifie que `local`, pas `value`).
+  // Reflète les changements externes de `value` (ex. auto-remplissage de la date
+  // de fin) sans gêner la frappe : ajustement à la volée quand la prop change.
   if (value !== lastValue) {
     setLastValue(value);
     setLocal(isoToDisplay(value));
   }
+
+  const selectedDate = isoToDate(value);
 
   return (
     <div className="flex items-center gap-1">
@@ -106,24 +118,33 @@ export function DateField({
         }}
         className={cn(CONTROL, "h-11 min-w-0 flex-1", className)}
       />
-      {/* Sélecteur calendrier : input date natif transparent superposé à l'icône
-          (zéro dépendance ; valeur "yyyy-MM-dd" alimentée directement). */}
-      <span className="relative inline-flex h-11 w-11 shrink-0">
-        <span
-          aria-hidden
-          className="pointer-events-none flex h-11 w-11 items-center justify-center rounded-lg border border-input bg-background text-muted-foreground"
-        >
-          <Calendar className="h-4 w-4" />
-        </span>
-        <input
-          type="date"
-          value={value}
-          onChange={(e) => onChange(e.target.value)}
-          aria-label="Choisir une date dans le calendrier"
-          tabIndex={-1}
-          className="absolute inset-0 cursor-pointer opacity-0"
-        />
-      </span>
+      <Popover open={open} onOpenChange={setOpen}>
+        <PopoverTrigger asChild>
+          <Button
+            type="button"
+            variant="outline"
+            size="icon"
+            className="h-11 w-11 shrink-0"
+            aria-label="Choisir une date dans le calendrier"
+          >
+            <CalendarIcon className="h-4 w-4" />
+          </Button>
+        </PopoverTrigger>
+        <PopoverContent className="w-auto p-0" align="start">
+          <Calendar
+            mode="single"
+            selected={selectedDate}
+            defaultMonth={selectedDate ?? new Date()}
+            captionLayout="dropdown"
+            locale={fr}
+            onSelect={(date) => {
+              if (!date) return;
+              onChange(format(date, "yyyy-MM-dd"));
+              setOpen(false);
+            }}
+          />
+        </PopoverContent>
+      </Popover>
     </div>
   );
 }

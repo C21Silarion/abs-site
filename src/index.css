@@ -32,6 +32,10 @@
   --foreground: #2a1840; /* aubergine très sombre pour le corps de texte */
   --card: #fffffa;
   --card-foreground: var(--foreground);
+  --popover: #fffffa;
+  --popover-foreground: var(--foreground);
+  --destructive: #c0362c;
+  --destructive-foreground: var(--creme);
   --primary: var(--aubergine);
   --primary-foreground: var(--creme);
   --secondary: var(--lavande);
@@ -68,6 +72,10 @@
   --color-foreground: var(--foreground);
   --color-card: var(--card);
   --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
   --color-primary: var(--primary);
   --color-primary-foreground: var(--primary-foreground);
   --color-secondary: var(--secondary);
