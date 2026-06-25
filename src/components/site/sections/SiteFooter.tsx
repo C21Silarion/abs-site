@@ -109,7 +109,12 @@ export function SiteFooter() {
                   action={footer.newsletterAction}
                   method="POST"
                   target="brevo-newsletter"
-                  onSubmit={() => setNewsletterDone(true)}
+                  onSubmit={() => {
+                    // Laisser la soumission native (POST vers l'iframe Brevo)
+                    // s'effectuer AVANT de démonter le formulaire ; sinon le
+                    // navigateur l'annule (« form is not connected »).
+                    window.setTimeout(() => setNewsletterDone(true), 0);
+                  }}
                   className="mt-4 flex items-center gap-2"
                 >
                   <input
