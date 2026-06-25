@@ -15,10 +15,10 @@ export default function Accueil() {
       <Plaidoyer />
       <ChiffresCles />
       <GalerieMedias
-        title="Un aperçu de la vie de l'asso"
+        title="Un aperçu de nos projets"
         count={3}
         withVideo={false}
-        more={{ label: "Voir plus de souvenirs", to: "/test2/ressources" }}
+        more={{ label: "Voir plus de projets", to: "/test/test2/ressources" }}
       />
     </>
   );

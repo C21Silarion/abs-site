@@ -1,17 +1,16 @@
-import { PlayCircle } from "lucide-react";
 import { Section } from "@/components/site/ui/Section";
 import { DuotonePhoto } from "@/components/site/brand/DuotonePhoto";
 import { Button } from "@/components/site/ui/Button";
-import { galerie } from "@/components/site/content";
+import { galerie, video } from "@/components/site/content";
 
 /*
- * Galerie de photos (bichromie + tramées) et bloc vidéo statique (ex. reportage
- * France 3). `withVideo` et `more` permettent d'adapter au monopage ou à la
- * mini-galerie de la page d'accueil multipage.
+ * Galerie de photos (bichromie + tramées) et vidéo de présentation (YouTube).
+ * `withVideo` et `more` permettent d'adapter au monopage ou à la mini-galerie
+ * de la page d'accueil multipage.
  */
 export function GalerieMedias({
   id,
-  title = "La vie de l'association",
+  title = "Projets",
   count = 4,
   withVideo = true,
   more,
@@ -43,13 +42,15 @@ export function GalerieMedias({
 
       {withVideo && (
         <div className="mt-6 overflow-hidden rounded-2xl border border-lavande-soft">
-          <div className="relative flex aspect-video items-center justify-center bg-aubergine text-creme">
-            <div className="text-center">
-              <PlayCircle className="mx-auto h-14 w-14 text-orange" />
-              <p className="mt-3 font-display text-xl">Reportage France 3 Haute-Vienne</p>
-              <p className="text-sm text-creme/70">Bloc vidéo statique (maquette)</p>
-            </div>
-          </div>
+          <iframe
+            className="aspect-video w-full"
+            src={`https://www.youtube-nocookie.com/embed/${video.id}`}
+            title={video.titre}
+            loading="lazy"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            referrerPolicy="strict-origin-when-cross-origin"
+            allowFullScreen
+          />
         </div>
       )}
     </Section>

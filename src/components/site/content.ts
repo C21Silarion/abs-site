@@ -151,22 +151,32 @@ export const formulaires = {
   },
 };
 
+const HELLOASSO_ORG = "https://www.helloasso.com/associations/accueil-bienveillant-et-solidaire-en-haute-vienne";
+
 export const footer = {
   helloAsso: {
-    adhesion: "https://www.helloasso.com/associations/abs/adhesions",
-    don: "https://www.helloasso.com/associations/abs/formulaires/1",
+    // adhesion = route standard HelloAsso ; don = page de l'asso (à remplacer par
+    // l'URL exacte du formulaire de don une fois confirmée).
+    adhesion: `${HELLOASSO_ORG}/adhesions`,
+    don: HELLOASSO_ORG,
   },
   contact: {
-    email: "contact@abs-limoges.fr",
-    telephone: "06 12 34 56 78",
-    whatsapp:
-      "La gestion courante se fait hors-site, via nos groupes WhatsApp dédiés.",
+    email: "abslimoges@proton.me",
+    telephone: "07 43 34 09 98",
+    adresse: "Maison des Droits de l'Homme — 119 avenue du Général Leclerc, 87100 Limoges",
   },
   reseaux: {
-    instagram: "https://instagram.com/abs.limoges",
-    facebook: "https://facebook.com/abs.limoges",
+    instagram: "https://www.instagram.com/abs87.limoges",
+    facebook: "https://www.facebook.com/abs.limoges",
+    youtube: "https://www.youtube.com/@ABSLimoges",
     note: "Pas de fioritures ici ! Notre site est minimaliste pour nous laisser le temps d'agir sur le terrain. Pour suivre nos actualités au jour le jour et voir la vie de l'asso, rejoignez-nous sur nos réseaux sociaux !",
   },
+};
+
+/** Vidéo de présentation de l'association (YouTube @ABSLimoges). */
+export const video = {
+  id: "npCfaHGONzM",
+  titre: "Accueil Bienveillant Solidaire 87 Limoges",
 };
 
 export const galerie = [

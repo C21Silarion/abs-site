@@ -1,4 +1,4 @@
-import { Mail, Phone, MessageCircle, Heart } from "lucide-react";
+import { Mail, Phone, MapPin, Heart } from "lucide-react";
 import { Logo } from "@/components/site/brand/Logo";
 import { PaperButton } from "@/components/site/ui/PaperButton";
 import { footer } from "@/components/site/content";
@@ -17,6 +17,13 @@ function FacebookIcon({ className }: { className?: string }) {
   return (
     <svg viewBox="0 0 24 24" fill="currentColor" className={className} aria-hidden="true">
       <path d="M22 12a10 10 0 1 0-11.56 9.88v-6.99H7.9V12h2.54V9.8c0-2.5 1.49-3.89 3.78-3.89 1.09 0 2.24.2 2.24.2v2.46h-1.26c-1.24 0-1.63.77-1.63 1.56V12h2.78l-.44 2.89h-2.34v6.99A10 10 0 0 0 22 12z" />
+    </svg>
+  );
+}
+function YoutubeIcon({ className }: { className?: string }) {
+  return (
+    <svg viewBox="0 0 24 24" fill="currentColor" className={className} aria-hidden="true">
+      <path d="M23.5 6.5a3 3 0 0 0-2.1-2.1C19.5 3.9 12 3.9 12 3.9s-7.5 0-9.4.5A3 3 0 0 0 .5 6.5 31 31 0 0 0 0 12a31 31 0 0 0 .5 5.5 3 3 0 0 0 2.1 2.1c1.9.5 9.4.5 9.4.5s7.5 0 9.4-.5a3 3 0 0 0 2.1-2.1A31 31 0 0 0 24 12a31 31 0 0 0-.5-5.5zM9.6 15.6V8.4l6.3 3.6-6.3 3.6z" />
     </svg>
   );
 }
@@ -68,8 +75,15 @@ export function SiteFooter() {
                   <Phone className="h-4 w-4 shrink-0" /> {footer.contact.telephone}
                 </a>
               </li>
-              <li className="flex items-start gap-2 text-sm text-creme/65">
-                <MessageCircle className="mt-0.5 h-4 w-4 shrink-0" /> {footer.contact.whatsapp}
+              <li>
+                <a
+                  href={`https://www.openstreetmap.org/search?query=${encodeURIComponent(footer.contact.adresse)}`}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="flex items-start gap-2 hover:text-orange"
+                >
+                  <MapPin className="mt-0.5 h-4 w-4 shrink-0" /> {footer.contact.adresse}
+                </a>
               </li>
             </ul>
           </div>
@@ -102,6 +116,9 @@ export function SiteFooter() {
               </a>
               <a href={footer.reseaux.facebook} target="_blank" rel="noreferrer" aria-label="Facebook" className="flex h-11 w-11 items-center justify-center rounded-lg bg-creme/10 hover:bg-orange">
                 <FacebookIcon className="h-5 w-5" />
+              </a>
+              <a href={footer.reseaux.youtube} target="_blank" rel="noreferrer" aria-label="YouTube" className="flex h-11 w-11 items-center justify-center rounded-lg bg-creme/10 hover:bg-orange">
+                <YoutubeIcon className="h-5 w-5" />
               </a>
             </div>
             <p className="mt-4 text-sm italic text-creme/65">{footer.reseaux.note}</p>
