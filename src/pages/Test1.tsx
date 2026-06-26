@@ -8,7 +8,7 @@ import { Ressources } from "@/components/site/sections/Ressources";
 import { SiteFooter } from "@/components/site/sections/SiteFooter";
 import { Section } from "@/components/site/ui/Section";
 import { Fil } from "@/components/site/brand/Fil";
-import { HouseMark } from "@/components/site/brand/HouseMark";
+import { HouseScatter } from "@/components/site/brand/HouseScatter";
 import { Disclosure } from "@/components/site/ui/Disclosure";
 import { HebergeurForm } from "@/components/site/forms/HebergeurForm";
 import { BenevoleForm } from "@/components/site/forms/BenevoleForm";
@@ -32,15 +32,9 @@ export default function Test1() {
       {/* Fil conducteur orange — couche décorative derrière le contenu. */}
       <Fil className="absolute inset-0 z-0 h-full w-full" />
 
-      {/* Maisons « fait main » en filigrane, dispersées en marge (variantes
-          maison1–5), derrière le contenu. */}
-      <div aria-hidden className="pointer-events-none absolute inset-0 z-0 overflow-hidden">
-        <HouseMark variant={1} fill="var(--lavande)"  className="absolute left-[12%] top-[18%] h-40 w-40 -rotate-6 opacity-[0.08]" />
-        <HouseMark variant={2} fill="var(--orange)"   className="absolute right-[14%] top-[33%] h-36 w-36 rotate-12 opacity-[0.07]" />
-        <HouseMark variant={3} fill="var(--aubergine)" className="absolute left-[40%] top-[48%] h-28 w-28 rotate-3 opacity-[0.06]" />
-        <HouseMark variant={4} fill="var(--lavande)"  className="absolute right-[22%] top-[62%] h-44 w-44 -rotate-12 opacity-[0.08]" />
-        <HouseMark variant={5} fill="var(--orange)"   className="absolute left-[26%] top-[78%] h-32 w-32 rotate-6 opacity-[0.07]" />
-      </div>
+      {/* Maisons « fait main » en filigrane, semées procéduralement (variantes
+          maison*.svg), derrière le contenu. Placement stable via `seed`. */}
+      <HouseScatter />
 
       <div className="relative z-10">
         <Hero ctaMode="scroll" hebergerTarget="heberger" referentTarget="referent" />

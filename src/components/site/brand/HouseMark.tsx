@@ -1,59 +1,32 @@
+import type { CSSProperties } from "react";
 import { cn } from "@/lib/utils";
+import { HOUSE_VARIANTS } from "@/components/site/brand/houseVariants";
 
 /*
- * Silhouette de maison « fait main » (charte ABS).
+ * Silhouette de maison « fait main » (charte ABS). Les tracés et leur
+ * recoloration sont mutualisés dans `houseVariants.ts` (chargés depuis les
+ * `maison*.svg` du dossier de marque). Sélection par `variant` (index).
  *
- * Les tracés viennent des fichiers `maison*.svg` (assets/brand) chargés via
- * import.meta.glob → déposer `maison1.svg`, `maison2.svg`… ajoute des variantes
- * sans toucher au code (live en dev). Sélection par `variant` (0 = maison.svg,
- * 1 = maison1.svg, 2 = maison2.svg…, dans l'ordre alphabétique des noms).
- *
- * Recoloration : les fills du fichier sont remplacés par `currentColor` et le
- * trait noir neutralisé, donc la couleur se pilote par la prop `fill` (filigrane
- * lavande/orange/aubergine).
+ * La couleur se pilote par la prop `fill` ; `style` permet de surcharger
+ * taille/position/etc. en inline (utilisé par `HouseScatter`).
  */
-const RAW = import.meta.glob("../../../assets/brand/maison*.svg", {
-  query: "?raw",
-  import: "default",
-  eager: true,
-}) as Record<string, string>;
-
-function recolor(inner: string): string {
-  return inner
-    .replace(/fill:\s*rgb\([^)]*\)/gi, "fill: currentColor")
-    .replace(/stroke:\s*rgb\([^)]*\)/gi, "stroke: none")
-    .replace(/\bfill="(?!none)[^"]*"/gi, 'fill="currentColor"')
-    .replace(/\bstroke="(?!none)[^"]*"/gi, 'stroke="none"');
-}
-
-/** Une variante = { viewBox, contenu interne recoloré } extraite du fichier. */
-const VARIANTS = Object.keys(RAW)
-  .sort()
-  .map((k) => {
-    const raw = RAW[k];
-    const viewBox = raw.match(/viewBox="([^"]*)"/)?.[1] ?? "0 0 500 500";
-    const inner = raw
-      .replace(/<\?xml[^>]*\?>/, "")
-      .replace(/<svg[^>]*>/, "")
-      .replace(/<\/svg>/, "");
-    return { viewBox, inner: recolor(inner) };
-  });
-
 export function HouseMark({
   className,
   fill = "var(--aubergine)",
   variant = 0,
+  style,
 }: {
   className?: string;
   fill?: string;
   variant?: number;
+  style?: CSSProperties;
 }) {
-  const v = VARIANTS[variant] ?? VARIANTS[0];
+  const v = HOUSE_VARIANTS[variant] ?? HOUSE_VARIANTS[0];
   return (
     <svg
       viewBox={v.viewBox}
       className={cn("h-10 w-10", className)}
-      style={{ color: fill }}
+      style={{ color: fill, ...style }}
       aria-hidden="true"
       dangerouslySetInnerHTML={{ __html: v.inner }}
     />

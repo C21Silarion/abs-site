@@ -1,6 +1,5 @@
 import { ArrowRight, HeartHandshake } from "lucide-react";
 import { Logo } from "@/components/site/brand/Logo";
-import { HouseMark } from "@/components/site/brand/HouseMark";
 import { PaperButton } from "@/components/site/ui/PaperButton";
 import { hero } from "@/components/site/content";
 
@@ -33,18 +32,6 @@ export function Hero({
 
   return (
     <section className="relative overflow-hidden bg-gradient-to-b from-peach/70 to-transparent px-5 pb-20 pt-10">
-      {/* maisons « fait main » en filigrane */}
-      <HouseMark
-        variant={0}
-        className="absolute -right-6 top-10 h-44 w-44 rotate-6 opacity-10"
-        fill="var(--lavande)"
-      />
-      <HouseMark
-        variant={3}
-        className="absolute -left-8 bottom-0 h-32 w-32 -rotate-12 opacity-10"
-        fill="var(--orange)"
-      />
-
       <div className="relative mx-auto w-full max-w-5xl text-center">
         <Logo variant="wordmark" className="mx-auto mb-0 h-24 sm:h-52" />
 
