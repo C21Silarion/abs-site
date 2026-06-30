@@ -6,6 +6,7 @@ import { Button } from "@/components/site/ui/Button";
 import { Field, TextField, TextArea, Honeypot, FormErrors, FormDone } from "@/components/site/form/Field";
 import { ChipMulti } from "@/components/site/form/ChipMulti";
 import { CreneauGrid } from "@/components/site/form/CreneauGrid";
+import { MentionRgpd } from "@/components/site/forms/MentionRgpd";
 
 /**
  * Candidature bénévole (page publique). Champs texte non contrôlés (FormData,
@@ -111,6 +112,13 @@ export function BenevoleForm() {
       <Button variant="warm" type="submit" className="w-full" disabled={loading} aria-label="Envoyer ma candidature">
         {loading ? "Envoi…" : "Envoyer ma candidature"}
       </Button>
+
+      <MentionRgpd>
+        ABS collecte votre identité et vos coordonnées pour traiter votre candidature bénévole
+        et, si elle est retenue, créer votre compte. Base légale : intérêt légitime.
+        Conservation : jusqu'à 1 an sans suite. Droits d'accès, rectification, effacement :{" "}
+        <a href="mailto:rgpd@abs87.org" className="underline underline-offset-2">rgpd@abs87.org</a>.
+      </MentionRgpd>
     </form>
   );
 }

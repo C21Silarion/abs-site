@@ -7,6 +7,7 @@ import { Button } from "@/components/site/ui/Button";
 import {
   Field, TextField, TextArea, SelectField, DateField, Honeypot, FormErrors, FormDone,
 } from "@/components/site/form/Field";
+import { MentionRgpd } from "@/components/site/forms/MentionRgpd";
 
 /** Sélecteur multi-langues (puces + saisie assistée par datalist). */
 function LangueMultiSelect({ value, onChange }: { value: string; onChange: (v: string) => void }) {
@@ -277,6 +278,14 @@ export function OrienterForm() {
           {loading ? "Envoi…" : "Envoyer le signalement"}
         </Button>
       </form>
+
+      <MentionRgpd>
+        Les données de la (ou des) personne(s) orientée(s) seront traitées par ABS dans le but
+        de les mettre à l'abri. La personne concernée en sera{" "}
+        <strong>informée par ABS dès le premier contact</strong>. Base légale : intérêt légitime.
+        Conservation : 1 an après le dernier contact, puis anonymisation. Droits :{" "}
+        <a href="mailto:rgpd@abs87.org" className="underline underline-offset-2">rgpd@abs87.org</a>.
+      </MentionRgpd>
 
       {/* Confirmation avant envoi (overlay léger, sans dépendance) */}
       {confirmOpen && (

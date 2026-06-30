@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { Mail, Phone, MapPin, Heart } from "lucide-react";
+import { Link } from "react-router-dom";
 import { Logo } from "@/components/site/brand/Logo";
 import { PaperButton } from "@/components/site/ui/PaperButton";
 import { footer } from "@/components/site/content";
@@ -157,7 +158,10 @@ export function SiteFooter() {
         <div className="mx-auto mt-12 w-full max-w-5xl border-t border-creme/10 pt-6">
           <Logo variant="creme" className="h-10" />
           <p className="mt-3 text-xs text-creme/50">
-            ABS, Accueil Bienveillant et Solidaire · Haute-Vienne ·
+            ABS, Accueil Bienveillant et Solidaire · Haute-Vienne ·{" "}
+            <Link to="/vie-privee" className="underline underline-offset-2 hover:text-creme/80">
+              Vie privée
+            </Link>
           </p>
         </div>
       </div>

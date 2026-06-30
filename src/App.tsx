@@ -1,6 +1,7 @@
 import { Route, Routes } from "react-router-dom";
 import ComingSoon from "@/pages/ComingSoon";
 import Orienter from "@/pages/Orienter";
+import ViePrivee from "@/pages/ViePrivee";
 import HomePage from "@/pages/HomePage";
 import Test1 from "@/pages/Test1";
 import Test2Layout from "@/pages/test2/Test2Layout";
@@ -16,6 +17,9 @@ export default function App() {
 
       {/* Orientation par une structure tierce — URL « need-to-know », non liée. */}
       <Route path="/orienter" element={<Orienter />} />
+
+      {/* Notice RGPD — liée depuis les mentions sous les formulaires publics. */}
+      <Route path="/vie-privee" element={<ViePrivee />} />
 
       {/* Maquettes — accès interne uniquement */}
       <Route path="/test" element={<HomePage />} />

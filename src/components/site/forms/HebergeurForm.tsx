@@ -3,6 +3,7 @@ import { submitPublicHebergeur } from "@/lib/publicApi";
 import { usePublicFormToken } from "@/lib/usePublicFormToken";
 import { Button } from "@/components/site/ui/Button";
 import { Field, TextField, TextArea, Honeypot, FormErrors, FormDone } from "@/components/site/form/Field";
+import { MentionRgpd } from "@/components/site/forms/MentionRgpd";
 
 /**
  * Candidature hébergeur (page publique). Champs non contrôlés : valeurs lues via
@@ -91,6 +92,13 @@ export function HebergeurForm() {
       <Button variant="warm" type="submit" className="w-full" disabled={loading} aria-label="Envoyer ma proposition">
         {loading ? "Envoi…" : "Envoyer ma proposition"}
       </Button>
+
+      <MentionRgpd>
+        ABS collecte votre identité, coordonnées, adresse et informations sur votre logement pour
+        étudier votre proposition et organiser un accueil. Base légale : intérêt légitime.
+        Conservation : 1 an après le dernier contact, puis anonymisation. Droits :{" "}
+        <a href="mailto:rgpd@abs87.org" className="underline underline-offset-2">rgpd@abs87.org</a>.
+      </MentionRgpd>
     </form>
   );
 }

@@ -3,6 +3,7 @@ import { submitPublicHebergeurDispo } from "@/lib/publicApi";
 import { usePublicFormToken } from "@/lib/usePublicFormToken";
 import { Button } from "@/components/site/ui/Button";
 import { Field, TextField, TextArea, DateField, Honeypot, FormErrors, FormDone } from "@/components/site/form/Field";
+import { MentionRgpd } from "@/components/site/forms/MentionRgpd";
 
 function addOneDay(ymd: string): string {
   if (!ymd) return "";
@@ -189,6 +190,13 @@ export function DispoForm() {
       <Button variant="warm" type="submit" className="w-full" disabled={loading} aria-label="Envoyer ma disponibilité">
         {loading ? "Envoi…" : "Envoyer ma disponibilité"}
       </Button>
+
+      <MentionRgpd>
+        Ces informations mettent à jour votre fiche hébergeur dans l'outil d'ABS. Base légale :
+        intérêt légitime. Conservation : 1 an après le dernier contact, puis anonymisation.
+        Droits :{" "}
+        <a href="mailto:rgpd@abs87.org" className="underline underline-offset-2">rgpd@abs87.org</a>.
+      </MentionRgpd>
     </form>
   );
 }

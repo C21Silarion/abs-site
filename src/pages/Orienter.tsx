@@ -26,9 +26,6 @@ export default function Orienter() {
           <OrienterForm />
         </div>
 
-        <p className="mt-6 text-center text-xs text-muted-foreground">
-          Ces données ne servent qu'au suivi de la situation par l'association.
-        </p>
       </div>
     </div>
   );
