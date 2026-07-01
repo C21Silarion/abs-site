@@ -61,18 +61,18 @@ type HouseSpec = {
 };
 
 export function HouseScatter({
-  count = 30,
-  columns,
-  jitter = 1.1,
-  minDistance = 1,
+  count = 17,
+  columns = 6,
+  jitter = 1.2,
+  minDistance = 15,
   margin = 4,
-  scale = 100,
-  scaleJitter = 0.1,
+  scale = 300,
+  scaleJitter = 0.25,
   rotation = 20,
-  opacity = 0.08,
+  opacity = 0.25,
   opacityJitter = 0.08,
   colors = ["lavande", "orange", "aubergine"],
-  seed = 55,
+  seed = 38,
   variants,
   className,
 }: {
@@ -112,6 +112,20 @@ export function HouseScatter({
         ? variants
         : Array.from({ length: HOUSE_VARIANT_COUNT }, (_, i) => i);
 
+    // Pioche « sac à jetons » : chaque variante du pool sort une fois avant
+    // qu'une variante ne puisse ressortir (mélange re-tiré une fois le sac vide).
+    const bag: number[] = [];
+    const drawVariant = () => {
+      if (bag.length === 0) {
+        bag.push(...pool);
+        for (let i = bag.length - 1; i > 0; i--) {
+          const j = Math.floor(rand() * (i + 1));
+          [bag[i], bag[j]] = [bag[j], bag[i]];
+        }
+      }
+      return bag.pop()!;
+    };
+
     const cols = Math.max(1, columns ?? Math.round(Math.sqrt(count)));
     const rows = Math.ceil(count / cols);
     const usable = 100 - 2 * margin;
@@ -147,7 +161,7 @@ export function HouseScatter({
       const angleDeg = (rand() * 2 - 1) * rotation;
       const op = opacity * (1 + (rand() * 2 - 1) * opacityJitter);
       const color = toColor(colors[Math.floor(rand() * colors.length)] ?? colors[0]);
-      const variant = pool[Math.floor(rand() * pool.length)];
+      const variant = drawVariant();
 
       return {
         key: i,

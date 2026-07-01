@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Mail, Phone, MapPin, Heart } from "lucide-react";
+import { Mail, Phone, MapPin, Heart, HeartHandshake } from "lucide-react";
 import { Link } from "react-router-dom";
 import { Logo } from "@/components/site/brand/Logo";
 import { PaperButton } from "@/components/site/ui/PaperButton";
@@ -55,6 +55,7 @@ export function SiteFooter() {
               Faire un don
             </PaperButton>
             <PaperButton variant="lavandeShort" href={footer.helloAsso.adhesion} target="_blank" rel="noreferrer">
+              <HeartHandshake className="h-5 w-5" />
               Adhérer à l'association
             </PaperButton>
           </div>

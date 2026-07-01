@@ -1,4 +1,4 @@
-import { ArrowRight, HeartHandshake } from "lucide-react";
+import { HandHeart, HouseHeart } from "lucide-react";
 import { Logo } from "@/components/site/brand/Logo";
 import { PaperButton } from "@/components/site/ui/PaperButton";
 import { hero } from "@/components/site/content";
@@ -52,12 +52,12 @@ export function Hero({
 
         <div className="mt-10 flex flex-col items-center gap-4 sm:flex-row sm:justify-center">
           <PaperButton variant="warm" {...hebergerCta}>
-            <HeartHandshake className="h-5 w-5" />
+            <HouseHeart className="h-5 w-5" />
             {hero.ctaHeberger}
           </PaperButton>
           <PaperButton variant="solid" {...referentCta}>
+            <HandHeart className="h-5 w-5" />
             {hero.ctaReferent}
-            <ArrowRight className="h-5 w-5" />
           </PaperButton>
         </div>
       </div>
