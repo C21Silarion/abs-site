@@ -1,49 +1,70 @@
-import { Link } from "react-router-dom";
-import { ArrowRight, LayoutList, Files } from "lucide-react";
-import { Logo } from "@/components/site/brand/Logo";
+import { Hero } from "@/components/site/sections/Hero";
+import { Plaidoyer } from "@/components/site/sections/Plaidoyer";
+import { ChiffresCles } from "@/components/site/sections/ChiffresCles";
+import { ParcoursHebergeur } from "@/components/site/sections/ParcoursHebergeur";
+import { ParcoursReferent } from "@/components/site/sections/ParcoursReferent";
+import { Projets } from "@/components/site/sections/Projets";
+import { Ressources } from "@/components/site/sections/Ressources";
+import { SiteFooter } from "@/components/site/sections/SiteFooter";
+import { Section } from "@/components/site/ui/Section";
+import { Fil } from "@/components/site/brand/Fil";
+import { HouseScatter } from "@/components/site/brand/HouseScatter";
+import { Disclosure } from "@/components/site/ui/Disclosure";
+import { HebergeurForm } from "@/components/site/forms/HebergeurForm";
+import { BenevoleForm } from "@/components/site/forms/BenevoleForm";
+import { DispoForm } from "@/components/site/forms/DispoForm";
+import { formulaires } from "@/components/site/content";
 
-/* Page d'index : accès aux deux maquettes comparatives (CDC §4 vs §5). */
+/*
+ * Site monopage (CDC §4) — parcours descendant sur une seule page.
+ * Les CTA jumeaux du héros défilent vers les ancres #heberger / #referent.
+ * Chaque tunnel de réassurance est suivi de son formulaire (replié par défaut).
+ */
 export default function HomePage() {
   return (
-    <main className="flex min-h-svh flex-col items-center justify-center gap-10 bg-background px-6 py-16">
-      <Logo className="h-20" />
+    <div
+      className="relative min-h-svh overflow-hidden bg-background"
+      style={{
+        backgroundImage:
+          "linear-gradient(to right, var(--creme-deep) 0, var(--creme) 400px, var(--creme) calc(100% - 400px), var(--creme-deep) 100%)",
+      }}
+    >
+      {/* Fil conducteur orange — couche décorative derrière le contenu. */}
+      <Fil className="absolute inset-0 z-0 h-full w-full" />
 
-      <div className="max-w-xl text-center">
-        <h1 className="text-3xl text-aubergine sm:text-4xl">Maquettes du site public</h1>
-        <p className="mt-4 text-foreground/75">
-          Deux architectures candidates pour le même contenu, à comparer.
-        </p>
+      {/* Maisons « fait main » en filigrane, semées procéduralement (variantes
+          maison*.svg), derrière le contenu. Placement stable via `seed`. */}
+      <HouseScatter />
+
+      <div className="relative z-10">
+        <Hero hebergerTarget="heberger" referentTarget="referent" />
+        <Plaidoyer />
+        <ChiffresCles />
+
+        {/* Tunnels de réassurance : « Comment ça marche ? » + passage à l'action */}
+        <ParcoursHebergeur id="heberger" showTypes />
+        <Section className="pt-0 sm:pt-0">
+          <Disclosure tone="aubergine" titre={formulaires.hebergeur.titre} hint={formulaires.hebergeur.hint}>
+            <HebergeurForm />
+          </Disclosure>
+          <div className="mt-6">
+            <Disclosure quiet titre={formulaires.dispo.titre}>
+              <DispoForm />
+            </Disclosure>
+          </div>
+        </Section>
+
+        <ParcoursReferent id="referent" />
+        <Section className="pt-0 sm:pt-0">
+          <Disclosure tone="aubergine" titre={formulaires.benevole.titre} hint={formulaires.benevole.hint}>
+            <BenevoleForm />
+          </Disclosure>
+        </Section>
+
+        <Projets id="projets" withVideo />
+        <Ressources id="ressources" />
+        <SiteFooter />
       </div>
-
-      <div className="grid w-full max-w-2xl gap-5 sm:grid-cols-2">
-        <Link
-          to="/test/test1"
-          className="group rounded-2xl border border-border bg-card p-6 transition-colors hover:border-orange"
-        >
-          <LayoutList className="h-8 w-8 text-orange" />
-          <h2 className="mt-4 text-xl text-aubergine">Version 1 — Monopage</h2>
-          <p className="mt-2 text-sm text-foreground/70">
-            Parcours descendant sur une seule page (CDC §4).
-          </p>
-          <span className="mt-4 inline-flex items-center gap-1 text-sm font-semibold text-orange">
-            Voir /test/test1 <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
-          </span>
-        </Link>
-
-        <Link
-          to="/test/test2"
-          className="group rounded-2xl border border-border bg-card p-6 transition-colors hover:border-orange"
-        >
-          <Files className="h-8 w-8 text-lavande" />
-          <h2 className="mt-4 text-xl text-aubergine">Version 2 — Multipage</h2>
-          <p className="mt-2 text-sm text-foreground/70">
-            Arborescence de 4 pages dédiées (CDC §5).
-          </p>
-          <span className="mt-4 inline-flex items-center gap-1 text-sm font-semibold text-orange">
-            Voir /test/test2 <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
-          </span>
-        </Link>
-      </div>
-    </main>
+    </div>
   );
 }

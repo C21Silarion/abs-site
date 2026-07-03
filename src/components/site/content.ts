@@ -13,9 +13,9 @@ export const association = {
 };
 
 export const hero = {
-  accroche: "Accueil Bienveillant et Solidaire",
+  accroche: "Réseau d'hébergement solidaire en Haute-Vienne",
   sousTitre:
-    "ABS met en relation des personnes exilées sans solution d'hébergement avec des citoyen·nes prêt·es à les accueillir, accompagné·es à chaque étape par des bénévoles référent·es.",
+    "ABS (Accueil Bienveillant et Solidaire) met en relation des personnes exilées sans solution d'hébergement avec des citoyen·nes prêt·es à les accueillir, accompagné·es à chaque étape par des bénévoles référent·es.",
   ctaHeberger: "Je propose un hébergement",
   ctaReferent: "Je deviens bénévole / référent·e",
 };
@@ -54,13 +54,13 @@ export const parcoursHebergeur: {
   etapes: [
     {
       numero: "1",
-      titre: "La rencontre",
+      titre: "La première rencontre",
       texte:
         "On fait connaissance autour d'un café. Vous nous présentez ce que vous pouvez offrir (une chambre, un logement vide, quelques nuits…), on répond à toutes vos questions.",
     },
     {
       numero: "2",
-      titre: "La convention & la période de test",
+      titre: "La convention et la période de test",
       texte:
         "Un cadre clair et écrit, sécurisé et réversible. Une période d'essai permet à chacun·e de confirmer que l'accueil convient avant de s'engager dans la durée.",
     },

@@ -91,22 +91,16 @@ docker run --rm -v "$PWD":/app -w /app node:22-alpine sh -c "npm ci && npm run b
 
 Le dossier `dist/` est ensuite servi par le serveur web.
 
-## Maquettes comparatives
+## Site (monopage)
 
-Deux architectures candidates pour le même contenu (cf. CDC §4 et §5), accessibles
-depuis la page d'accueil :
+Architecture retenue : **monopage** (CDC §4), accessible en interne sur `/test` —
+parcours descendant, CTA jumeaux qui défilent vers les ancres `#heberger` /
+`#referent`. La maquette multipage (CDC §5) a été abandonnée et supprimée.
 
-- **`/test1`** — version **monopage** (CDC §4) : parcours descendant, CTA jumeaux
-  qui défilent vers les ancres `#heberger` / `#referent`.
-- **`/test2`** — version **multipage** (CDC §5) : `Test2Layout` (header + footer
-  communs) avec routes imbriquées `index` / `heberger` / `referent` / `ressources` ;
-  CTA jumeaux qui redirigent vers les pages dédiées.
-
-Les deux consomment les mêmes composants `src/components/site/`. Conversion
-(HelloAsso, formulaire d'inscription, réseaux) figurée par des **placeholders** :
-aucune intégration tierce réelle pour l'instant. Le nom de l'outil interne
-(Le116) ne doit jamais apparaître côté site public — ni en texte ni en nom de
-composant (visible via React DevTools).
+Conversion (HelloAsso, formulaire d'inscription, réseaux) figurée par des
+**placeholders** : aucune intégration tierce réelle pour l'instant. Le nom de
+l'outil interne (Le116) ne doit jamais apparaître côté site public — ni en
+texte ni en nom de composant (visible via React DevTools).
 
 ## À faire / en attente
 

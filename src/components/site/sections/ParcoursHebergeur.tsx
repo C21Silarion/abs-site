@@ -1,5 +1,6 @@
 import { ShieldCheck, Check } from "lucide-react";
 import { Section } from "@/components/site/ui/Section";
+import { NumberMark } from "@/components/site/brand/NumberMark";
 import {
   parcoursHebergeur,
   typesHebergement,
@@ -23,25 +24,24 @@ export function ParcoursHebergeur({
     <>
       <h2 className="text-3xl text-aubergine sm:text-4xl">{parcoursHebergeur.titre}</h2>
       <div className="relative mt-4 max-w-2xl">
-        {/* Halo crème flou : atténue le fil conducteur derrière l'intro. */}
-        <div
-          aria-hidden
-          className="pointer-events-none absolute -inset-x-6 -inset-y-3 rounded-[2.5rem] bg-background/70 blur-2xl"
-        />
-        <p className="relative text-lg text-foreground/80">{parcoursHebergeur.intro}</p>
+        <p className="relative text-lg text-foreground/100">{parcoursHebergeur.intro}</p>
       </div>
 
-      <ol className="mt-10 grid gap-6 md:grid-cols-3">
-        {parcoursHebergeur.etapes.map((e) => (
+      <ol className="mt-10 grid gap-8 md:grid-cols-3">
+        {parcoursHebergeur.etapes.map((e, i) => (
           <li
             key={e.numero}
-            className="relative rounded-2xl border border-border bg-card p-6"
+            className="relative flex min-h-56 flex-col justify-center overflow-hidden rounded-2xl border border-border bg-card p-5"
           >
-            <span className="flex h-11 w-11 items-center justify-center rounded-full bg-orange font-display text-xl font-semibold text-orange-foreground">
-              {e.numero}
-            </span>
-            <h3 className="mt-4 text-xl text-aubergine">{e.titre}</h3>
-            <p className="mt-2 text-foreground/80">{e.texte}</p>
+            <div className="relative">
+              <NumberMark
+                variant={i}
+                fill="var(--orange)"
+                className="pointer-events-none absolute -top-5 -left-4 h-20 w-20"
+              />
+              <h3 className="mx-14 mt-1 text-xl text-aubergine">{e.titre}</h3>
+            </div>
+            <p className="mt-4 mx-auto text-foreground/100">{e.texte}</p>
           </li>
         ))}
       </ol>

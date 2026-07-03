@@ -3,12 +3,6 @@ import ComingSoon from "@/pages/ComingSoon";
 import Orienter from "@/pages/Orienter";
 import ViePrivee from "@/pages/ViePrivee";
 import HomePage from "@/pages/HomePage";
-import Test1 from "@/pages/Test1";
-import Test2Layout from "@/pages/test2/Test2Layout";
-import Accueil from "@/pages/test2/Accueil";
-import Heberger from "@/pages/test2/Heberger";
-import Referent from "@/pages/test2/Referent";
-import Ressources from "@/pages/test2/Ressources";
 
 export default function App() {
   return (
@@ -21,15 +15,8 @@ export default function App() {
       {/* Notice RGPD — liée depuis les mentions sous les formulaires publics. */}
       <Route path="/vie-privee" element={<ViePrivee />} />
 
-      {/* Maquettes — accès interne uniquement */}
+      {/* Site monopage — accès interne uniquement en attendant le lancement */}
       <Route path="/test" element={<HomePage />} />
-      <Route path="/test/test1" element={<Test1 />} />
-      <Route path="/test/test2" element={<Test2Layout />}>
-        <Route index element={<Accueil />} />
-        <Route path="heberger" element={<Heberger />} />
-        <Route path="referent" element={<Referent />} />
-        <Route path="ressources" element={<Ressources />} />
-      </Route>
     </Routes>
   );
 }
