@@ -4,7 +4,7 @@ import { cn } from "@/lib/utils";
    nettes, se fond dans le dégradé de fond. Utilisée via la prop `band`. */
 const BAND_STYLE: React.CSSProperties = {
   backgroundImage:
-    "linear-gradient(to bottom, transparent 0, rgb(253 231 223 / 0.4) 30px, rgb(253 231 223 / 0.4) calc(100% - 30px), transparent 100%)",
+    "linear-gradient(to bottom, transparent 0, rgb(253 231 223 / 0.4) 80px, rgb(253 231 223 / 0.4) calc(100% - 30px), transparent 100%)",
 };
 
 /* Conteneur de section : largeur max + rythme vertical homogènes. */

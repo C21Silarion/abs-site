@@ -31,17 +31,17 @@ export function ParcoursHebergeur({
         {parcoursHebergeur.etapes.map((e, i) => (
           <li
             key={e.numero}
-            className="relative flex min-h-56 flex-col justify-center overflow-hidden rounded-2xl border border-border bg-card p-5"
+            className="relative flex min-h-56 flex-col justify-start overflow-hidden rounded-2xl border border-border bg-card p-5"
           >
             <div className="relative">
               <NumberMark
                 variant={i}
                 fill="var(--orange)"
-                className="pointer-events-none absolute -top-5 -left-4 h-20 w-20"
+                className="pointer-events-none absolute -top-4 -left-4 h-20 w-20"
               />
-              <h3 className="mx-14 mt-1 text-xl text-aubergine">{e.titre}</h3>
+              <h3 className="ml-12 text-center mt-1 text-xl text-aubergine">{e.titre}</h3>
             </div>
-            <p className="mt-4 mx-auto text-foreground/100">{e.texte}</p>
+            <p className="mt-4 mx-auto text-justify text-foreground/100">{e.texte}</p>
           </li>
         ))}
       </ol>

@@ -2,7 +2,7 @@ import { cn } from "@/lib/utils";
 import { association } from "@/components/site/content";
 import logoOrange from "@/assets/brand/logo-abs-orange-baseline-wide.svg";
 import logoWordmark from "@/assets/brand/logo-abs-no-baseline.svg";
-import logoCreme from "@/assets/brand/logo-abs-mono-creme.svg";
+import logoCreme from "@/assets/brand/logo_creme_baseline_wide.svg";
 
 /*
  * Logotype officiel ABS (charte).

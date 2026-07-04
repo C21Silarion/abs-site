@@ -72,7 +72,7 @@ export function HouseScatter({
   opacity = 0.25,
   opacityJitter = 0.08,
   colors = ["lavande", "orange", "aubergine"],
-  seed = 38,
+  seed = 78,
   variants,
   className,
 }: {

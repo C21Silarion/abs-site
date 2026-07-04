@@ -28,6 +28,12 @@ export const plaidoyer = {
   ],
 };
 
+export const solidariteExiles = {
+  titre: "Solidarité",
+  sousTitreLigne1: "avec les personnes",
+  sousTitreLigne2: "exilées!",
+};
+
 /*
  * Chiffres clés. `valeur` est le placeholder affiché par défaut (et le repli si
  * l'API publique est injoignable) ; `key` pointe vers le champ correspondant du
@@ -37,7 +43,7 @@ export const plaidoyer = {
 export const chiffres: { valeur: string; label: string; key?: string }[] = [
   { valeur: "120+", label: "personnes accueillies", key: "total.personnesAccueillies.total" },
   { valeur: "45", label: "familles hébergeuses engagées", key: "total.famillesHebergeuses" },
-  { valeur: "80", label: "bénévoles & adhérent·es", key: "benevoles" },
+  { valeur: "80", label: "bénévoles et référent.e.s", key: "benevoles" },
 ];
 
 export type Etape = { numero: string; titre: string; texte: string };

@@ -16,9 +16,9 @@ export function ParcoursReferent({
         {/* Halo crème flou : atténue le fil conducteur derrière l'intro. */}
         <div
           aria-hidden
-          className="pointer-events-none absolute -inset-x-6 -inset-y-3 rounded-[2.5rem] bg-background/70 blur-2xl"
+          className="pointer-events-none absolute -inset-x-6 -inset-y-3 rounded-[2.5rem] bg-background/40 blur-2xl"
         />
-        <p className="relative text-lg text-foreground/80">{parcoursReferent.intro}</p>
+        <p className="relative mx-auto text-lg text-foreground/100">{parcoursReferent.intro}</p>
       </div>
 
       <ul className="mt-8 space-y-4">

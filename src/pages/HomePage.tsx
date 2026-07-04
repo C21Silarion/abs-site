@@ -1,5 +1,6 @@
 import { Hero } from "@/components/site/sections/Hero";
 import { Plaidoyer } from "@/components/site/sections/Plaidoyer";
+import { SolidariteExiles } from "@/components/site/sections/SolidariteExiles";
 import { ChiffresCles } from "@/components/site/sections/ChiffresCles";
 import { ParcoursHebergeur } from "@/components/site/sections/ParcoursHebergeur";
 import { ParcoursReferent } from "@/components/site/sections/ParcoursReferent";
@@ -30,7 +31,7 @@ export default function HomePage() {
       }}
     >
       {/* Fil conducteur orange — couche décorative derrière le contenu. */}
-      <Fil className="absolute inset-0 z-0 h-full w-full" />
+      <Fil className="absolute inset-0 z-1 h-full w-full" />
 
       {/* Maisons « fait main » en filigrane, semées procéduralement (variantes
           maison*.svg), derrière le contenu. Placement stable via `seed`. */}
@@ -39,7 +40,7 @@ export default function HomePage() {
       <div className="relative z-10">
         <Hero hebergerTarget="heberger" referentTarget="referent" />
         <Plaidoyer />
-        <ChiffresCles />
+        <SolidariteExiles />
 
         {/* Tunnels de réassurance : « Comment ça marche ? » + passage à l'action */}
         <ParcoursHebergeur id="heberger" showTypes />
@@ -53,6 +54,8 @@ export default function HomePage() {
             </Disclosure>
           </div>
         </Section>
+
+        <ChiffresCles />
 
         <ParcoursReferent id="referent" />
         <Section className="pt-0 sm:pt-0">
