@@ -157,7 +157,11 @@ export function HouseScatter({
       }
       placed.push({ x: best.x, y: best.y });
 
+      // `scale` est un px fixe : plafonné en `vw` pour éviter que les maisons
+      // (dimensionnées pour un écran large) n'occupent une fraction énorme
+      // d'un viewport mobile étroit et ne se recouvrent massivement.
       const size = scale * (1 + (rand() * 2 - 1) * scaleJitter);
+      const sizeCss = `min(${size}px, 25vw)`;
       const angleDeg = (rand() * 2 - 1) * rotation;
       const op = opacity * (1 + (rand() * 2 - 1) * opacityJitter);
       const color = toColor(colors[Math.floor(rand() * colors.length)] ?? colors[0]);
@@ -171,8 +175,8 @@ export function HouseScatter({
           position: "absolute",
           left: `${best.x}%`,
           top: `${best.y}%`,
-          width: `${size}px`,
-          height: `${size}px`,
+          width: sizeCss,
+          height: sizeCss,
           transform: `translate(-50%, -50%) rotate(${angleDeg}deg)`,
           opacity: op,
         },

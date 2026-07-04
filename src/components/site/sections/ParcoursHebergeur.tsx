@@ -33,7 +33,7 @@ export function ParcoursHebergeur({
             key={e.numero}
             className="relative flex min-h-56 flex-col justify-start overflow-hidden rounded-2xl border border-border bg-card p-5"
           >
-            <div className="relative">
+            <div className="relative min-h-16">
               <NumberMark
                 variant={i}
                 fill="var(--orange)"
