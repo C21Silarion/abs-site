@@ -25,9 +25,9 @@ export function ParcoursReferent({
         {parcoursReferent.points.map((p) => (
           <li
             key={p.slice(0, 20)}
-            className="flex items-start gap-3 rounded-xl border border-border bg-card px-5 py-4"
+            className="flex items-center gap-3 rounded-xl border border-border bg-card px-5 py-4"
           >
-            <span className="mt-0.5 flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-lavande">
+            <span className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-lavande">
               <Check className="h-4 w-4 text-creme" />
             </span>
             <span className="text-foreground/85">{p}</span>

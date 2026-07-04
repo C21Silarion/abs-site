@@ -35,10 +35,22 @@ function YoutubeIcon({ className }: { className?: string }) {
  * Centralise les tunnels de conversion externalisés (HelloAsso), le contact
  * tri-canal, la newsletter et l'aiguillage réseaux sociaux (cf. CDC §4/§5).
  */
+/* Bord "papier découpé" du haut du footer : mêmes points que le tracé du
+   bandeau chiffres clés (banner.svg), repris ici en clip-path (x en %, y en
+   px pour garder une amplitude de découpe constante quelle que soit la
+   hauteur du footer) plutôt qu'en SVG étiré — inutile de dupliquer l'asset
+   puisque seul le bord haut nous intéresse (le bas reste un rectangle plein).
+   Tracé retourné horizontalement (miroir en x) pour ne pas répéter à
+   l'identique la découpe du bandeau chiffres clés. */
+const FOOTER_TORN_EDGE: React.CSSProperties = {
+  clipPath:
+    "polygon(-1.48% 3px, 10.04% 11px, 19.34% 33px, 33.73% 10px, 53.29% 16px, 76.59% 26px, 104.44% 5px, 104.44% 100%, -1.48% 100%)",
+};
+
 export function SiteFooter() {
   const [newsletterDone, setNewsletterDone] = useState(false);
   return (
-    <footer className="bg-aubergine-deep text-creme">
+    <footer className="bg-aubergine text-creme" style={FOOTER_TORN_EDGE}>
       {/* Bandeau soutien / HelloAsso */}
       <div className="border-b border-creme/10 px-5 py-14">
         <div className="mx-auto grid w-full max-w-5xl gap-8 md:grid-cols-2 md:items-center">
@@ -156,13 +168,20 @@ export function SiteFooter() {
           </div>
         </div>
 
-        <div className="mx-auto mt-12 w-full max-w-5xl border-t border-creme/10 pt-6">
-          <Logo variant="creme" className="h-10" />
-          <p className="mt-3 text-xs text-creme/50">
+        <div className="mx-auto mt-10 flex w-full max-w-5xl flex-col gap-4 border-t border-creme/10 pt-6 sm:flex-row sm:items-center sm:justify-between">
+          <Logo variant="creme" className="h-10 shrink-0" />
+          <p className="text-xs text-creme/50 sm:text-left">
             ABS, Accueil Bienveillant et Solidaire · Haute-Vienne ·{" "}
             <Link to="/vie-privee" className="underline underline-offset-2 hover:text-creme/80">
               Vie privée
             </Link>
+            <br />
+            Police des titres Euripides:{" "}
+            <a href="https://tanvi.network/" target="_blank" rel="noreferrer" className="underline underline-offset-2 hover:text-creme/80">
+              Tanvi
+            </a>{" "}
+            — Identité visuelle: Lilou Rougemont, 1ère année DN MADe
+            Graphisme, La Souterraine, supervisée par Thibault Memz — Site : Yvan Galtié
           </p>
         </div>
       </div>

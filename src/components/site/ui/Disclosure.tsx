@@ -45,7 +45,7 @@ export function Disclosure({
     <details
       className={cn(
         "group overflow-hidden rounded-2xl border",
-        aubergine ? "border-aubergine-deep bg-aubergine" : "border-border bg-card",
+        aubergine ? "border-aubergine bg-aubergine" : "border-border bg-card",
       )}
       open={defaultOpen}
     >

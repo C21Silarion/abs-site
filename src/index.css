@@ -10,9 +10,18 @@
   Palette : Crème / Orange / Lavande / Aubergine.
   Règle a11y : jamais de texte orange sur violet (ni l'inverse).
   Le texte courant sur fond clair est en aubergine/quasi-noir.
-  Typo : titres = Fraunces (substitut libre d'Euripides),
-         corps  = Nunito  (substitut libre d'Arial Rounded MT).
+  Typo : titres = Euripides Semibold (licence gratuite association/usage
+         personnel — crédit auteur obligatoire, cf. SiteFooter),
+         corps  = Nunito (substitut libre d'Arial Rounded MT).
 */
+
+@font-face {
+  font-family: "Euripides";
+  src: url("/fonts/Euripides-SemiBold.woff2") format("woff2");
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
 
 :root {
   --radius: 1rem;
@@ -57,7 +66,7 @@
   --radius-xl: calc(var(--radius) + 6px);
 
   --font-sans: "Nunito Variable", ui-sans-serif, system-ui, sans-serif;
-  --font-display: "Fraunces Variable", ui-serif, Georgia, serif;
+  --font-display: "Euripides", "Fraunces Variable", ui-serif, Georgia, serif;
 
   /* Couleurs de marque exposées comme utilitaires Tailwind */
   --color-creme: var(--creme);

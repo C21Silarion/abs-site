@@ -20,7 +20,7 @@ const CONTROL_BASE =
 
 function controlTone(tone: FormTone): string {
   return tone === "aubergine"
-    ? "border border-creme/30 bg-creme text-aubergine placeholder:text-aubergine/50"
+    ? "border border-creme/30 bg-creme text-aubergine placeholder:text-aubergine"
     : "border border-input bg-background text-foreground placeholder:text-muted-foreground";
 }
 

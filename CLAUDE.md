@@ -32,10 +32,11 @@ Le thème de marque ABS est défini dans `src/index.css` (variables + `@theme in
 - **Règle a11y stricte** : jamais de texte orange sur fond violet (ni l'inverse).
   Orange/Aubergine s'emploient en *fond* avec texte clair ; le texte sur fond clair
   est en aubergine/quasi-noir.
-- **Substitution de polices** : la charte spécifie *Euripides Semibold* (titres) et
-  *Arial Rounded MT* (corps), non libres pour le web. Substituts retenus :
-  **Fraunces** (serif doux, effet « découpé main ») et **Nunito** (terminaisons
-  arrondies). À remplacer si les licences des polices d'origine sont acquises.
+- **Typographies** : *Euripides Semibold* (titres, licence gratuite association —
+  fichier `public/fonts/Euripides-SemiBold.woff2`, `@font-face` dans
+  `src/index.css`, crédit auteur obligatoire affiché dans `SiteFooter`) et
+  **Nunito** (corps, substitut libre d'*Arial Rounded MT* non libre pour le web ;
+  fallback `Fraunces` conservé au cas où Euripides ne charge pas).
 - **Éléments graphiques « fait main »** dans `src/components/site/brand/` :
   `HouseMark` (silhouette de maison, tracé de `maison.svg` inliné et recolorable
   via `fill`, utilisée en filigrane) et `DuotonePhoto` (placeholder photo
@@ -106,4 +107,4 @@ texte ni en nom de composant (visible via React DevTools).
 
 - Intégrations réelles : HelloAsso (dons/adhésions), formulaire d'inscription, embeds vidéo.
 - Vraies photos traitées en bichromie/tramées, vrais PDF de ressources.
-- Acquérir/licencier les polices d'origine (Euripides, Arial Rounded MT) si besoin.
+- Acquérir/licencier Arial Rounded MT si besoin (Euripides déjà intégrée, cf. ci-dessus).
