@@ -22,9 +22,14 @@ export function ParcoursHebergeur({
 }) {
   const content = (
     <>
-      <h2 className="text-3xl text-aubergine sm:text-4xl">{parcoursHebergeur.titre}</h2>
-      <div className="relative mt-4 max-w-2xl">
-        <p className="relative text-lg text-foreground/100">{parcoursHebergeur.intro}</p>
+      <div className="relative max-w-2xl">
+        {/* Halo crème flou : atténue le fil conducteur derrière le titre et l'intro. */}
+        <div
+          aria-hidden
+          className="pointer-events-none absolute -inset-x-6 -inset-y-3 rounded-[2.5rem] bg-background/50 blur-2xl"
+        />
+        <h2 className="relative text-3xl text-aubergine sm:text-4xl">{parcoursHebergeur.titre}</h2>
+        <p className="relative mt-4 text-lg text-foreground/100">{parcoursHebergeur.intro}</p>
       </div>
 
       <ol className="mt-10 grid gap-8 md:grid-cols-3">
@@ -46,7 +51,7 @@ export function ParcoursHebergeur({
         ))}
       </ol>
 
-      <div className="mt-8 flex items-start gap-3 rounded-xl bg-lavande/90 p-5">
+      <div className="mt-8 flex items-start gap-3 rounded-xl bg-lavande/100 p-5">
         <ShieldCheck className="mt-0.5 h-6 w-6 shrink-0 text-white" />
         <p className="text-white/100">{parcoursHebergeur.assurance}</p>
       </div>
