@@ -131,7 +131,7 @@ export default function ViePrivee() {
                 <p className="font-medium text-aubergine">Déclaration de disponibilité</p>
                 <p>
                   Ces informations mettent à jour votre fiche hébergeur dans notre outil. Conservation :
-                  2 ans après le dernier contact, puis anonymisation.
+                  1 ans après le dernier contact, puis anonymisation.
                 </p>
               </div>
 
