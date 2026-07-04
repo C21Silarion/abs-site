@@ -39,7 +39,7 @@ export function SolidariteExiles() {
         {solidariteExiles.titre}
       </p>
 
-      <p className="absolute inset-x-0 bottom-40 px-4 px-5 text-left ml-160 font-display text-[4vw] leading-none text-creme sm:text-[1.8vw]">
+      <p className="absolute inset-x-0 bottom-40 px-4 px-5 text-left ml-160 font-display text-[4vw] leading-none text-creme sm:text-[2.5vw]">
         {solidariteExiles.sousTitreLigne1}
       </p>
 
