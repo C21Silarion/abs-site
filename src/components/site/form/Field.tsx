@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { format, isValid } from "date-fns";
 import { fr } from "date-fns/locale";
 import { CalendarIcon } from "lucide-react";
@@ -199,8 +199,17 @@ export function FormErrors({ errors }: { errors: string[] }) {
 /** Écran de confirmation après envoi réussi. */
 export function FormDone({ titre, message }: { titre: string; message: string }) {
   const tone = useFormTone();
+  const ref = useRef<HTMLDivElement>(null);
+
+  // Le formulaire (souvent long) laisse place à ce message court : sans ça, la
+  // page garde son ancien scroll et la vue se retrouve décalée sur du contenu
+  // sans rapport, plus bas dans la page. On ramène le message dans le viewport.
+  useEffect(() => {
+    ref.current?.scrollIntoView({ behavior: "smooth", block: "center" });
+  }, []);
+
   return (
-    <div className="space-y-2 py-6 text-center">
+    <div ref={ref} className="space-y-2 py-6 text-center">
       <p className={cn("font-display text-xl", tone === "aubergine" ? "text-creme" : "text-aubergine")}>{titre}</p>
       <p className={tone === "aubergine" ? "text-creme/80" : "text-foreground/75"}>{message}</p>
     </div>

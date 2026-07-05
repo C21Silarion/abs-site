@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { submitPublicBenevole } from "@/lib/publicApi";
 import { usePublicFormToken } from "@/lib/usePublicFormToken";
-import { TYPES_AIDE } from "@/lib/profilOptions";
+import { TYPES_AIDE, TYPES_AIDE_GROUPS } from "@/lib/profilOptions";
 import { Button } from "@/components/site/ui/Button";
 import { Field, TextField, TextArea, Honeypot, FormErrors, FormDone } from "@/components/site/form/Field";
 import { ChipMulti } from "@/components/site/form/ChipMulti";
@@ -86,7 +86,7 @@ export function BenevoleForm() {
       </Field>
 
       <Field label="Comment pouvez-vous aider ?" hint="Cochez les types d'aide qui vous correspondent.">
-        <ChipMulti values={typesAide} options={TYPES_AIDE} onChange={setTypesAide} />
+        <ChipMulti values={typesAide} options={TYPES_AIDE} onChange={setTypesAide} groups={TYPES_AIDE_GROUPS} />
       </Field>
 
       <Field label="Précisions sur l'aide (optionnel)" hint="Hébergement, traduction, compétences particulières…" htmlFor="b-aide">

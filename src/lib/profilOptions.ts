@@ -13,9 +13,25 @@ export const TYPES_AIDE = [
   "Transport",
   "Rendez-vous",
   "Appel téléphonique",
+  "Aide administrative",
+  "Autre",
   "Réunion",
   "Événement",
-  "Autre",
+  "Admin ABS",
+  "Communication",
+  "Gestion bénévoles",
+  "Lien associatif",
+] as const;
+
+/** Sous-groupe "Suivi" pour l'affichage groupé de ChipMulti (cf. abs-app). */
+export const TYPES_AIDE_SUIVI = ["Transport", "Rendez-vous", "Appel téléphonique", "Aide administrative", "Autre"] as const;
+/** Sous-groupe "Fonctionnement ABS interne" — même usage. */
+export const TYPES_AIDE_INTERNE = ["Réunion", "Événement", "Admin ABS", "Communication", "Gestion bénévoles", "Lien associatif"] as const;
+
+/** Regroupement pour ChipMulti (Types d'aide) — mêmes deux sections que côté abs-app. */
+export const TYPES_AIDE_GROUPS = [
+  { label: "Suivi", options: TYPES_AIDE_SUIVI },
+  { label: "Fonctionnement ABS interne", options: TYPES_AIDE_INTERNE },
 ] as const;
 
 export const JOURS = [
