@@ -295,7 +295,10 @@ export function OrienterForm() {
           aria-modal="true"
           onClick={() => setConfirmOpen(false)}
         >
-          <div className="w-full max-w-md space-y-4 rounded-2xl border border-border bg-card p-6" onClick={(e) => e.stopPropagation()}>
+          <div
+            className="w-full max-w-md space-y-4 rounded-2xl border border-border bg-card p-6"
+            onClick={(e) => e.stopPropagation()}
+          >
             <h3 className="font-display text-xl text-aubergine">Confirmer le signalement</h3>
             <p className="text-sm text-foreground/80">
               Vous allez transmettre {nbPersonnes} personne{nbPersonnes > 1 ? "s" : ""} à l'association

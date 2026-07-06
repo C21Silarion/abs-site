@@ -1,6 +1,7 @@
 import { Section } from "@/components/site/ui/Section";
 import { DuotonePhoto } from "@/components/site/brand/DuotonePhoto";
 import { Button } from "@/components/site/ui/Button";
+import { paperCorners } from "@/components/site/brand/paperCorners";
 import { galerie, video } from "@/components/site/content";
 
 /*
@@ -22,6 +23,7 @@ export function GalerieMedias({
   more?: { label: string; to?: string; href?: string };
 }) {
   const photos = galerie.slice(0, count);
+  const videoCorners = paperCorners(6, 16);
 
   return (
     <Section id={id} band>
@@ -41,16 +43,18 @@ export function GalerieMedias({
       </div>
 
       {withVideo && (
-        <div className="mt-6 overflow-hidden rounded-2xl border border-lavande-soft">
-          <iframe
-            className="aspect-video w-full"
-            src={`https://www.youtube-nocookie.com/embed/${video.id}`}
-            title={video.titre}
-            loading="lazy"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-            referrerPolicy="strict-origin-when-cross-origin"
-            allowFullScreen
-          />
+        <div style={videoCorners.outer} className="mt-6 bg-lavande-soft">
+          <div style={videoCorners.inner} className="overflow-hidden">
+            <iframe
+              className="aspect-video w-full"
+              src={`https://www.youtube-nocookie.com/embed/${video.id}`}
+              title={video.titre}
+              loading="lazy"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              referrerPolicy="strict-origin-when-cross-origin"
+              allowFullScreen
+            />
+          </div>
         </div>
       )}
     </Section>

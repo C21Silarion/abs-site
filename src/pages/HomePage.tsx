@@ -45,11 +45,11 @@ export default function HomePage() {
         {/* Tunnels de réassurance : « Comment ça marche ? » + passage à l'action */}
         <ParcoursHebergeur id="heberger" showTypes />
         <Section className="pt-0 sm:pt-0">
-          <Disclosure tone="aubergine" titre={formulaires.hebergeur.titre} hint={formulaires.hebergeur.hint}>
+          <Disclosure cornerSeed={301} tone="aubergine" titre={formulaires.hebergeur.titre} hint={formulaires.hebergeur.hint}>
             <HebergeurForm />
           </Disclosure>
           <div className="mt-6">
-            <Disclosure quiet titre={formulaires.dispo.titre}>
+            <Disclosure cornerSeed={302} quiet titre={formulaires.dispo.titre}>
               <DispoForm />
             </Disclosure>
           </div>
@@ -59,7 +59,7 @@ export default function HomePage() {
 
         <ParcoursReferent id="referent" />
         <Section className="pt-0 sm:pt-0">
-          <Disclosure tone="aubergine" titre={formulaires.benevole.titre} hint={formulaires.benevole.hint}>
+          <Disclosure cornerSeed={303} tone="aubergine" titre={formulaires.benevole.titre} hint={formulaires.benevole.hint}>
             <BenevoleForm />
           </Disclosure>
         </Section>

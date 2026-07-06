@@ -1,6 +1,7 @@
 import { useMemo } from "react";
 import type { CSSProperties } from "react";
 import { cn } from "@/lib/utils";
+import { mulberry32 } from "@/lib/rng";
 import { HouseMark } from "@/components/site/brand/HouseMark";
 import { HOUSE_VARIANT_COUNT } from "@/components/site/brand/houseVariants";
 
@@ -38,18 +39,6 @@ function toColor(c: string): string {
   return PALETTE.has(c) ? `var(--${c})` : c;
 }
 
-/** PRNG déterministe (mulberry32) : à graine égale, suite identique. */
-function mulberry32(seed: number): () => number {
-  let a = seed >>> 0;
-  return () => {
-    a |= 0;
-    a = (a + 0x6d2b79f5) | 0;
-    let t = Math.imul(a ^ (a >>> 15), 1 | a);
-    t = (t + Math.imul(t ^ (t >>> 7), 61 | t)) ^ t;
-    return ((t ^ (t >>> 14)) >>> 0) / 4294967296;
-  };
-}
-
 const clamp = (v: number, min: number, max: number) =>
   Math.min(max, Math.max(min, v));
 
@@ -61,17 +50,18 @@ type HouseSpec = {
 };
 
 export function HouseScatter({
-  count = 17,
+  count = 21,
   columns = 6,
   jitter = 1.2,
-  minDistance = 16,
+  minDistance = 15,
   margin = 3,
   scale = 300,
   scaleJitter = 0.26,
+  minSize = 200,
   rotation = 20,
   opacity = 0.25,
   opacityJitter = 0.08,
-  colors = ["lavande", "orange", "aubergine"],
+  colors = ["orange", "lavande", "aubergine"],
   seed = 78,
   variants,
   className,
@@ -90,6 +80,8 @@ export function HouseScatter({
   scale?: number;
   /** Variation aléatoire de taille (fraction, ex. 0.1 = ±10 %). */
   scaleJitter?: number;
+  /** Taille plancher en px (évite que le plafond en `vw` n'écrase la taille sur mobile). */
+  minSize?: number;
   /** Rotation aléatoire dans ±`rotation` degrés. */
   rotation?: number;
   /** Opacité de base. */
@@ -159,9 +151,11 @@ export function HouseScatter({
 
       // `scale` est un px fixe : plafonné en `vw` pour éviter que les maisons
       // (dimensionnées pour un écran large) n'occupent une fraction énorme
-      // d'un viewport mobile étroit et ne se recouvrent massivement.
+      // d'un viewport mobile étroit et ne se recouvrent massivement — mais avec
+      // un plancher `minSize`, sinon ce plafond vw (plus petit que `scale` sur
+      // tout écran < ~1200px) écrase la taille bien avant la tablette/mobile.
       const size = scale * (1 + (rand() * 2 - 1) * scaleJitter);
-      const sizeCss = `min(${size}px, 25vw)`;
+      const sizeCss = `clamp(${minSize}px, 25vw, ${size}px)`;
       const angleDeg = (rand() * 2 - 1) * rotation;
       const op = opacity * (1 + (rand() * 2 - 1) * opacityJitter);
       const color = toColor(colors[Math.floor(rand() * colors.length)] ?? colors[0]);
@@ -190,6 +184,7 @@ export function HouseScatter({
     margin,
     scale,
     scaleJitter,
+    minSize,
     rotation,
     opacity,
     opacityJitter,

@@ -1,5 +1,6 @@
 import { Check } from "lucide-react";
 import { Section } from "@/components/site/ui/Section";
+import { paperCorners } from "@/components/site/brand/paperCorners";
 import { parcoursReferent } from "@/components/site/content";
 
 export function ParcoursReferent({
@@ -22,17 +23,19 @@ export function ParcoursReferent({
       </div>
 
       <ul className="mt-8 space-y-4">
-        {parcoursReferent.points.map((p) => (
-          <li
-            key={p.slice(0, 20)}
-            className="flex items-center gap-3 rounded-xl border border-border bg-card px-5 py-4"
-          >
-            <span className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-lavande">
-              <Check className="h-4 w-4 text-creme" />
-            </span>
-            <span className="text-foreground/85">{p}</span>
-          </li>
-        ))}
+        {parcoursReferent.points.map((p, i) => {
+          const pc = paperCorners(110 + i, 9);
+          return (
+            <li key={p.slice(0, 20)} style={pc.outer} className="bg-border">
+              <div style={pc.inner} className="flex h-full items-center gap-3 bg-card px-5 py-4">
+                <span className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-lavande">
+                  <Check className="h-4 w-4 text-creme" />
+                </span>
+                <span className="text-foreground/85">{p}</span>
+              </div>
+            </li>
+          );
+        })}
       </ul>
     </>
   );
