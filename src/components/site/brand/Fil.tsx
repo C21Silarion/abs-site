@@ -1,57 +1,101 @@
+import { useLayoutEffect, useRef, useState } from "react";
 import { cn } from "@/lib/utils";
 
 /*
- * « Fil conducteur » (charte §3) : ligne courbe orange qui descend en serpentant
- * derrière le contenu pour guider la lecture. Tracé fait-main (peu de points,
- * pas géométrique).
+ * « Fil conducteur » (charte §3) : ligne courbe orange qui descend en
+ * serpentant derrière le contenu pour guider la lecture.
  *
- * Technique : SVG étiré au conteneur (preserveAspectRatio="none") avec
- * `vector-effect:non-scaling-stroke` → l'épaisseur du trait reste constante
- * (~12px) quelle que soit la hauteur de page. La courbe entre et sort au CENTRE
- * horizontal et bombe alternativement à gauche/droite : les raccords entre
- * sections restent alignés (fil continu de haut en bas) et les bombements
- * passent dans les marges/gouttières, à côté des blocs.
+ * Générée en pixels réels (ResizeObserver) plutôt que dans un viewBox fixe
+ * étiré : un viewBox stretché dépend de la hauteur totale de page pour
+ * répartir ses bombements, et une page mobile (contenu empilé en une seule
+ * colonne, donc bien plus haute que large) finit par écraser le tracé en
+ * presque une ligne droite. Ici un balancement dure toujours `period` px
+ * verticaux réels, quelle que soit la longueur de la page : une page plus
+ * haute affiche juste plus de balancements, jamais des balancements plus plats.
+ *
+ * Réglages artistiques (props) — les ancres du tracé sont posées aux points
+ * de rebroussement (gauche/droite), jamais au passage par le centre : à un
+ * rebroussement la tangente est naturellement verticale des deux côtés, donc
+ * les segments qui se suivent raccordent toujours en douceur (sinon, ancrer
+ * au centre avec des poignées indépendantes crée une tangente entrante/sortante
+ * discontinue à ce point → un « V » au lieu d'un « S », cf. capture d'écran).
+ * - `amplitude` : écart horizontal des rebroussements par rapport à l'axe
+ *   central (px). Plus grand = balancement plus large.
+ * - `period`    : hauteur (px) entre deux rebroussements consécutifs.
+ *   Plus grand = balancement plus étalé/doux (moins de va-et-vient visibles
+ *   à l'écran) ; plus petit = plus fréquent/serré.
+ * - `swing`     : longueur des poignées de chaque rebroussement, en fraction
+ *   de `period` (0 à ~0.75). Plus petit = virage plus resserré/pointu ; plus
+ *   grand = courbe plus ronde, proche d'une sinusoïde (~0.5).
  *
  * Décoratif : à placer en couche absolue derrière le contenu (z négatif),
- * `pointer-events-none`. Régler l'allure via `width` (amplitude du viewBox),
- * `strokeWidth` et `opacity`.
+ * `pointer-events-none`.
  */
-/*
- * Deux tracés selon la hauteur de page (le SVG est étiré verticalement, donc une
- * page courte « compresse » les ondulations) :
- *  - `long`  : ~4 bombements, pour les pages hautes (monopage).
- *  - `short` : 2 bombements, moins de points, pour les pages courtes (multipage).
- */
-const PATHS = {
-  long: "M 60 -30 C 100 120, 4 150, 60 240 C 130 330, 4 410, 60 500 C 116 590, 4 670, 60 760 C 110 840, 18 910, 60 1040",
-  short: "M 60 -30 C 16 180, 100 380, 50 520 C 10 660, 50 860, 80 1040",
-} as const;
+const DEFAULT_AMPLITUDE = -200;
+const DEFAULT_PERIOD = 820;
+const DEFAULT_SWING = 0.55;
+
+function buildPath(width: number, height: number, amplitude: number, period: number, swing: number) {
+  const cx = width / 2;
+  const amp = Math.min(amplitude, Math.max(16, width / 2 - 24));
+  const handle = period * swing;
+
+  let y = -period;
+  let side = 1; // rebroussement de départ (hors écran) côté droit
+  let d = `M ${cx + side * amp} ${y}`;
+  while (y < height + period) {
+    const nextSide = -side;
+    const nextY = y + period;
+    const startX = cx + side * amp;
+    const endX = cx + nextSide * amp;
+    // poignées verticales (même x que leur ancre) : tangente verticale des
+    // deux côtés du rebroussement, donc raccord lisse avec le segment suivant.
+    d += ` C ${startX} ${y + handle}, ${endX} ${nextY - handle}, ${endX} ${nextY}`;
+    side = nextSide;
+    y = nextY;
+  }
+  return d;
+}
 
 export function Fil({
   className,
   strokeWidth = 14,
-  variant = "long",
+  amplitude = DEFAULT_AMPLITUDE,
+  period = DEFAULT_PERIOD,
+  swing = DEFAULT_SWING,
 }: {
   className?: string;
   strokeWidth?: number;
-  variant?: keyof typeof PATHS;
+  amplitude?: number;
+  period?: number;
+  swing?: number;
 }) {
+  const ref = useRef<SVGSVGElement>(null);
+  const [size, setSize] = useState({ width: 0, height: 0 });
+
+  useLayoutEffect(() => {
+    const el = ref.current;
+    if (!el) return;
+    const observer = new ResizeObserver(([entry]) => {
+      const { width, height } = entry.contentRect;
+      setSize({ width, height });
+    });
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, []);
+
   return (
-    <svg
-      className={cn("pointer-events-none", className)}
-      viewBox="0 0 120 1000"
-      preserveAspectRatio="none"
-      fill="none"
-      aria-hidden="true"
-    >
-      <path
-        d={PATHS[variant]}
-        stroke="var(--orange)"
-        strokeWidth={strokeWidth}
-        strokeLinecap="round"
-        strokeLinejoin="round"
-        vectorEffect="non-scaling-stroke"
-      />
+    <svg ref={ref} className={cn("pointer-events-none", className)} aria-hidden="true">
+      {size.width > 0 && size.height > 0 && (
+        <path
+          d={buildPath(size.width, size.height, amplitude, period, swing)}
+          stroke="var(--orange)"
+          strokeWidth={strokeWidth}
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          fill="none"
+        />
+      )}
     </svg>
   );
 }
