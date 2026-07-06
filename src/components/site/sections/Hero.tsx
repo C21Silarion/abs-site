@@ -23,7 +23,7 @@ export function Hero({
   const referentCta = { onClick: scrollTo(referentTarget) };
 
   return (
-    <section className="relative overflow-hidden bg-gradient-to-b from-peach/40 to-transparent px-5 pb-20 pt-10">
+    <section className="relative overflow-hidden px-5 pb-20 pt-10">
       <TopBanner className="absolute inset-x-0 top-0 sm:h-40" />
 
       <div className="relative mx-auto w-full max-w-5xl text-center">
@@ -37,7 +37,7 @@ export function Hero({
               (même traitement que le bloc « Pourquoi nous agissons »). */}
           <div
             aria-hidden
-            className="pointer-events-none absolute -inset-x-8 -inset-y-4 rounded-[3rem] bg-background/40 blur-2xl"
+            className="pointer-events-none absolute -inset-x-8 -inset-y-4 rounded-[3rem] bg-background/70 blur-2xl"
           />
           <p className="relative text-lg text-foreground/100 sm:text-xl">
             {hero.sousTitre}
