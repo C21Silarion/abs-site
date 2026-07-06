@@ -12,13 +12,22 @@
   Le texte courant sur fond clair est en aubergine/quasi-noir.
   Typo : titres = Euripides Semibold (licence gratuite association/usage
          personnel — crédit auteur obligatoire, cf. SiteFooter),
-         corps  = Nunito (substitut libre d'Arial Rounded MT).
+         corps  = Arial Rounded MT (licence acquise) ; Nunito Variable
+         reste importé comme repli si le fichier ne charge pas.
 */
 
 @font-face {
   font-family: "Euripides";
   src: url("/fonts/Euripides-SemiBold.woff2") format("woff2");
   font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Arial Rounded MT";
+  src: url("/fonts/Arial Rounded MT + Helvetica.ttf") format("truetype");
+  font-weight: 400;
   font-style: normal;
   font-display: swap;
 }
@@ -39,7 +48,7 @@
 
   /* Tokens sémantiques */
   --background: var(--creme);
-  --foreground: #2a1840; /* aubergine très sombre pour le corps de texte */
+  --foreground: var(--aubergine-deep);
   --card: #fffffa;
   --card-foreground: var(--foreground);
   --popover: #fffffa;
@@ -65,7 +74,7 @@
   --radius-lg: var(--radius);
   --radius-xl: calc(var(--radius) + 6px);
 
-  --font-sans: "Nunito Variable", ui-sans-serif, system-ui, sans-serif;
+  --font-sans: "Arial Rounded MT", "Nunito Variable", ui-sans-serif, system-ui, sans-serif;
   --font-display: "Euripides", "Fraunces Variable", ui-serif, Georgia, serif;
 
   /* Couleurs de marque exposées comme utilitaires Tailwind */
@@ -121,5 +130,19 @@
   ::selection {
     background: var(--orange);
     color: var(--creme);
+  }
+
+  /*
+   * Coins « papier découpé » d'un <summary> d'accordéon (cf. paperCorners.ts) :
+   * replié, le résumé EST toute la carte visible (4 coins chanfreinés) ; ouvert,
+   * il ne forme plus que le haut de la carte (coins bas carrés, le bloc contenu
+   * en dessous chanfreine les coins bas) — bascule pilotée par l'attribut natif
+   * `open` de <details>, sans JS, via deux variables CSS posées par instance.
+   */
+  details:not([open]) > .pc-summary {
+    clip-path: var(--pc-clip-closed);
+  }
+  details[open] > .pc-summary {
+    clip-path: var(--pc-clip-open);
   }
 }
