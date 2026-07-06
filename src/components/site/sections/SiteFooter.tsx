@@ -170,18 +170,19 @@ export function SiteFooter() {
 
         <div className="mx-auto mt-6 flex w-full max-w-5xl flex-col gap-4 border-t border-creme/10 pt-6 sm:flex-row sm:items-center sm:justify-between">
           <Logo variant="creme" className="h-[70px] shrink-0" />
-          <p className="text-xs mt-4 text-creme/50 sm:text-left">
-            ABS, Accueil Bienveillant et Solidaire · Haute-Vienne ·{" "}
+          <p className="text-xs mt-0 text-creme/50 sm:text-left">
+            © ABS, Accueil Bienveillant et Solidaire · Haute-Vienne ·{" "}
             <Link to="/vie-privee" className="underline underline-offset-2 hover:text-creme/80">
-              Vie privée   
+              Vie privée
             </Link>
-             {" "} — Police des titres Euripides:{" "}
+            <br />
+            Police des titres Euripides:{" "}
             <a href="https://tanvi.network/" target="_blank" rel="noreferrer" className="underline underline-offset-2 hover:text-creme/80">
               Tanvi
             </a>{" "}
+            — Police du corps Arial Rounded MT: Patricia Saunders, Robin Nicholas 1982
             <br />
-            Identité visuelle: Lilou Rougemont, 1ère année DN MADe
-            Graphisme, La Souterraine. Enseignant: Thibault Memz — Site : Yvan Galtié
+            Identité visuelle: Lilou Rougemont — Conseil design: Thibault Memz — Site : Yvan Galtié
           </p>
         </div>
       </div>
