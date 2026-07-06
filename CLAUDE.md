@@ -15,8 +15,9 @@ données sensibles ni de logique métier interne ici (celle-ci est dans `abs-app
 - React 19 + Vite + TypeScript
 - Tailwind CSS v4 + shadcn/ui (config `components.json`, variables CSS)
 - React Router (`react-router-dom`)
-- Polices self-hostées via Fontsource (pas de CDN Google) :
-  - **Nunito** (`@fontsource-variable/nunito`) — corps de texte
+- Polices self-hostées (pas de CDN Google) :
+  - **Arial Rounded MT** (`public/fonts/Arial Rounded MT + Helvetica.ttf`, licence acquise) — corps de texte (`font-sans`)
+  - **Nunito** (`@fontsource-variable/nunito`) — repli si le fichier Arial Rounded MT ne charge pas
   - **Fraunces** (`@fontsource-variable/fraunces`) — titres (`font-display`)
 - Alias d'import `@/` → `src/`
 
@@ -35,8 +36,9 @@ Le thème de marque ABS est défini dans `src/index.css` (variables + `@theme in
 - **Typographies** : *Euripides Semibold* (titres, licence gratuite association —
   fichier `public/fonts/Euripides-SemiBold.woff2`, `@font-face` dans
   `src/index.css`, crédit auteur obligatoire affiché dans `SiteFooter`) et
-  **Nunito** (corps, substitut libre d'*Arial Rounded MT* non libre pour le web ;
-  fallback `Fraunces` conservé au cas où Euripides ne charge pas).
+  **Arial Rounded MT** (corps, licence acquise — fichier
+  `public/fonts/Arial Rounded MT + Helvetica.ttf`, `@font-face` dans `src/index.css` ;
+  `Nunito Variable` reste importé comme repli si ce fichier ne charge pas).
 - **Éléments graphiques « fait main »** dans `src/components/site/brand/` :
   `HouseMark` (silhouette de maison, tracé de `maison.svg` inliné et recolorable
   via `fill`, utilisée en filigrane) et `DuotonePhoto` (placeholder photo
@@ -65,9 +67,13 @@ refaire si le fichier est ré-exporté depuis l'outil de design.
 - **Commits : Conventional Commits en français** (ex. `feat: ajoute la page contact`),
   comme dans `abs-app`.
 - Composants de site dans `src/components/site/` : `brand/` (logo, maison, fil,
-  photo bichromie), `ui/` (Button cva, Section, Faq, PageHeader, InscriptionForm),
-  `sections/` (Hero, Plaidoyer, ChiffresCles, Parcours*, GalerieMedias, Ressources,
-  SiteFooter). Le contenu éditorial est centralisé dans `src/components/site/content.ts`.
+  photo bichromie), `ui/` (Button, Disclosure — accordéon `<details>` natif qui
+  propage sa teinte claire/aubergine aux formulaires via `FormToneContext`),
+  `form/` (primitives de champ `Field.tsx` — `TextField`/`TextArea`/`FormDone`/
+  `FormErrors`/`Honeypot`, `ChipMulti` pastilles multi-sélection, `CreneauGrid`),
+  `forms/` (formulaires publics complets — voir plus bas), `sections/` (Hero,
+  Plaidoyer, ChiffresCles, Parcours*, GalerieMedias, Ressources, SiteFooter).
+  Le contenu éditorial est centralisé dans `src/components/site/content.ts`.
 - Helper `cn()` depuis `@/lib/utils` pour composer les classes Tailwind.
 - Une page = un fichier dans `src/pages/`, branchée dans `src/App.tsx`.
 - Le site est public et orienté SEO : soigner les balises `<title>`/`<meta>`,
@@ -98,13 +104,40 @@ Architecture retenue : **monopage** (CDC §4), accessible en interne sur `/test`
 parcours descendant, CTA jumeaux qui défilent vers les ancres `#heberger` /
 `#referent`. La maquette multipage (CDC §5) a été abandonnée et supprimée.
 
-Conversion (HelloAsso, formulaire d'inscription, réseaux) figurée par des
-**placeholders** : aucune intégration tierce réelle pour l'instant. Le nom de
-l'outil interne (Le116) ne doit jamais apparaître côté site public — ni en
-texte ni en nom de composant (visible via React DevTools).
+Le nom de l'outil interne (Le116) ne doit jamais apparaître côté site public —
+ni en texte ni en nom de composant (visible via React DevTools).
+
+HelloAsso (dons/adhésions) et les embeds vidéo restent des **placeholders** :
+aucune intégration tierce réelle pour l'instant. **Les formulaires de
+candidature (bénévole/hébergeur/disponibilité), eux, sont réels** — voir
+section suivante.
+
+## Formulaires publics (candidature bénévole/hébergeur, disponibilité, orientation)
+
+L'UI de ces formulaires a été migrée ici depuis `abs-app` (qui en conservait
+des pages désormais mortes/commentées dans son routeur — voir son
+`CLAUDE.md`). Le **backend reste dans `abs-app`** : ce dépôt n'a aucune clé
+Grist, il appelle `POST /api/public/*` en relatif (`src/lib/publicApi.ts`) —
+même origine en prod via le proxy Caddy `/api`, proxy Vite en dev
+(`vite.config.ts`).
+
+- **Candidature bénévole/hébergeur + dispo** : embarquées dans le monopage
+  (`src/pages/HomePage.tsx`) via `Disclosure` (accordéon, `tone="aubergine"`
+  pour les mettre en avant), composants `src/components/site/forms/
+  {BenevoleForm,HebergeurForm,DispoForm}.tsx`.
+- **Orientation demandeur** : page autonome dédiée (`src/pages/Orienter.tsx`
+  → `OrienterForm.tsx`), route `/orienter`, URL « need-to-know » non diffusée
+  depuis la navigation du site.
+- **Contrat anti-abus** (identique côté abs-app) : jeton récupéré au montage
+  (`getPublicFormToken`) + renvoyé à la soumission (nonce + piège temporel
+  ≥ 3 s), honeypot `hp`, POST sans cookie de session.
+- **`src/lib/profilOptions.ts`** : miroir statique des énumérations Grist
+  (types d'aide, créneaux) — page publique non authentifiée, pas d'accès aux
+  choices Grist. **DOIT rester aligné manuellement** avec
+  `abs-app/pwa/src/lib/profilOptions.ts` et `schema/enums/*.yaml` ; a été pris
+  en défaut une fois déjà (types d'aide périmés, session 88 côté abs-app).
 
 ## À faire / en attente
 
-- Intégrations réelles : HelloAsso (dons/adhésions), formulaire d'inscription, embeds vidéo.
+- Intégrations réelles restantes : HelloAsso (dons/adhésions), embeds vidéo.
 - Vraies photos traitées en bichromie/tramées, vrais PDF de ressources.
-- Acquérir/licencier Arial Rounded MT si besoin (Euripides déjà intégrée, cf. ci-dessus).
