@@ -182,7 +182,7 @@ export function SiteFooter() {
             </a>{" "}
             — Police du corps Arial Rounded MT: Patricia Saunders, Robin Nicholas 1982
             <br />
-            Identité visuelle: Lilou Rougemont — Conseil design: Thibault Memz — Site : Yvan Galtié
+            Identité visuelle: Lilou Rougemont — Conseil design: Thibault Menz — Site : Yvan Galtié
           </p>
         </div>
       </div>

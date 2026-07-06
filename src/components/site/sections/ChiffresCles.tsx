@@ -25,11 +25,16 @@ const STROKE_STYLE: React.CSSProperties = {
   color: "transparent",
 };
 
-/** Résout un chemin pointé (« total.personnesAccueillies.total ») dans le payload. */
+/**
+ * Résout un chemin pointé (« total.personnesAccueillies.total ») dans le payload.
+ * `$year` dans le chemin est remplacé par l'année courante (ex. « parAnnee.$year.nuitees »)
+ * pour un chiffre borné à l'année en cours plutôt que cumulé depuis le début.
+ */
 function resolveValeur(stats: PublicStats | null, key?: string): number | null {
   if (!stats || !key) return null;
+  const path = key.replace("$year", String(new Date().getFullYear()));
   let cur: unknown = stats;
-  for (const part of key.split(".")) {
+  for (const part of path.split(".")) {
     if (cur && typeof cur === "object" && part in (cur as Record<string, unknown>)) {
       cur = (cur as Record<string, unknown>)[part];
     } else {

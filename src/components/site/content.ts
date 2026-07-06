@@ -43,7 +43,7 @@ export const solidariteExiles = {
 export const chiffres: { valeur: string; label: string; key?: string }[] = [
   { valeur: "120+", label: "personnes accueillies", key: "total.personnesAccueillies.total" },
   { valeur: "45", label: "familles hébergeuses engagées", key: "total.famillesHebergeuses" },
-  { valeur: "1 200+", label: "nuitées offertes", key: "total.nuitees" },
+  { valeur: "1 200+", label: "nuitées offertes cette année", key: "parAnnee.$year.nuitees" },
 ];
 
 export type Etape = { numero: string; titre: string; texte: string };
