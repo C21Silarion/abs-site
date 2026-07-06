@@ -16,6 +16,15 @@ const bannerHtml = bannerSvg
 
 const nf = new Intl.NumberFormat("fr-FR");
 
+/* Liseré blanc « papier découpé » des chiffres — réglages regroupés ici. */
+const STROKE_WIDTH = "3px";
+const STROKE_COLOR = "var(--aubergine-deep)";
+const STROKE_OPACITY = 0.5; // 0 = invisible, 1 = couleur pleine
+const STROKE_STYLE: React.CSSProperties = {
+  WebkitTextStroke: `${STROKE_WIDTH} color-mix(in srgb, ${STROKE_COLOR} ${STROKE_OPACITY * 100}%, transparent)`,
+  color: "transparent",
+};
+
 /** Résout un chemin pointé (« total.personnesAccueillies.total ») dans le payload. */
 function resolveValeur(stats: PublicStats | null, key?: string): number | null {
   if (!stats || !key) return null;
@@ -58,8 +67,17 @@ export function ChiffresCles() {
             const valeur = live !== null ? nf.format(live) : c.valeur;
             return (
               <div key={c.label}>
-                <div className="font-display text-5xl font-semibold text-orange sm:text-6xl">
-                  {valeur}
+                <div className="relative inline-block">
+                  <div
+                    aria-hidden
+                    className="pointer-events-none absolute inset-0 font-display text-6xl font-semibold sm:text-8xl"
+                    style={STROKE_STYLE}
+                  >
+                    {valeur}
+                  </div>
+                  <div className="relative font-display text-6xl font-semibold text-orange sm:text-8xl">
+                    {valeur}
+                  </div>
                 </div>
                 <div className="mt-2 text-lg text-creme/85">{c.label}</div>
               </div>
