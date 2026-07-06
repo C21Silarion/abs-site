@@ -90,7 +90,7 @@ export function ChiffresCles() {
           })}
         </div>
         <p className="mt-10 text-center text-sm text-creme/60">
-          Chiffres indicatifs du réseau ABS en Haute-Vienne.
+          Un aperçu en temps réel de l'activité du réseau ABS en Haute-Vienne, pour l'année en cours.
         </p>
       </div>
     </section>
