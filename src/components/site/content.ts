@@ -41,8 +41,8 @@ export const solidariteExiles = {
  * est disponible. Voir `ChiffresCles.tsx`.
  */
 export const chiffres: { valeur: string; label: string; key?: string }[] = [
-  { valeur: "120+", label: "personnes accueillies", key: "total.personnesAccueillies.total" },
-  { valeur: "45", label: "familles hébergeuses engagées", key: "total.famillesHebergeuses" },
+  { valeur: "26", label: "personnes actuellement hébergées", key: "personnesHebergees.total" },
+  { valeur: "17", label: "familles hébergeuses mobilisées", key: "hebergeursOccupes" },
   { valeur: "1 200+", label: "nuitées offertes cette année", key: "parAnnee.$year.nuitees" },
 ];
 

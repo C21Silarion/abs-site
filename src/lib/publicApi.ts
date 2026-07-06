@@ -44,6 +44,10 @@ export interface PublicStats {
   anneesExistence: number;
   benevoles: number;
   hebergeursInscrits: number;
+  /** Personnes actuellement hébergées par ABS (snapshot, pas un cumul). */
+  personnesHebergees: PersonSplit;
+  /** Hébergeurs ABS hébergeant actuellement (snapshot, pas un cumul). */
+  hebergeursOccupes: number;
   years: number[];
   total: ScopeStats;
   parAnnee: Record<string, ScopeStats>;
