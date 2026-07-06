@@ -2,19 +2,23 @@ import { cn } from "@/lib/utils";
 import { association } from "@/components/site/content";
 import logoOrange from "@/assets/brand/logo-abs-orange-baseline-wide.svg";
 import logoWordmark from "@/assets/brand/logo-abs-no-baseline.svg";
-import logoCreme from "@/assets/brand/logo_creme_baseline_wide.svg";
+import logoCreme from "@/assets/brand/logo_horizontal_petit_creme.svg";
+import logoHorizontalOrange from "@/assets/brand/logo_horizontal_orange.svg";
 
 /*
  * Logotype officiel ABS (charte).
- * - variant="full"     : logotype orange complet (sigle + baseline). Fonds clairs.
- * - variant="wordmark" : sigle ABS orange seul (sans baseline). Usages compacts (header).
- * - variant="creme"    : sigle ABS en crème, pour fonds sombres (footer).
+ * - variant="full"               : logotype orange complet (sigle + baseline). Fonds clairs.
+ * - variant="wordmark"           : sigle ABS orange seul (sans baseline). Usages compacts (header).
+ * - variant="creme"              : sigle ABS en crème, pour fonds sombres (footer).
+ * - variant="horizontal-orange"  : logo_horizontal_creme.svg recoloré en orange
+ *   (`#ef7749` — même orange que le logo full), pour fonds clairs (ex. page /orienter).
  * La hauteur se règle via `className` (ex. h-12).
  */
 const SOURCES = {
   full: logoOrange,
   wordmark: logoWordmark,
   creme: logoCreme,
+  "horizontal-orange": logoHorizontalOrange,
 } as const;
 
 export function Logo({
