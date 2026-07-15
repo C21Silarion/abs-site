@@ -182,7 +182,16 @@ export function SiteFooter() {
             </a>{" "}
             — Police du corps Arial Rounded MT: Patricia Saunders, Robin Nicholas 1982
             <br />
-            Identité visuelle: Lilou Rougemont — Conseil design: Thibault Menz — Site : Yvan Galtié
+            Identité visuelle:{" "}
+            <a
+              href="https://www.instagram.com/lirem_ipsum/"
+              target="_blank"
+              rel="noreferrer"
+              className="underline underline-offset-2 hover:text-creme/80"
+            >
+              Lilou Rougemont
+            </a>{" "}
+            — Conseil design: Thibault Menz — Site : Yvan Galtié
           </p>
         </div>
       </div>
