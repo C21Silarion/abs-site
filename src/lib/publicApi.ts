@@ -114,7 +114,7 @@ export function submitPublicHebergeurDispo(payload: {
 }
 
 /** Rôle d'un membre dans une orientation de demandeur(s) par une structure tierce. */
-export type RoleFamille = "parent" | "conjoint" | "enfant";
+export type RoleFamille = "parent" | "conjoint" | "enfant" | "mna";
 
 /** Un membre saisi dans le formulaire public d'orientation `/orienter`. */
 export interface MembreOrientation {

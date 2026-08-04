@@ -57,6 +57,7 @@ const ROLE_LABELS: Record<RoleFamille, string> = {
   parent: "Adulte (référent·e)",
   conjoint: "Conjoint·e",
   enfant: "Enfant",
+  mna: "Mineur non accompagné (MNA)",
 };
 
 function emptyMembre(role: RoleFamille): MembreOrientation {
