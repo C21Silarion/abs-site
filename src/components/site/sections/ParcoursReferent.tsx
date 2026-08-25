@@ -1,6 +1,6 @@
-import { Check } from "lucide-react";
+// import { Check } from "lucide-react"; // utilisé par les cartes de points, désactivées ci-dessous
 import { Section } from "@/components/site/ui/Section";
-import { paperCorners } from "@/components/site/brand/paperCorners";
+// import { paperCorners } from "@/components/site/brand/paperCorners"; // idem
 import { parcoursReferent } from "@/components/site/content";
 
 export function ParcoursReferent({
@@ -22,6 +22,7 @@ export function ParcoursReferent({
         <p className="relative mx-auto text-lg text-foreground/100">{parcoursReferent.intro}</p>
       </div>
 
+      {/* Cartes de points désactivées temporairement — à réactiver au besoin.
       <ul className="mt-8 space-y-4">
         {parcoursReferent.points.map((p, i) => {
           const pc = paperCorners(110 + i, 9);
@@ -37,6 +38,7 @@ export function ParcoursReferent({
           );
         })}
       </ul>
+      */}
     </>
   );
 

@@ -117,7 +117,7 @@ export function SiteFooter() {
             ) : (
               <>
                 <p className="mt-4 text-sm text-creme/70">
-                  Recevez nos rares mais précieuses nouvelles par courriel.
+                  Recevez nos nouvelles par courriel.
                 </p>
                 <form
                   action={footer.newsletterAction}

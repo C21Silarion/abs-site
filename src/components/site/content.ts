@@ -21,10 +21,12 @@ export const hero = {
 };
 
 export const plaidoyer = {
-  titre: "Pourquoi nous agissons",
+  titre: "Pourquoi et comment nous agissons",
   paragraphes: [
-    "Chaque soir, en Haute-Vienne, des familles et des personnes exilées se retrouvent sans solution, exclues des dispositifs d'hébergement existants. Face à ce vide, des citoyen·nes ouvrent leur porte.",
-    "ABS est une association entièrement bénévole. Nous ne remplaçons pas l'État : nous tissons un réseau de solidarité concret, digne et chaleureux, « avec les moyens du bord ». Héberger, c'est offrir bien plus qu'un lit : un endroit où vivre, de la compagnie, et un appui dans les démarches.",
+    "Chaque soir, en Haute-Vienne, des familles et des personnes seules se retrouvent sans solution, exclues des dispositifs d'hébergement existants.", 
+    "Face à ce vide, nous accompagnons des citoyen·ne.s qui ouvrent leur porte et nous recherchons de nouveaux foyers.",
+    "ABS est une association entièrement bénévole. Nous ne remplaçons pas l'État.",
+    "Nous cherchons à créer un réseau de solidarité concret. Héberger, même sur une courte période, c'est offrir la sécurité et la sérénité nécessaires pour différentes démarches.",
   ],
 };
 
@@ -62,29 +64,29 @@ export const parcoursHebergeur: {
       numero: "1",
       titre: "La première rencontre",
       texte:
-        "On fait connaissance autour d'un café. Vous nous présentez ce que vous pouvez offrir (une chambre, un logement vide, quelques nuits…), on répond à toutes vos questions.",
+        "Nous faisons connaissance lors d’un premier rendez-vous où nous échangeons sur vos questionnements et nos expériences. Vous nous présentez ce que vous pouvez offrir (une chambre, un logement vide, quelques nuits…). Nous vous laissons le temps de la réflexion avant de reprendre contact.",
     },
     {
       numero: "2",
       titre: "La convention et la période de test",
       texte:
-        "Un cadre clair et écrit, sécurisé et réversible. Une période d'essai permet à chacun·e de confirmer que l'accueil convient avant de s'engager dans la durée.",
+        "Un contrat clair signé de tous, avec une date de fin prévue, une charte de cohabitation et une assurance responsabilité civile prise en charge par l’association. Une période d'essai permet à chacun·e de confirmer que l'accueil convient avant de s'engager dans la durée.",
     },
     {
       numero: "3",
       titre: "L'hébergement accompagné",
       texte:
-        "L'accueil démarre, avec un suivi régulier de votre référent·e. La fin de l'hébergement est toujours préparée et accompagnée, jamais brutale.",
+        "L'accueil démarre, avec un suivi régulier de votre référent·e. La fin de l'hébergement est préparée et gérée par l’association.",
     },
   ],
   assurance:
-    "L'assurance liée à l'accueil est intégralement prise en charge par ABS. Vous n'avancez rien et n'assumez aucun risque financier.",
+    "Les besoins de la personne accueillie en termes alimentaires, vestimentaires, déplacements et autres ne sont pas à la charge de l’hébergeur.euse. Les frais supplémentaires (chauffage, eau, électricité) ne sont pas pris en charge par l’association sauf en cas de grande difficulté.",
 };
 
 export const parcoursReferent = {
   titre: "Le rôle de référent·e",
   intro:
-    "Le·la référent·e est le pivot discret mais essentiel d'ABS : la personne qui fait le lien, rassure les familles et assure le suivi au quotidien.",
+    "Le rôle de référent·e est essentiel : cette personne fait le lien entre les hébergé.e.s et hébergeant.e.s et assure un suivi régulier.",
   points: [
     "Garant·e du lien entre la personne accueillie, la famille hébergeuse et l'association.",
     "Présence rassurante : la famille accueillante n'est jamais seule face aux difficultés.",
@@ -156,7 +158,7 @@ export const formulaires = {
   },
   benevole: {
     titre: "Je deviens bénévole / référent·e",
-    hint: "Rejoignez l'équipe : présentez-vous en quelques lignes, on vous explique tout lors d'un premier échange.",
+    hint: "Rejoignez l'équipe : présentez-vous en quelques lignes, nous vous contacterons pour un premier échange.",
   },
   dispo: {
     titre: "Déjà hébergeur·euse ? Signaler une disponibilité",
@@ -182,7 +184,7 @@ export const footer = {
     instagram: "https://www.instagram.com/abs87.limoges",
     facebook: "https://www.facebook.com/abs.limoges",
     youtube: "https://www.youtube.com/@ABSLimoges",
-    note: "Pas de fioritures ici ! Notre site est minimaliste pour nous laisser le temps d'agir sur le terrain. Pour suivre nos actualités au jour le jour et voir la vie de l'asso, rejoignez-nous sur nos réseaux sociaux !",
+    note: "Pour suivre nos actualités au jour le jour et voir la vie de l'association, rejoignez-nous sur nos réseaux sociaux !",
   },
 };
 
@@ -197,7 +199,14 @@ export const video = {
  * Vignettes : déposer les images dans `public/projets/` (cf. `image`) ; à défaut
  * un placeholder bichromie s'affiche. Titres/descriptions à affiner (TODO).
  */
-export type Projet = { titre: string; desc: string; href: string; image?: string; cta: string };
+export type Projet = {
+  titre: string;
+  desc: string;
+  href: string;
+  image?: string;
+  cta: string;
+  funded?: boolean;
+};
 
 export const projets: Projet[] = [
   {
@@ -212,7 +221,8 @@ export const projets: Projet[] = [
     desc: "Soutenir Aminata dans ses démarches de régularisation.",
     href: `${HELLOASSO_ORG}/collectes/soutenons-aminata-dans-sa-demarche-de-regularisation-1`,
     image: "/projets/aminnata-process.jpg",
-    cta: "Soutenir",
+    cta: "Projet financé !",
+    funded: true,
   },
   {
     titre: "Appartement pour Kathuna et Lana",

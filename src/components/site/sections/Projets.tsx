@@ -39,8 +39,12 @@ function ProjetCard({ projet, index }: { projet: Projet; index: number }) {
         <div className="flex flex-1 flex-col gap-2 p-5">
           <h3 className="font-display text-lg text-aubergine">{projet.titre}</h3>
           <p className="flex-1 text-sm text-foreground/75">{projet.desc}</p>
-          <span className="mt-1 inline-flex items-center gap-1.5 text-sm font-semibold text-orange transition-all group-hover:gap-2.5">
-            {projet.cta} <ArrowRight className="h-4 w-4" />
+          <span
+            className={`mt-1 inline-flex items-center gap-1.5 text-sm font-semibold transition-all group-hover:gap-2.5 ${
+              projet.funded ? "text-green-700" : "text-orange"
+            }`}
+          >
+            {projet.cta} {!projet.funded && <ArrowRight className="h-4 w-4" />}
           </span>
         </div>
       </div>
