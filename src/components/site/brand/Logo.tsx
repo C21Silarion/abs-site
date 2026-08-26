@@ -1,6 +1,6 @@
 import { cn } from "@/lib/utils";
 import { association } from "@/components/site/content";
-import logoOrange from "@/assets/brand/logo-abs-orange-baseline-wide.svg";
+import logoOrange from "@/assets/brand/logo_horizontal_petit_orange.png";
 import logoWordmark from "@/assets/brand/logo-abs-no-baseline.svg";
 import logoCreme from "@/assets/brand/logo_horizontal_petit_creme.svg";
 import logoHorizontalOrange from "@/assets/brand/logo_horizontal_orange.svg";

@@ -51,15 +51,14 @@ Le composant `Logo` (`brand/Logo.tsx`) expose trois variantes via la prop `varia
 
 | `variant`         | Fichier                              | Usage |
 | ----------------- | ------------------------------------ | ----- |
-| `full` (défaut)   | `logo-abs-orange-baseline-wide.svg`  | héros, page d'accueil (sigle + baseline, format large) |
-| `wordmark`        | `logo-abs-no-baseline.svg`           | header de nav (sigle ABS orange, compact) |
-| `creme`           | `logo-abs-mono-creme.svg`            | footer aubergine (sigle ABS crème) |
+| `full` (défaut)   | `logo_horizontal_petit_orange.png`   | page vie privée, écran « bientôt » (sigle + baseline, format large) |
+| `wordmark`        | `logo-abs-no-baseline.svg`           | header de nav, hero (sigle ABS orange, compact) |
+| `creme`           | `logo_horizontal_petit_creme.svg`    | footer aubergine (sigle ABS crème) |
+| `horizontal-orange` | `logo_horizontal_orange.svg`       | page `/orienter` |
 
-La hauteur se règle via `className` (ex. `h-44`). Le `viewBox` de
-`logo-abs-orange-baseline-wide.svg` a été **rogné** (`38.7 0 1422.8 400`) pour
-supprimer le padding interne et aligner le logo à gauche avec le texte ; à
-refaire si le fichier est ré-exporté depuis l'outil de design.
-`logo-abs.svg` (ancien logo carré) n'est plus utilisé.
+La hauteur se règle via `className` (ex. `h-44`).
+`logo-abs.svg` (ancien logo carré) et `logo-abs-orange-baseline-wide.svg`
+(ancien `full`, remplacé par le PNG ci-dessus) ne sont plus utilisés.
 
 ## Conventions
 

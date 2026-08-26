@@ -9,7 +9,7 @@ export default function ViePrivee() {
   return (
     <div className="min-h-svh bg-background px-5 py-12">
       <div className="mx-auto w-full max-w-2xl">
-        <header className="mb-10">
+        <header className="mb-10 flex justify-center">
           <Link to="/" aria-label="Retour à l'accueil">
             <Logo variant="full" className="h-auto w-[21.5rem]" />
           </Link>
