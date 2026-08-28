@@ -134,18 +134,18 @@ export const faqReferent = [
 
 export const ressources = [
   {
-    titre: "Le livret d'accueil",
-    desc: "Fiches pratiques et contacts des structures partenaires de Haute-Vienne.",
-    fichier: "livret-accueil-abs.pdf",
+    titre: "Le livret des Solidarités",
+    desc: "Liste et contacts des structures solidaires à Limoges pour se nourrir, se soigner, se vêtir…",
+    fichier: "livret-solidarites-abs.pdf",
   },
   {
     titre: "Le kit de communication",
-    desc: "Affiches et flyers officiels d'ABS à imprimer et diffuser localement.",
+    desc: "Le dépliant officiel d'ABS à imprimer et à diffuser autour de vous.",
     fichier: "kit-communication-abs.pdf",
   },
   {
     titre: "La dernière newsletter",
-    desc: "Nos actualités au format PDF, pour celles et ceux qui préfèrent aux réseaux.",
+    desc: "Nos actualités au format PDF pour celles et ceux qui préfèrent ce format.",
     fichier: "newsletter-abs.pdf",
   },
 ];
