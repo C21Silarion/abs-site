@@ -70,7 +70,7 @@ export const parcoursHebergeur: {
       numero: "2",
       titre: "La convention et la période de test",
       texte:
-        "Un contrat clair signé de tous, avec une date de fin prévue, une charte de cohabitation et une assurance responsabilité civile prise en charge par l’association. Une période d'essai permet à chacun·e de confirmer que l'accueil convient avant de s'engager dans la durée.",
+        "Un contrat clair signé de toustes, avec une date de fin prévue, une charte de cohabitation et une assurance responsabilité civile prise en charge par l’association. Une période d'essai permet à chacun·e de confirmer que l'accueil convient avant de s'engager dans la durée.",
     },
     {
       numero: "3",
@@ -84,15 +84,37 @@ export const parcoursHebergeur: {
 };
 
 export const parcoursReferent = {
-  titre: "Le rôle de référent·e",
+  titre: "Les missions de nos référent·e·s et bénévoles",
   intro:
-    "Le rôle de référent·e est essentiel : cette personne fait le lien entre les hébergé.e.s et hébergeant.e.s et assure un suivi régulier.",
+    "Quelques heures par semaine ou par mois suffisent : accompagner un accueil, faire connaître ABS ou dénicher de nouveaux hébergements. Plusieurs façons de vous engager à nos côtés.",
   points: [
     "Garant·e du lien entre la personne accueillie, la famille hébergeuse et l'association.",
     "Présence rassurante : la famille accueillante n'est jamais seule face aux difficultés.",
     "Suivi régulier et coup de main dans les démarches administratives.",
   ],
 };
+
+/*
+ * Missions bénévoles officielles ABS publiées sur jeveuxaider.gouv.fr.
+ * Descriptions condensées à partir des fiches de mission (liens `url`).
+ */
+export const missionsBenevolat = [
+  {
+    titre: "Je deviens référent·e",
+    desc: "Le rôle de référent·e est essentiel : cette personne fait le lien entre les hébergé·e·s et les hébergeur·euse·s, et assure un suivi régulier. Vous participez aux premières rencontres, posez un cadre clair et rassurant, restez présent·e tout au long de l'accueil, puis accompagnez son bilan de fin.",
+    url: "https://www.jeveuxaider.gouv.fr/missions-benevolat/66620/benevolat-abs-accueil-bienveillant-solidaire",
+  },
+  {
+    titre: "Je mobilise de nouveaux hébergements",
+    desc: "Repérez des logements ou locaux disponibles, sensibilisez particuliers, entreprises et collectivités, et présentez la mission d'ABS pour élargir le réseau de foyers solidaires.",
+    url: "https://www.jeveuxaider.gouv.fr/missions-benevolat/103824/benevolat-abs-accueil-bienveillant-solidaire-1",
+  },
+  {
+    titre: "J'organise des événements",
+    desc: "Participez à l'organisation de ciné-débats, conférences et événements solidaires pour sensibiliser le public et recruter de nouvelles familles hébergeuses.",
+    url: "https://www.jeveuxaider.gouv.fr/missions-benevolat/103827/benevolat-abs-accueil-bienveillant-solidaire-2",
+  },
+];
 
 export const typesHebergement = [
   "Une chambre ou un logement vide",

@@ -1,7 +1,7 @@
-// import { Check } from "lucide-react"; // utilisé par les cartes de points, désactivées ci-dessous
+import { ArrowUpRight } from "lucide-react";
 import { Section } from "@/components/site/ui/Section";
-// import { paperCorners } from "@/components/site/brand/paperCorners"; // idem
-import { parcoursReferent } from "@/components/site/content";
+import { paperCorners } from "@/components/site/brand/paperCorners";
+import { parcoursReferent, missionsBenevolat } from "@/components/site/content";
 
 export function ParcoursReferent({
   id,
@@ -22,23 +22,33 @@ export function ParcoursReferent({
         <p className="relative mx-auto text-lg text-foreground/100">{parcoursReferent.intro}</p>
       </div>
 
-      {/* Cartes de points désactivées temporairement — à réactiver au besoin.
-      <ul className="mt-8 space-y-4">
-        {parcoursReferent.points.map((p, i) => {
-          const pc = paperCorners(110 + i, 9);
+      {/* Cartes de points (liste `parcoursReferent.points`) désactivées au profit
+          des missions bénévoles officielles ci-dessous — à réactiver au besoin. */}
+
+      <div className="mt-8 grid gap-5 md:grid-cols-3">
+        {missionsBenevolat.map((m, index) => {
+          const pc = paperCorners(110 + index, 16);
           return (
-            <li key={p.slice(0, 20)} style={pc.outer} className="bg-border">
-              <div style={pc.inner} className="flex h-full items-center gap-3 bg-card px-5 py-4">
-                <span className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-lavande">
-                  <Check className="h-4 w-4 text-creme" />
+            <a
+              key={m.titre}
+              href={m.url}
+              target="_blank"
+              rel="noreferrer"
+              style={pc.outer}
+              className="group block bg-border transition hover:bg-orange"
+            >
+              <div style={pc.inner} className="flex h-full flex-col bg-card p-6">
+                <h3 className="text-xl text-aubergine">{m.titre}</h3>
+                <p className="mt-2 grow text-sm text-foreground/75">{m.desc}</p>
+                <span className="mt-4 inline-flex items-center gap-1 text-sm font-semibold text-orange">
+                  Découvrir la mission
+                  <ArrowUpRight className="h-4 w-4" />
                 </span>
-                <span className="text-foreground/85">{p}</span>
               </div>
-            </li>
+            </a>
           );
         })}
-      </ul>
-      */}
+      </div>
     </>
   );
 
