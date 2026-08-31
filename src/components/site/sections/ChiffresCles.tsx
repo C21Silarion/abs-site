@@ -91,6 +91,8 @@ export function ChiffresCles() {
         </div>
         <p className="mt-10 text-center text-sm text-creme/60">
           Un aperçu en temps réel de l'activité du réseau ABS en Haute-Vienne, pour l'année en cours.
+          <br />
+          *dans le cadre d'un hebergement famillial nous comptabilisons une nuitée pour l'ensemble de la famille.
         </p>
       </div>
     </section>

@@ -17,7 +17,7 @@ export function ParcoursReferent({
         {/* Halo crème flou : atténue le fil conducteur derrière l'intro. */}
         <div
           aria-hidden
-          className="pointer-events-none absolute -inset-x-6 -inset-y-3 rounded-[2.5rem] bg-background/40 blur-2xl"
+          className="pointer-events-none absolute -inset-x-6 -inset-y-3 rounded-[2.5rem] bg-background/60 blur-2xl"
         />
         <p className="relative mx-auto text-lg text-foreground/100">{parcoursReferent.intro}</p>
       </div>
@@ -39,8 +39,8 @@ export function ParcoursReferent({
             >
               <div style={pc.inner} className="flex h-full flex-col bg-card p-6">
                 <h3 className="text-xl text-aubergine">{m.titre}</h3>
-                <p className="mt-2 grow text-sm text-foreground/75">{m.desc}</p>
-                <span className="mt-4 inline-flex items-center gap-1 text-sm font-semibold text-orange">
+                <p className="mt-2 grow text-base text-foreground/75">{m.desc}</p>
+                <span className="mt-4 inline-flex items-center gap-1 text-base font-semibold text-orange">
                   Découvrir la mission
                   <ArrowUpRight className="h-4 w-4" />
                 </span>

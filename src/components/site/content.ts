@@ -45,7 +45,7 @@ export const solidariteExiles = {
 export const chiffres: { valeur: string; label: string; key?: string }[] = [
   { valeur: "26", label: "personnes actuellement hébergées", key: "personnesHebergees.total" },
   { valeur: "17", label: "familles hébergeuses mobilisées", key: "hebergeursOccupes" },
-  { valeur: "1 200+", label: "nuitées offertes cette année", key: "parAnnee.$year.nuitees" },
+  { valeur: "1 200+", label: "nuitées* offertes cette année", key: "parAnnee.$year.nuitees" },
 ];
 
 export type Etape = { numero: string; titre: string; texte: string };
@@ -86,7 +86,7 @@ export const parcoursHebergeur: {
 export const parcoursReferent = {
   titre: "Les missions de nos référent·e·s et bénévoles",
   intro:
-    "Quelques heures par semaine ou par mois suffisent : accompagner un accueil, faire connaître ABS ou dénicher de nouveaux hébergements. Plusieurs façons de vous engager à nos côtés.",
+    "Quelques heures par semaine ou par mois suffisent : accompagner un accueil, faire connaître ABS ou dénicher de nouveaux hébergements. Plusieurs façons de vous engager à nos côtés, même une aide ponctuelle est utile!",
   points: [
     "Garant·e du lien entre la personne accueillie, la famille hébergeuse et l'association.",
     "Présence rassurante : la famille accueillante n'est jamais seule face aux difficultés.",
@@ -106,7 +106,7 @@ export const missionsBenevolat = [
   },
   {
     titre: "Je mobilise de nouveaux hébergements",
-    desc: "Repérez des logements ou locaux disponibles, sensibilisez particuliers, entreprises et collectivités, et présentez la mission d'ABS pour élargir le réseau de foyers solidaires.",
+    desc: "Repérez des logements ou locaux disponibles, sensibilisez les particuliers, entreprises et collectivités, et présentez la mission d'ABS pour élargir le réseau de foyers solidaires.",
     url: "https://www.jeveuxaider.gouv.fr/missions-benevolat/103824/benevolat-abs-accueil-bienveillant-solidaire-1",
   },
   {
