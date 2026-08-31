@@ -1,0 +1,9 @@
+{
+  "name": "ABS — Accueil Bienveillant et Solidaire",
+  "short_name": "ABS",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#FFFFF1",
+  "theme_color": "#432663",
+  "icons": [{ "src": "/favicon.svg", "sizes": "any", "type": "image/svg+xml" }]
+}

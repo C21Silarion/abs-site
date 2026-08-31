@@ -9,6 +9,59 @@
       content="ABS — Accueil Bienveillant et Solidaire : association limougeaude qui met en relation des personnes sans hébergement stable avec des citoyens hébergeurs bénévoles."
     />
     <title>ABS — Accueil Bienveillant et Solidaire</title>
+    <meta name="theme-color" content="#432663" />
+    <link rel="manifest" href="/manifest.json" />
+
+    <!--
+      Fallback OG/Twitter générique : vu par les robots sociaux qui ne chargent
+      pas le JS (toutes les routes de la SPA servent ce même index.html). Les
+      moteurs de recherche, qui exécutent le JS, voient la version à jour par
+      page rendue par <Seo /> (src/components/site/Seo.tsx) — pas de canonical
+      ici pour éviter un doublon avec celui posé par ce composant.
+    -->
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="ABS — Accueil Bienveillant et Solidaire" />
+    <meta property="og:title" content="ABS — Accueil Bienveillant et Solidaire" />
+    <meta
+      property="og:description"
+      content="ABS — Accueil Bienveillant et Solidaire : association limougeaude qui met en relation des personnes sans hébergement stable avec des citoyens hébergeurs bénévoles."
+    />
+    <meta property="og:url" content="https://abs87.org/" />
+    <meta property="og:image" content="https://abs87.org/og-image.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="ABS — Accueil Bienveillant et Solidaire" />
+    <meta
+      name="twitter:description"
+      content="ABS — Accueil Bienveillant et Solidaire : association limougeaude qui met en relation des personnes sans hébergement stable avec des citoyens hébergeurs bénévoles."
+    />
+    <meta name="twitter:image" content="https://abs87.org/og-image.png" />
+
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "NGO",
+        "name": "ABS — Accueil Bienveillant et Solidaire",
+        "url": "https://abs87.org/",
+        "logo": "https://abs87.org/og-image.png",
+        "areaServed": "Limoges, Haute-Vienne",
+        "email": "abslimoges@proton.me",
+        "telephone": "+33743340998",
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "119 avenue du Général Leclerc",
+          "postalCode": "87100",
+          "addressLocality": "Limoges",
+          "addressCountry": "FR"
+        },
+        "sameAs": [
+          "https://www.instagram.com/abs87.limoges",
+          "https://www.facebook.com/abs.limoges",
+          "https://www.youtube.com/@ABSLimoges"
+        ]
+      }
+    </script>
   </head>
   <body>
     <div id="root"></div>

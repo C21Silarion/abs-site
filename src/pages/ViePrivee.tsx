@@ -1,5 +1,7 @@
 import { Link } from "react-router-dom";
 import { Logo } from "@/components/site/brand/Logo";
+import { Seo } from "@/components/site/Seo";
+import { seo } from "@/components/site/content";
 
 /*
  * Page statique de protection des données (notice générale art. 12-14 RGPD).
@@ -8,6 +10,7 @@ import { Logo } from "@/components/site/brand/Logo";
 export default function ViePrivee() {
   return (
     <div className="min-h-svh bg-background px-5 py-12">
+      <Seo title={seo.viePrivee.title} description={seo.viePrivee.description} path="/vie-privee" />
       <div className="mx-auto w-full max-w-2xl">
         <header className="mb-10 flex justify-center">
           <Link to="/" aria-label="Retour à l'accueil">
@@ -15,6 +18,7 @@ export default function ViePrivee() {
           </Link>
         </header>
 
+        <main>
         <article className="space-y-6 text-sm leading-relaxed text-foreground/80">
           <h1 className="font-display text-2xl text-aubergine">
             Protection de vos données personnelles
@@ -147,6 +151,7 @@ export default function ViePrivee() {
             </div>
           </section>
         </article>
+        </main>
 
         <footer className="mt-10 border-t border-border pt-6 text-xs text-muted-foreground">
           <Link to="/" className="underline underline-offset-2">

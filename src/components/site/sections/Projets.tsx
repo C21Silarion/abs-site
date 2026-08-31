@@ -15,14 +15,13 @@ function ProjetCard({ projet, index }: { projet: Projet; index: number }) {
   const [imgError, setImgError] = useState(false);
   const showImage = projet.image && !imgError;
   const pc = paperCorners(10 + index, 16);
+  const Wrapper = projet.href ? "a" : "div";
 
   return (
-    <a
-      href={projet.href}
-      target="_blank"
-      rel="noreferrer"
+    <Wrapper
+      {...(projet.href ? { href: projet.href, target: "_blank", rel: "noreferrer" } : {})}
       style={pc.outer}
-      className="group block bg-border transition hover:bg-orange"
+      className={`block bg-border ${projet.href ? "group transition hover:bg-orange" : ""}`}
     >
       <div style={pc.inner} className="flex h-full flex-col overflow-hidden bg-card">
         {showImage ? (
@@ -40,15 +39,15 @@ function ProjetCard({ projet, index }: { projet: Projet; index: number }) {
           <h3 className="font-display text-lg text-aubergine">{projet.titre}</h3>
           <p className="flex-1 text-sm text-foreground/75">{projet.desc}</p>
           <span
-            className={`mt-1 inline-flex items-center gap-1.5 text-sm font-semibold transition-all group-hover:gap-2.5 ${
-              projet.funded ? "text-green-700" : "text-orange"
-            }`}
+            className={`mt-1 inline-flex items-center gap-1.5 text-sm font-semibold transition-all ${
+              projet.href ? "group-hover:gap-2.5" : ""
+            } ${projet.funded ? "text-green-700" : "text-orange"}`}
           >
             {projet.cta} {!projet.funded && <ArrowRight className="h-4 w-4" />}
           </span>
         </div>
       </div>
-    </a>
+    </Wrapper>
   );
 }
 
@@ -78,7 +77,7 @@ export function Projets({
 
       <div className="mt-8 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
         {projets.map((p, index) => (
-          <ProjetCard key={p.href} projet={p} index={index} />
+          <ProjetCard key={p.titre} projet={p} index={index} />
         ))}
       </div>
 

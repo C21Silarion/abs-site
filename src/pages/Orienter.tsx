@@ -1,5 +1,7 @@
 import { Logo } from "@/components/site/brand/Logo";
 import { OrienterForm } from "@/components/site/forms/OrienterForm";
+import { Seo } from "@/components/site/Seo";
+import { seo } from "@/components/site/content";
 
 /*
  * Page publique d'orientation par une structure tierce (URL « need-to-know »,
@@ -10,6 +12,7 @@ import { OrienterForm } from "@/components/site/forms/OrienterForm";
 export default function Orienter() {
   return (
     <div className="min-h-svh bg-background px-5 py-12">
+      <Seo title={seo.orienter.title} description={seo.orienter.description} path="/orienter" noindex />
       <div className="mx-auto w-full max-w-2xl">
         <header className="mb-8 flex flex-col items-center gap-4 text-center">
           <Logo variant="horizontal-orange" className="h-auto w-full" />
@@ -23,9 +26,9 @@ export default function Orienter() {
           </div>
         </header>
 
-        <div className="rounded-2xl border border-border bg-card p-6 sm:p-8">
+        <main className="rounded-2xl border border-border bg-card p-6 sm:p-8">
           <OrienterForm />
-        </div>
+        </main>
 
       </div>
     </div>

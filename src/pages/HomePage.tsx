@@ -14,7 +14,8 @@ import { Disclosure } from "@/components/site/ui/Disclosure";
 import { HebergeurForm } from "@/components/site/forms/HebergeurForm";
 import { BenevoleForm } from "@/components/site/forms/BenevoleForm";
 import { DispoForm } from "@/components/site/forms/DispoForm";
-import { formulaires } from "@/components/site/content";
+import { formulaires, seo } from "@/components/site/content";
+import { Seo } from "@/components/site/Seo";
 
 /*
  * Site monopage (CDC §4) — parcours descendant sur une seule page.
@@ -30,6 +31,8 @@ export default function HomePage() {
           "linear-gradient(to right, var(--creme-deep) 0, var(--creme) 400px, var(--creme) calc(100% - 400px), var(--creme-deep) 100%)",
       }}
     >
+      <Seo title={seo.accueil.title} description={seo.accueil.description} path="/" />
+
       {/* Fil conducteur orange — couche décorative derrière le contenu. */}
       <Fil className="absolute inset-0 z-1 h-full w-full" />
 
@@ -38,34 +41,36 @@ export default function HomePage() {
       <HouseScatter />
 
       <div className="relative z-10">
-        <Hero hebergerTarget="heberger" referentTarget="referent" />
-        <Plaidoyer />
-        <SolidariteExiles />
+        <main>
+          <Hero hebergerTarget="heberger" referentTarget="referent" />
+          <Plaidoyer />
+          <SolidariteExiles />
 
-        {/* Tunnels de réassurance : « Comment ça marche ? » + passage à l'action */}
-        <ParcoursHebergeur id="heberger" showTypes />
-        <Section className="pt-0 sm:pt-0">
-          <Disclosure cornerSeed={301} tone="aubergine" titre={formulaires.hebergeur.titre} hint={formulaires.hebergeur.hint}>
-            <HebergeurForm />
-          </Disclosure>
-          <div className="mt-6">
-            <Disclosure cornerSeed={302} quiet titre={formulaires.dispo.titre}>
-              <DispoForm />
+          {/* Tunnels de réassurance : « Comment ça marche ? » + passage à l'action */}
+          <ParcoursHebergeur id="heberger" showTypes />
+          <Section className="pt-0 sm:pt-0">
+            <Disclosure cornerSeed={301} tone="aubergine" titre={formulaires.hebergeur.titre} hint={formulaires.hebergeur.hint}>
+              <HebergeurForm />
             </Disclosure>
-          </div>
-        </Section>
+            <div className="mt-6">
+              <Disclosure cornerSeed={302} quiet titre={formulaires.dispo.titre}>
+                <DispoForm />
+              </Disclosure>
+            </div>
+          </Section>
 
-        <ChiffresCles />
+          <ChiffresCles />
 
-        <ParcoursReferent id="referent" />
-        <Section className="pt-0 sm:pt-0">
-          <Disclosure cornerSeed={303} tone="aubergine" titre={formulaires.benevole.titre} hint={formulaires.benevole.hint}>
-            <BenevoleForm />
-          </Disclosure>
-        </Section>
+          <ParcoursReferent id="referent" />
+          <Section className="pt-0 sm:pt-0">
+            <Disclosure cornerSeed={303} tone="aubergine" titre={formulaires.benevole.titre} hint={formulaires.benevole.hint}>
+              <BenevoleForm />
+            </Disclosure>
+          </Section>
 
-        <Projets id="projets" withVideo />
-        <Ressources id="ressources" />
+          <Projets id="projets" withVideo />
+          <Ressources id="ressources" />
+        </main>
         <SiteFooter />
       </div>
     </div>

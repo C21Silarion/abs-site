@@ -44,7 +44,7 @@ export const solidariteExiles = {
  */
 export const chiffres: { valeur: string; label: string; key?: string }[] = [
   { valeur: "26", label: "personnes actuellement hébergées", key: "personnesHebergees.total" },
-  { valeur: "17", label: "familles hébergeuses mobilisées", key: "hebergeursOccupes" },
+  { valeur: "17", label: "hébergeur·euse·s mobilisé·e·s", key: "hebergeursOccupes" },
   { valeur: "1 200+", label: "nuitées* offertes cette année", key: "parAnnee.$year.nuitees" },
 ];
 
@@ -86,7 +86,7 @@ export const parcoursHebergeur: {
 export const parcoursReferent = {
   titre: "Les missions de nos référent·e·s et bénévoles",
   intro:
-    "Quelques heures par semaine ou par mois suffisent : accompagner un accueil, faire connaître ABS ou dénicher de nouveaux hébergements. Plusieurs façons de vous engager à nos côtés, même une aide ponctuelle est utile!",
+    "Quelques heures par semaine ou par mois suffisent : accompagner un accueil, faire connaître ABS ou dénicher de nouveaux hébergements. Plusieurs façons de vous engager à nos côtés, même une aide ponctuelle est utile !",
   points: [
     "Garant·e du lien entre la personne accueillie, la famille hébergeuse et l'association.",
     "Présence rassurante : la famille accueillante n'est jamais seule face aux difficultés.",
@@ -111,7 +111,7 @@ export const missionsBenevolat = [
   },
   {
     titre: "J'organise des événements",
-    desc: "Participez à l'organisation de ciné-débats, conférences et événements solidaires pour sensibiliser le public et recruter de nouvelles familles hébergeuses.",
+    desc: "Participez à l'organisation de ciné-débats, conférences et événements solidaires pour sensibiliser le public et recruter de nouveaux·elles hébergeur·euse·s.",
     url: "https://www.jeveuxaider.gouv.fr/missions-benevolat/103827/benevolat-abs-accueil-bienveillant-solidaire-2",
   },
 ];
@@ -224,7 +224,7 @@ export const video = {
 export type Projet = {
   titre: string;
   desc: string;
-  href: string;
+  href?: string;
   image?: string;
   cta: string;
   funded?: boolean;
@@ -241,7 +241,6 @@ export const projets: Projet[] = [
   {
     titre: "Régularisation d'Aminata",
     desc: "Soutenir Aminata dans ses démarches de régularisation.",
-    href: `${HELLOASSO_ORG}/collectes/soutenons-aminata-dans-sa-demarche-de-regularisation-1`,
     image: "/projets/aminnata-process.jpg",
     cta: "Projet financé !",
     funded: true,
@@ -254,6 +253,25 @@ export const projets: Projet[] = [
     cta: "Soutenir",
   },
 ];
+
+/* Titres/descriptions par page pour <Seo /> — cf. src/components/site/Seo.tsx. */
+export const seo = {
+  accueil: {
+    title: "ABS — Accueil Bienveillant et Solidaire | Hébergement solidaire en Haute-Vienne",
+    description:
+      "ABS met en relation des personnes exilées sans hébergement stable avec des citoyen·nes hébergeurs bénévoles à Limoges, accompagnés par des bénévoles référent·es à chaque étape.",
+  },
+  orienter: {
+    title: "Orienter une personne ou une famille — ABS Limoges",
+    description:
+      "Vous accompagnez une personne ou une famille qui va se retrouver sans hébergement ? Transmettez sa situation à l'association ABS.",
+  },
+  viePrivee: {
+    title: "Protection des données personnelles — ABS Limoges",
+    description:
+      "Notice de protection des données personnelles de l'association ABS — Accueil Bienveillant et Solidaire (Limoges).",
+  },
+};
 
 export const galerie = [
   "Atelier convivial, été 2025",
