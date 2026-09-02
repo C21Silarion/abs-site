@@ -198,12 +198,12 @@ export const footer = {
   newsletterAction:
     "https://eeec61fc.sibforms.com/serve/MUIFAHr-pGrUCOA0nhIyhAT1m3I6YqMgc9RP2jDqZrSuWl_6tsKBJ4E6EYId0bJS_5tNclWn6RBQKOYPUqptfPbx7sGC_PznSwrFmpyp0iTi7uVHsj5cmjmFoW4ohlV2oBgaaO50FazFKXjEE8bAD7faVX_Euq25TVU1KRQjqc8aHzT7Nu4AjW7qjqq76md7KvxagI-JuZBVFukM",
   contact: {
-    email: "abslimoges@proton.me",
+    email: "contact@abs87.org",
     telephone: "07 43 34 09 98",
     adresse: "Maison des Droits de l'Homme — 119 avenue du Général Leclerc, 87100 Limoges",
   },
   reseaux: {
-    instagram: "https://www.instagram.com/abs87.limoges",
+    instagram: "https://www.instagram.com/abs.limoges",
     facebook: "https://www.facebook.com/abs.limoges",
     youtube: "https://www.youtube.com/@ABSLimoges",
     note: "Pour suivre nos actualités au jour le jour et voir la vie de l'association, rejoignez-nous sur nos réseaux sociaux !",
