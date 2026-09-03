@@ -99,9 +99,10 @@ Le dossier `dist/` est ensuite servi par le serveur web.
 
 ## Site (monopage)
 
-Architecture retenue : **monopage** (CDC §4), accessible en interne sur `/test` —
-parcours descendant, CTA jumeaux qui défilent vers les ancres `#heberger` /
-`#referent`. La maquette multipage (CDC §5) a été abandonnée et supprimée.
+Architecture retenue : **monopage** (CDC §4), servie sur `/` (site en ligne
+depuis le 2026-09-03) — parcours descendant, CTA jumeaux qui défilent vers les
+ancres `#heberger` / `#referent`. La maquette multipage (CDC §5) a été
+abandonnée et supprimée.
 
 Le nom de l'outil interne (Le116) ne doit jamais apparaître côté site public —
 ni en texte ni en nom de composant (visible via React DevTools).

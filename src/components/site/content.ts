@@ -15,7 +15,7 @@ export const association = {
 export const hero = {
   accroche: "Réseau d'hébergement solidaire en Haute-Vienne",
   sousTitre:
-    "ABS (Accueil Bienveillant et Solidaire) met en relation des personnes exilées sans solution d'hébergement avec des citoyen·nes prêt·es à les accueillir, accompagné·es à chaque étape par des bénévoles référent·es.",
+    "ABS (Accueil Bienveillant et Solidaire) met en relation des personnes exilées sans solution d'hébergement avec des citoyen·ne·s prêt·es à les accueillir, accompagné·es à chaque étape par des bénévoles référent·es.",
   ctaHeberger: "Je propose un hébergement",
   ctaReferent: "Je deviens bénévole / référent·e",
 };
@@ -24,7 +24,7 @@ export const plaidoyer = {
   titre: "Pourquoi et comment nous agissons",
   paragraphes: [
     "Chaque soir, en Haute-Vienne, des familles et des personnes seules se retrouvent sans solution, exclues des dispositifs d'hébergement existants.", 
-    "Face à ce vide, nous accompagnons des citoyen·ne.s qui ouvrent leur porte et nous recherchons de nouveaux foyers.",
+    "Face à ce vide, nous accompagnons des citoyen·ne·s qui ouvrent leur porte et nous recherchons de nouveaux foyers.",
     "ABS est une association entièrement bénévole. Nous ne remplaçons pas l'État.",
     "Nous cherchons à créer un réseau de solidarité concret. Héberger, même sur une courte période, c'est offrir la sécurité et la sérénité nécessaires pour différentes démarches.",
   ],
@@ -80,7 +80,7 @@ export const parcoursHebergeur: {
     },
   ],
   assurance:
-    "Les besoins de la personne accueillie en termes alimentaires, vestimentaires, déplacements et autres ne sont pas à la charge de l’hébergeur.euse. Les frais supplémentaires (chauffage, eau, électricité) ne sont pas pris en charge par l’association sauf en cas de grande difficulté.",
+    "Les besoins en termes alimentaires, vestimentaires, déplacements, et autres de la personne accueillie ne sont pas à la charge de l’hébergeur·euse. Les frais supplémentaires (chauffage, eau, électricité) ne sont pas pris en charge par l’association sauf en cas de grande difficulté.",
 };
 
 export const parcoursReferent = {
@@ -259,7 +259,7 @@ export const seo = {
   accueil: {
     title: "ABS — Accueil Bienveillant et Solidaire | Hébergement solidaire en Haute-Vienne",
     description:
-      "ABS met en relation des personnes exilées sans hébergement stable avec des citoyen·nes hébergeurs bénévoles à Limoges, accompagnés par des bénévoles référent·es à chaque étape.",
+      "ABS met en relation des personnes exilées sans hébergement stable avec des citoyen·ne·s hébergeurs bénévoles à Limoges, accompagnés par des bénévoles référent·es à chaque étape.",
   },
   orienter: {
     title: "Orienter une personne ou une famille — ABS Limoges",
