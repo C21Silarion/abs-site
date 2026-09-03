@@ -259,7 +259,7 @@ export const seo = {
   accueil: {
     title: "ABS — Accueil Bienveillant et Solidaire | Hébergement solidaire en Haute-Vienne",
     description:
-      "ABS met en relation des personnes exilées sans hébergement stable avec des citoyen·ne·s hébergeurs bénévoles à Limoges, accompagnés par des bénévoles référent·es à chaque étape.",
+      "ABS met en relation des personnes exilées sans hébergement stable avec des citoyen·ne·s hébergeurs bénévoles à Limoges et alentours, accompagnés par des bénévoles référent·es à chaque étape.",
   },
   orienter: {
     title: "Orienter une personne ou une famille — ABS Limoges",
