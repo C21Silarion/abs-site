@@ -9,7 +9,7 @@
  * le dashboard Umami (cf. runbook de déploiement).
  */
 const UMAMI_SCRIPT_URL = "https://stats.app.abs87.org/script.js";
-const UMAMI_WEBSITE_ID = "REPLACE_WITH_UMAMI_WEBSITE_ID_SITE";
+const UMAMI_WEBSITE_ID = "983e73df-9ca0-4684-a345-0fb241993a14";
 
 export function Analytics() {
   if (!import.meta.env.PROD) return null;
