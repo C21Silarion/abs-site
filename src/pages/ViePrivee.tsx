@@ -81,6 +81,20 @@ export default function ViePrivee() {
           </section>
 
           <section>
+            <h2 className="mb-2 font-display text-lg text-aubergine">Mesure d'audience du site</h2>
+            <p>
+              Nous utilisons <strong>Umami</strong>, un outil de mesure d'audience que nous
+              hébergeons nous-mêmes (aucune donnée transmise à un service tiers). Il ne dépose{" "}
+              <strong>aucun cookie</strong> et ne collecte <strong>aucune donnée personnelle</strong> :
+              seules des statistiques agrégées et anonymes (pages consultées, durée de visite) sont
+              enregistrées, sans possibilité de vous identifier individuellement. Ce suivi ne
+              nécessite donc pas votre consentement, conformément aux recommandations de la CNIL
+              sur les outils de mesure d'audience exemptés — nous le mentionnons ici par souci de
+              transparence.
+            </p>
+          </section>
+
+          <section>
             <h2 className="mb-2 font-display text-lg text-aubergine">Durée de conservation</h2>
             <p>
               Vos données sont conservées en base active <strong>1 an à compter de notre
