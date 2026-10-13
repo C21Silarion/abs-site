@@ -1,38 +1,14 @@
 /**
  * Options partagées des formulaires publics : types d'aide + créneaux de disponibilité.
  *
- * Miroir statique des énumérations Grist de l'outil interne ABS
- * (`schema/enums/type_aide.yaml`, `schema/enums/creneaux.yaml`). Le site public
- * étant non authentifié, il ne peut pas charger les choix Grist : ces constantes
- * DOIVENT rester alignées avec celles de l'outil interne (cf. abs-app
- * `pwa/src/lib/profilOptions.ts`).
+ * Le site public étant non authentifié, il ne peut pas charger les choix Grist :
+ * - types d'aide : `./generated/typesAide.ts`, GÉNÉRÉ depuis abs-app
+ *   `schema/enums/type_aide.yaml` (`python schema_tool.py gen-ts` côté abs-app) ;
+ * - créneaux : miroir manuel de abs-app `schema/enums/creneaux.yaml`, à garder aligné.
  */
 
-/** Types d'aide proposables (= Taches.TypeTache). */
-export const TYPES_AIDE = [
-  "Transport",
-  "Rendez-vous",
-  "Appel téléphonique",
-  "Aide administrative",
-  "Autre",
-  "Réunion",
-  "Événement",
-  "Admin ABS",
-  "Communication",
-  "Gestion bénévoles",
-  "Lien associatif",
-] as const;
-
-/** Sous-groupe "Suivi" pour l'affichage groupé de ChipMulti (cf. abs-app). */
-export const TYPES_AIDE_SUIVI = ["Transport", "Rendez-vous", "Appel téléphonique", "Aide administrative", "Autre"] as const;
-/** Sous-groupe "Fonctionnement ABS interne" — même usage. */
-export const TYPES_AIDE_INTERNE = ["Réunion", "Événement", "Admin ABS", "Communication", "Gestion bénévoles", "Lien associatif"] as const;
-
-/** Regroupement pour ChipMulti (Types d'aide) — mêmes deux sections que côté abs-app. */
-export const TYPES_AIDE_GROUPS = [
-  { label: "Suivi", options: TYPES_AIDE_SUIVI },
-  { label: "Fonctionnement ABS interne", options: TYPES_AIDE_INTERNE },
-] as const;
+// Types d'aide / de tâche : générés depuis schema/enums/type_aide.yaml (source unique).
+export { TYPES_AIDE, TYPES_AIDE_SUIVI, TYPES_AIDE_INTERNE, TYPES_AIDE_GROUPS } from "./generated/typesAide";
 
 export const JOURS = [
   "Lundi", "Mardi", "Mercredi", "Jeudi", "Vendredi", "Samedi", "Dimanche",

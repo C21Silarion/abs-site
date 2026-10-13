@@ -131,11 +131,29 @@ même origine en prod via le proxy Caddy `/api`, proxy Vite en dev
 - **Contrat anti-abus** (identique côté abs-app) : jeton récupéré au montage
   (`getPublicFormToken`) + renvoyé à la soumission (nonce + piège temporel
   ≥ 3 s), honeypot `hp`, POST sans cookie de session.
-- **`src/lib/profilOptions.ts`** : miroir statique des énumérations Grist
-  (types d'aide, créneaux) — page publique non authentifiée, pas d'accès aux
-  choices Grist. **DOIT rester aligné manuellement** avec
-  `abs-app/pwa/src/lib/profilOptions.ts` et `schema/enums/*.yaml` ; a été pris
-  en défaut une fois déjà (types d'aide périmés, session 88 côté abs-app).
+- **`src/lib/profilOptions.ts`** : énumérations du profil bénévole — page
+  publique non authentifiée, pas d'accès aux choices Grist.
+  - **Types d'aide** : ré-exportés depuis `src/lib/generated/typesAide.ts`,
+    **généré** depuis `abs-app/schema/enums/type_aide.yaml` (source unique) par
+    `cd ../abs-app/scripts/seed && python schema_tool.py gen-ts`. Ne pas éditer
+    à la main ; régénérer puis committer dans les deux dépôts.
+  - **Créneaux** (`JOURS`/`PARTS`) : miroir manuel de `schema/enums/creneaux.yaml`,
+    **à garder aligné**.
+
+## Mesure d'audience (Umami)
+
+Traceur **Umami** auto-hébergé (instance déployée côté `abs-app` — voir son
+`CLAUDE.md` et `docs/guides/deploiement-vps.md` pour l'infra) :
+`src/components/site/Analytics.tsx`, monté dans `App.tsx` (frère de
+`<Routes>`). Chargé uniquement en production (`import.meta.env.PROD`) pour ne
+pas polluer les stats avec du trafic de dev local — sans cookie ni donnée
+personnelle, divulgué dans `/vie-privee`.
+
+**⚠️ Piège React** : un `<script src>` rendu directement en JSX s'insère bien
+dans le DOM (visible dans l'inspecteur) mais ne déclenche **pas
+systématiquement** le fetch du navigateur — constaté en prod. `Analytics.tsx`
+charge le script via `useEffect` + `document.createElement`, pas de `<script>`
+rendu en JSX pour un script tiers.
 
 ## À faire / en attente
 
