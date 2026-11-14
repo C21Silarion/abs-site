@@ -29,7 +29,8 @@ export default function ViePrivee() {
             Maison des Droits de l'Homme — 119 avenue du Général Leclerc, 87100 Limoges,
             collecte et traite des données vous concernant pour mener à bien sa mission :
             mettre en relation des personnes sans hébergement stable avec des hébergeurs
-            bénévoles, et assurer leur accompagnement.
+            bénévoles, et assurer leur accompagnement. Elle traite également les données de
+            ses adhérents et donateurs.
           </p>
 
           <section>
@@ -38,6 +39,7 @@ export default function ViePrivee() {
               <li>gérer votre demande d'hébergement et vous mettre en relation avec un hébergeur ;</li>
               <li>assurer votre suivi et votre accompagnement ;</li>
               <li>gérer les hébergeurs et les bénévoles ;</li>
+              <li>gérer les adhésions et les dons, et émettre les reçus fiscaux ;</li>
               <li>établir des statistiques d'activité <strong>anonymes</strong> pour le pilotage et nos financeurs.</li>
             </ul>
           </section>
@@ -45,9 +47,10 @@ export default function ViePrivee() {
           <section>
             <h2 className="mb-2 font-display text-lg text-aubergine">Base juridique</h2>
             <p>
-              Selon le cas : l'exécution de notre mission d'accompagnement, notre intérêt
-              légitime, une obligation légale (justification de subventions, sous forme agrégée),
-              ou votre <strong>consentement</strong> pour toute donnée sensible.
+              Selon le cas : l'exécution de notre mission d'accompagnement, votre adhésion à
+              l'association, notre intérêt légitime, une obligation légale (justification de
+              subventions sous forme agrégée, reçus fiscaux et comptabilité), ou votre{" "}
+              <strong>consentement</strong> pour toute donnée sensible.
             </p>
           </section>
 
@@ -65,7 +68,9 @@ export default function ViePrivee() {
             <h2 className="mb-2 font-display text-lg text-aubergine">Qui y a accès</h2>
             <p>
               Uniquement les bénévoles et administrateurs d'ABS <strong>habilités</strong>, selon
-              leur rôle. Vos données ne sont <strong>ni vendues, ni cédées</strong> à des tiers
+              leur rôle (les données d'adhésion et de dons sont réservées aux membres du bureau).
+              L'administration fiscale peut en avoir communication en cas de contrôle des reçus
+              fiscaux. Vos données ne sont <strong>ni vendues, ni cédées</strong> à des tiers
               à des fins commerciales.
             </p>
           </section>
@@ -76,7 +81,9 @@ export default function ViePrivee() {
               Notre hébergeur <strong>OVH</strong> (France/UE), notre service d'envoi d'emails{" "}
               <strong>Brevo</strong> (pour les bénévoles), et des services de cartographie{" "}
               <strong>OpenStreetMap/OSRM</strong> (pour calculer des trajets à partir d'adresses).
-              Vos données métier sont hébergées <strong>en France (Union européenne)</strong>.
+              Nos outils de gestion (dont notre logiciel de gestion associative et comptable,{" "}
+              <strong>Dolibarr</strong>) sont installés sur nos propres serveurs : vos données
+              sont hébergées <strong>en France (Union européenne)</strong>.
             </p>
           </section>
 
@@ -100,7 +107,10 @@ export default function ViePrivee() {
               Vos données sont conservées en base active <strong>1 an à compter de notre
               dernier contact</strong>, puis anonymisées. Les demandes envoyées via nos
               formulaires en ligne et non suivies d'effet sont supprimées automatiquement
-              (90 jours à 1 an selon le cas).
+              (90 jours à 1 an selon le cas). Les données des adhérents et donateurs sont conservées
+              pendant l'adhésion puis <strong>3 ans après la dernière cotisation ou le dernier
+              don</strong> ; les pièces comptables et les doubles des reçus fiscaux sont archivés{" "}
+              <strong>10 ans</strong>, comme l'exige la loi.
             </p>
           </section>
 
@@ -150,6 +160,19 @@ export default function ViePrivee() {
                 <p>
                   Ces informations mettent à jour votre fiche hébergeur dans notre outil. Conservation :
                   1 an après le dernier contact, puis anonymisation.
+                </p>
+              </div>
+
+              <div>
+                <p className="font-medium text-aubergine">Adhésion et dons</p>
+                <p>
+                  Identité, coordonnées, montants et dates de vos cotisations et dons, enregistrés
+                  dans notre logiciel de gestion associative (Dolibarr, hébergé par nos soins chez
+                  OVH) pour gérer votre adhésion, vous convier aux assemblées générales, émettre vos
+                  reçus fiscaux et tenir notre comptabilité. Nous ne conservons jamais vos
+                  coordonnées bancaires complètes. Vous pouvez à tout moment refuser de recevoir
+                  nos informations sur la vie de l'association. Conservation : 3 ans après la
+                  dernière cotisation ou le dernier don ; pièces comptables 10 ans.
                 </p>
               </div>
 
