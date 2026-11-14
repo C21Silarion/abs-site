@@ -68,7 +68,7 @@ export default function ViePrivee() {
             <h2 className="mb-2 font-display text-lg text-aubergine">Qui y a accès</h2>
             <p>
               Uniquement les bénévoles et administrateurs d'ABS <strong>habilités</strong>, selon
-              leur rôle (les données d'adhésion et de dons sont réservées aux membres du bureau).
+              leur rôle (les données d'adhésion et de dons sont réservées à des bénévoles accrédités).
               L'administration fiscale peut en avoir communication en cas de contrôle des reçus
               fiscaux. Vos données ne sont <strong>ni vendues, ni cédées</strong> à des tiers
               à des fins commerciales.
