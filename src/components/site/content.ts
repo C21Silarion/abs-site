@@ -232,10 +232,10 @@ export type Projet = {
 
 export const projets: Projet[] = [
   {
-    titre: "Entrée au collège pour Enriko",
-    desc: "Aider Enriko à faire sa rentrée au collège dans de bonnes conditions.",
-    href: `${HELLOASSO_ORG}/collectes/entree-au-college-pour-enriko`,
-    image: "/projets/enriko-process.jpg",
+    titre: "Un toit pour Rosette et ses enfants cet hiver",
+    desc: "Financer les trois premiers mois de loyer pour qu'une maman et ses deux enfants passent l'hiver à l'abri.",
+    href: `${HELLOASSO_ORG}/formulaires/4`,
+    image: "/projets/rosette-process.jpg",
     cta: "Soutenir",
   },
   {
